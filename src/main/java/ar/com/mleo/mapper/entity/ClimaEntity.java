@@ -1,4 +1,4 @@
-package ar.com.mleo.dao.entity;
+package ar.com.mleo.mapper.entity;
 
 
 

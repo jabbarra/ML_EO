@@ -15,6 +15,8 @@ import ar.com.mleo.service.ClimaService;
 
 
 
+
+
 @RestController
 @RequestMapping("/clima")
 public class ClimaController {
@@ -36,11 +38,7 @@ public class ClimaController {
 		
 		List<Clima> climas = new ArrayList<Clima>();
 		try {
-//			Clima c = new Clima();
-//			c.setNombre("sequia");
-//			climas.add(c);
 			climas = climaService.getClimas();
-
 			climaService.calcularPeriodoLLuvia();
 		} catch (Exception e) {
 			e.printStackTrace();
