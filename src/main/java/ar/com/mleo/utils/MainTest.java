@@ -273,17 +273,31 @@ public class MainTest {
 //		p3.setX(new BigDecimal("-2"));
 //		p3.setY(new BigDecimal("-1"));
 		
+//		Punto p1 = new Punto();
+//		p1.setX(new BigDecimal("5"));
+//		p1.setY(new BigDecimal("6"));
+//		
+//		Punto p2 = new Punto();
+//		p2.setX(new BigDecimal("2"));
+//		p2.setY(new BigDecimal("6"));
+//		
+//		Punto p3 =  new Punto();
+//		p3.setX(new BigDecimal("-2"));
+//		p3.setY(new BigDecimal("6"));
+		
 		Punto p1 = new Punto();
-		p1.setX(new BigDecimal("5"));
-		p1.setY(new BigDecimal("6"));
+		p1.setX(new BigDecimal("-2"));
+		p1.setY(new BigDecimal("-3"));
 		
 		Punto p2 = new Punto();
 		p2.setX(new BigDecimal("2"));
-		p2.setY(new BigDecimal("6"));
+		p2.setY(new BigDecimal("3"));
 		
 		Punto p3 =  new Punto();
-		p3.setX(new BigDecimal("-2"));
-		p3.setY(new BigDecimal("6"));
+		p3.setX(new BigDecimal("5"));
+		p3.setY(new BigDecimal("7"));
+		
+		
 		
 		FuncionCuadratica recta = new FuncionCuadratica(p1, p2);
 		BigDecimal yaux = recta.getValorY(p3.getX());
