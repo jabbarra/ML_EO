@@ -84,7 +84,7 @@ public class MatematicaUtils {
 		return false;
 	}
 	
-	private static boolean esSemejante(BigDecimal yaux, BigDecimal y, double desvio) {
+	public static boolean esSemejante(BigDecimal yaux, BigDecimal y, double desvio) {
 		double ymin = yaux.doubleValue() - desvio;
 		double ymax = yaux.doubleValue() + desvio;
 		if(ymin < y.doubleValue() && y.doubleValue() < ymax){
@@ -118,4 +118,27 @@ public class MatematicaUtils {
 		return area;
 	}
 	
+	
+	public static double getPerimetro(Punto a, Punto b, Punto c){
+		double terminoUno = Math.pow((b.getX().subtract(a.getX())).doubleValue(), 2);
+		double terminoDos = Math.pow((b.getY().subtract(a.getY())).doubleValue(), 2);
+		double ab = Math.sqrt(terminoUno + terminoDos);
+		ab = ab < 0? -ab:ab;
+		
+		terminoUno = Math.pow((c.getX().subtract(a.getX())).doubleValue(), 2);
+		terminoDos = Math.pow((c.getY().subtract(a.getY())).doubleValue(), 2);
+		double ac = Math.sqrt(terminoUno + terminoDos);
+		ac = ac < 0? -ac:ac;
+		
+		terminoUno = Math.pow((c.getX().subtract(b.getX())).doubleValue(), 2);
+		terminoDos = Math.pow((c.getY().subtract(b.getY())).doubleValue(), 2);
+		double bc = Math.sqrt(terminoUno + terminoDos);
+		bc = bc < 0? -bc:bc;
+		
+		double perimetro = ab + ac + bc;
+		
+		return perimetro;
+	}
+	
+
 }

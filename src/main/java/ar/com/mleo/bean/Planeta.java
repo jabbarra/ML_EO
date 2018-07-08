@@ -4,11 +4,20 @@ import java.math.BigDecimal;
 
 public class Planeta {
 	private String nombre;
-	private BigDecimal periodo;
 	private BigDecimal radio;
+	private BigDecimal periodo;
+	private BigDecimal angulo;
 	private BigDecimal circunferencia;
 	private BigDecimal peridoSideral;
 	private BigDecimal peridoSinodico;
+	public Planeta(String nombre, String angulo, String periodo, String radio) {
+		
+		Double anguloRad = Math.toRadians(Double.parseDouble(angulo));
+		this.angulo = new BigDecimal(anguloRad.toString());
+		this.periodo = new BigDecimal(periodo); 
+		this.radio =  new BigDecimal(radio); 
+		this.nombre = nombre;
+	}
 	/**
 	 * @return the nombre
 	 */
@@ -20,6 +29,18 @@ public class Planeta {
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	/**
+	 * @return the radio
+	 */
+	public BigDecimal getRadio() {
+		return radio;
+	}
+	/**
+	 * @param radio the radio to set
+	 */
+	public void setRadio(BigDecimal radio) {
+		this.radio = radio;
 	}
 	/**
 	 * @return the periodo
@@ -34,16 +55,16 @@ public class Planeta {
 		this.periodo = periodo;
 	}
 	/**
-	 * @return the radio
+	 * @return the angulo
 	 */
-	public BigDecimal getRadio() {
-		return radio;
+	public BigDecimal getAngulo() {
+		return angulo;
 	}
 	/**
-	 * @param radio the radio to set
+	 * @param angulo the angulo to set
 	 */
-	public void setRadio(BigDecimal radio) {
-		this.radio = radio;
+	public void setAngulo(BigDecimal angulo) {
+		this.angulo = angulo;
 	}
 	/**
 	 * @return the circunferencia
@@ -81,5 +102,5 @@ public class Planeta {
 	public void setPeridoSinodico(BigDecimal peridoSinodico) {
 		this.peridoSinodico = peridoSinodico;
 	}
-
+	
 }

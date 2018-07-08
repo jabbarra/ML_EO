@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-import ar.com.mleo.bean.FuncionCuadratica;
 import ar.com.mleo.bean.Punto;
 
 public class MainArea {

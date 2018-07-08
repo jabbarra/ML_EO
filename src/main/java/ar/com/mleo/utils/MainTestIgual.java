@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-import ar.com.mleo.bean.FuncionCuadratica;
 import ar.com.mleo.bean.Punto;
 
 public class MainTestIgual {
@@ -13,10 +12,15 @@ public class MainTestIgual {
 	public static void main(String[] args) {
 //		test();
 //		obtenerClimaSequia();
-		getArea();
+//		getArea();
 //		testPuntos();
+		getPeridoLLuvia();
+//		getPeridoSequia();
+//		getPeridoIdeal();
 	}
 	
+
+
 	private static void obtenerClimaSequia() {
 
 		long dia = 1;
@@ -131,7 +135,7 @@ public class MainTestIgual {
 			while(dia <= ultimoDia){
 				Punto fp = MatematicaUtils.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
 				Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
-				Punto vp = MatematicaUtils.getCoordeadasRectangular(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
+				Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 				
 				
 				double area = MatematicaUtils.getArea(fp, bp, vp);
@@ -240,6 +244,196 @@ public class MainTestIgual {
 				System.out.println("p2 eje x: "+b.getX().toString()+"  "+ "eje y: "+b.getY().toString());
 				System.out.println("p3 eje x: "+a.getX().toString()+"  "+ "eje y: "+a.getY().toString()+"\n");
 			}
+		}
+	}
+	
+	
+	private static void getPeridoLLuvia() {
+		long dia = 1;
+		long ultimoDia = 365 * 10;
+		
+		
+		BigDecimal fRadio = new BigDecimal("500"); 
+		BigDecimal fAngulo = new BigDecimal("1"); 
+		BigDecimal fPeriodo = new BigDecimal("1");
+		
+		BigDecimal bRadio = new BigDecimal("2000"); 
+		BigDecimal bAngulo = new BigDecimal("3"); 
+		BigDecimal bPeriodo = new BigDecimal("1");
+		
+		BigDecimal vRadio = new BigDecimal("1000"); 
+		BigDecimal vAngulo = new BigDecimal("5"); 
+		BigDecimal vPeriodo = new BigDecimal("1");
+		
+		Double anguloRad = Math.toRadians(1);
+		fAngulo = new BigDecimal(anguloRad.toString());
+		anguloRad = Math.toRadians(3);
+		bAngulo = new BigDecimal(anguloRad.toString());
+		anguloRad = Math.toRadians(5);
+		vAngulo = new BigDecimal(anguloRad.toString());
+		
+		Punto p0 = new Punto();
+		p0.setX(new BigDecimal(0));
+		p0.setY(new BigDecimal(0));
+		 
+		double perimetro = 0;
+		double perimetroMax = 0;
+		double perimetroMin = 0;
+		String FILENAME = "C:\\logs\\peridoLLuviasMAX.txt";
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILENAME))) {
+			
+			while(dia <= ultimoDia){
+				Punto fp = MatematicaUtils.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
+				Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
+				Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
+				
+				double area = MatematicaUtils.getArea(fp, bp, vp);
+				if(area > 0){
+					if(MatematicaUtils.esPuntoInteriorTriangulo(fp, bp, vp, p0)){
+						perimetro = MatematicaUtils.getPerimetro(fp, bp, vp);
+						if(dia == 1 ||  perimetroMax < perimetro){
+							perimetroMax = MatematicaUtils.getPerimetro(fp, bp, vp);
+						}
+						if(dia == 1 ||  perimetroMin > perimetro){
+							perimetroMin = MatematicaUtils.getPerimetro(fp, bp, vp);
+						}
+						bw.write("DIA: "+ dia);
+						bw.write(" SOL_adentro ");
+						bw.write(" PERIMETRO: "+ perimetro);
+						bw.write(" AREA: "+ area);
+						bw.write(" Feje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
+						bw.write(" Beje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
+						bw.write(" Veje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
+						
+					}
+				}
+				dia++;
+			}
+			
+			bw.write("perimetroMax: "+ perimetroMax);
+			bw.write("perimetroMin "+ perimetroMin);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static void getPeridoSequia() {
+		long dia = 1;
+		long ultimoDia = 365 * 10;
+		
+		
+		BigDecimal fRadio = new BigDecimal("500"); 
+		BigDecimal fAngulo = new BigDecimal("1"); 
+		BigDecimal fPeriodo = new BigDecimal("1");
+		
+		BigDecimal bRadio = new BigDecimal("2000"); 
+		BigDecimal bAngulo = new BigDecimal("3"); 
+		BigDecimal bPeriodo = new BigDecimal("1");
+		
+		BigDecimal vRadio = new BigDecimal("1000"); 
+		BigDecimal vAngulo = new BigDecimal("5"); 
+		BigDecimal vPeriodo = new BigDecimal("1");
+		
+		Double anguloRad = Math.toRadians(1);
+		fAngulo = new BigDecimal(anguloRad.toString());
+		anguloRad = Math.toRadians(3);
+		bAngulo = new BigDecimal(anguloRad.toString());
+		anguloRad = Math.toRadians(5);
+		vAngulo = new BigDecimal(anguloRad.toString());
+		
+		Punto p0 = new Punto();
+		p0.setX(new BigDecimal(0));
+		p0.setY(new BigDecimal(0));
+		 
+		
+		String FILENAME = "C:\\logs\\peridoSequias.txt";
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILENAME))) {
+			
+			while(dia <= ultimoDia){
+				Punto fp = MatematicaUtils.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
+				Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
+				Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
+				
+				double area = MatematicaUtils.getArea(fp, bp, vp);
+				if(-1<area && area<1){
+	
+					FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
+					
+					BigDecimal yaux = recta.getValorY(p0.getX());
+					if(MatematicaUtils.esSemejante(yaux, bp.getY(), 0.5)){
+						bw.write("DIA: "+ dia);
+						bw.write(" AREA: "+ area);
+						bw.write(" Feje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
+						bw.write(" Beje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
+						bw.write(" Veje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
+					}
+				}
+				dia++;
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	private static void getPeridoIdeal() {
+		long dia = 1;
+		long ultimoDia = 365 * 10;
+		
+		
+		BigDecimal fRadio = new BigDecimal("500"); 
+		BigDecimal fAngulo = new BigDecimal("1"); 
+		BigDecimal fPeriodo = new BigDecimal("1");
+		
+		BigDecimal bRadio = new BigDecimal("2000"); 
+		BigDecimal bAngulo = new BigDecimal("3"); 
+		BigDecimal bPeriodo = new BigDecimal("1");
+		
+		BigDecimal vRadio = new BigDecimal("1000"); 
+		BigDecimal vAngulo = new BigDecimal("5"); 
+		BigDecimal vPeriodo = new BigDecimal("1");
+		
+		Double anguloRad = Math.toRadians(1);
+		fAngulo = new BigDecimal(anguloRad.toString());
+		anguloRad = Math.toRadians(3);
+		bAngulo = new BigDecimal(anguloRad.toString());
+		anguloRad = Math.toRadians(5);
+		vAngulo = new BigDecimal(anguloRad.toString());
+		
+		Punto p0 = new Punto();
+		p0.setX(new BigDecimal(0));
+		p0.setY(new BigDecimal(0));
+		 
+		
+		String FILENAME = "C:\\logs\\peridoIdeal.txt";
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILENAME))) {
+			
+			while(dia <= ultimoDia){
+				Punto fp = MatematicaUtils.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
+				Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
+				Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
+				
+				double area = MatematicaUtils.getArea(fp, bp, vp);
+				if(-1<area && area<1){
+	
+					FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
+					
+					BigDecimal yaux = recta.getValorY(p0.getX());
+					if(!MatematicaUtils.esSemejante(yaux, bp.getY(), 0.5)){
+						bw.write("DIA: "+ dia);
+						bw.write(" AREA: "+ area);
+						bw.write(" Feje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
+						bw.write(" Beje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
+						bw.write(" Veje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
+					}
+				}
+				dia++;
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 }

@@ -1,7 +1,9 @@
-package ar.com.mleo.bean;
+package ar.com.mleo.utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+
+import ar.com.mleo.bean.Punto;
 
 public class FuncionCuadratica {
 	private BigDecimal pendiente;

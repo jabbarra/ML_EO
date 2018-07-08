@@ -2,7 +2,6 @@ package ar.com.mleo.utils;
 
 import java.math.BigDecimal;
 
-import ar.com.mleo.bean.FuncionCuadratica;
 import ar.com.mleo.bean.Punto;
 
 public class MainTest {
