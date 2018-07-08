@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 import ar.com.mleo.bean.Punto;
 
-public class MainArea {
+public class MainTestArea {
 	public static void main(String[] args) {
 		obtenerAreaMaxima();
 	}

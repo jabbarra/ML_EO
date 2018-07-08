@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import ar.com.mleo.bean.Punto;
 
-public class MainTest {
+public class MainTestFuncionCuadratica {
 
 	public static void main(String[] args) {
 //		Punto p1 = new Punto();
