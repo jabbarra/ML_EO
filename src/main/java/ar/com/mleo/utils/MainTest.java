@@ -7,18 +7,140 @@ import java.math.BigDecimal;
 
 import ar.com.mleo.bean.Punto;
 
-public class MainTestIgual {
+public class MainTest {
 	
 	public static void main(String[] args) {
-//		test();
-//		obtenerClimaSequia();
-//		getArea();
-//		testPuntos();
+
+		testAlinearconOrigen();
+		
+		testAlinearsinOrigen();
+		
+		crearFileAreas();
+		
+//		se usa algoritmo para allinear
+		obtenerClimaSequia();
+		
+//		se usa el area
+		getPeridoSequia();
 		getPeridoLLuvia();
-//		getPeridoSequia();
-//		getPeridoIdeal();
+		getPeridoIdeal();
+		
+		
 	}
 	
+	
+	private static void testAlinearconOrigen() {
+
+		long dia = 1;
+		long ultimoDia = 365 * 10;
+		
+		
+		BigDecimal fRadio = new BigDecimal("500"); 
+		BigDecimal fAngulo = new BigDecimal("1"); 
+		BigDecimal fPeriodo = new BigDecimal("1");
+		
+		BigDecimal bRadio = new BigDecimal("2000"); 
+		BigDecimal bAngulo = new BigDecimal("3"); 
+		BigDecimal bPeriodo = new BigDecimal("1");
+		
+		BigDecimal vRadio = new BigDecimal("1000"); 
+		BigDecimal vAngulo = new BigDecimal("5"); 
+		BigDecimal vPeriodo = new BigDecimal("1");
+		
+		Punto p0 = new Punto();
+		p0.setX(new BigDecimal(0));
+		p0.setY(new BigDecimal(0));
+		 
+		
+		
+		
+		while(dia <= ultimoDia){
+			Double anguloRad = Math.toRadians(1);
+			fAngulo = new BigDecimal(anguloRad.toString());
+			anguloRad = Math.toRadians(3);
+			bAngulo = new BigDecimal(anguloRad.toString());
+			anguloRad = Math.toRadians(5);
+			vAngulo = new BigDecimal(anguloRad.toString());
+			
+			Punto fp = MatematicaUtils.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
+			Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
+			Punto vp = MatematicaUtils.getCoordeadasRectangular(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
+			
+			FuncionCuadratica recta = new FuncionCuadratica(fp, p0);
+			
+			BigDecimal yaux = recta.getValorY(bp.getX());
+			if(MatematicaUtils.esSemejante(yaux, bp.getY(), 0.5)){
+//				System.out.println("F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
+//				System.out.println("B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString()+"\n");
+				yaux = recta.getValorY(vp.getX());
+				if(MatematicaUtils.esSemejante(yaux, vp.getY(), 0.5)){
+					System.out.println("F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
+					System.out.println("B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
+					System.out.println("V eje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
+				}
+			}
+			
+			dia++;
+		}
+		
+	}
+
+	private static void testAlinearsinOrigen() {
+		long dia = 1;
+		long ultimoDia = 365 * 10;
+		
+		
+		BigDecimal fRadio = new BigDecimal("500"); 
+		BigDecimal fAngulo = new BigDecimal("1"); 
+		BigDecimal fPeriodo = new BigDecimal("1");
+		
+		BigDecimal bRadio = new BigDecimal("2000"); 
+		BigDecimal bAngulo = new BigDecimal("3"); 
+		BigDecimal bPeriodo = new BigDecimal("1");
+		
+		BigDecimal vRadio = new BigDecimal("1000"); 
+		BigDecimal vAngulo = new BigDecimal("5"); 
+		BigDecimal vPeriodo = new BigDecimal("1");
+		
+		Punto p0 = new Punto();
+		p0.setX(new BigDecimal(0));
+		p0.setY(new BigDecimal(0));
+		 
+		while(dia <= ultimoDia){
+			Double anguloRad = Math.toRadians(1);
+			fAngulo = new BigDecimal(anguloRad.toString());
+			anguloRad = Math.toRadians(3);
+			bAngulo = new BigDecimal(anguloRad.toString());
+			anguloRad = Math.toRadians(5);
+			vAngulo = new BigDecimal(anguloRad.toString());
+			
+			Punto fp = MatematicaUtils.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
+			Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
+			Punto vp = MatematicaUtils.getCoordeadasRectangular(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
+			
+			FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
+			BigDecimal yaux = recta.getValorY(vp.getX());
+			
+			if(MatematicaUtils.esSemejante(yaux, vp.getY(), 0.5)){
+				System.out.println("F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
+				System.out.println("B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString()+"\n");
+				
+//				yaux = recta.getValorY(p0.getX());
+//				if(esSemejante(yaux, p0, 0.5)){
+//					System.out.println("F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
+//					System.out.println("B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
+//					System.out.println("V eje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
+//				}else{
+//					System.out.println("-F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
+//					System.out.println("-B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
+//					System.out.println("-V eje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
+//				}
+			}
+			
+			dia++;
+		}
+		
+	}
 
 
 	private static void obtenerClimaSequia() {
@@ -80,25 +202,8 @@ public class MainTestIgual {
 		
 	}
 
-	private static void testPuntos() {
-		Punto p1 = new Punto();
-		p1.setX(new BigDecimal("129.40952255126037000"));
-		p1.setY(new BigDecimal("482.9629131445341500"));
-		
-		Punto p2 = new Punto();
-		p2.setX(new BigDecimal("-1414.2135623730958000"));
-		p2.setY(new BigDecimal("-1414.2135623730942000"));
-		
-		Punto p3 =  new Punto();
-		p3.setX(new BigDecimal("965.9258262890684000"));
-		p3.setY(new BigDecimal("258.81904510252024000"));
-		
-		if(MatematicaUtils.estanAlineados(p1, p2, p3)){
-			System.out.println("dsdfsd");
-		}
-		
-	}
-	private static void getArea() {
+
+	private static void crearFileAreas() {
 
 		long dia = 1;
 		long ultimoDia = 365 * 10;
@@ -191,7 +296,7 @@ public class MainTestIgual {
 		
 	}
 	
-	private static void test() {
+	private static void testAlgoritmoAlinear() {
 		
 //		Punto p1 = new Punto();
 //		p1.setX(new BigDecimal("5"));

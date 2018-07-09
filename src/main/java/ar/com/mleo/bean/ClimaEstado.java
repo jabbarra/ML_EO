@@ -1,18 +1,18 @@
 package ar.com.mleo.bean;
 
 public class ClimaEstado {
-	private Integer dia;
+	private Long dia;
 	private String clima;
 	/**
 	 * @return the dia
 	 */
-	public Integer getDia() {
+	public Long getDia() {
 		return dia;
 	}
 	/**
 	 * @param dia the dia to set
 	 */
-	public void setDia(Integer dia) {
+	public void setDia(Long dia) {
 		this.dia = dia;
 	}
 	/**

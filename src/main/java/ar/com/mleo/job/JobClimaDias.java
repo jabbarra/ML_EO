@@ -1,4 +1,4 @@
-package ar.com.mleo.utils;
+package ar.com.mleo.job;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -7,11 +7,17 @@ import java.math.BigDecimal;
 
 import ar.com.mleo.bean.Planeta;
 import ar.com.mleo.bean.Punto;
+import ar.com.mleo.utils.ClimaTipos;
+import ar.com.mleo.utils.FuncionCuadratica;
+import ar.com.mleo.utils.MatematicaUtils;
+import ar.com.mleo.utils.Triangulo;
 
 public class JobClimaDias {
-	private static final String FILE_JOB_DIAS_LLUVIA = "C:\\logs\\dias-lluvia.txt";
-	private static final String FILE_JOB_DIAS_SEQUIA = "C:\\logs\\dias-sequia.txt";
-	private static final String FILE_JOB_DIAS_IDEAL = "C:\\logs\\dias-ideal.txt";
+	
+	private static final String FILE_JOB_DIAS_LLUVIA = "/logs/insert-dias-lluvia.txt";
+	private static final String FILE_JOB_DIAS_SEQUIA = "/logs/insert-dias-sequia.txt";
+	private static final String FILE_JOB_DIAS_IDEAL = "/logs/insert-dias-ideal.txt";
+	
 	private static final long ULTIMO_DIA = 365 * 10;
 	private static Planeta ferengisPlaneta = null;
 	private static Planeta betasoidesPlaneta = null;
@@ -31,11 +37,16 @@ public class JobClimaDias {
 		jobPeridoLLuvia();
 		jobPeridoSequia();
 		jobPeridoIdeal();
+		
+		System.out.println("Se generaron exitosamente las condiciones de todos los días. Favor de revisar los archivos: ");
+		System.out.println(FILE_JOB_DIAS_LLUVIA);
+		System.out.println(FILE_JOB_DIAS_SEQUIA);
+		System.out.println(FILE_JOB_DIAS_IDEAL);
 	}
 
 	private static void jobPeridoLLuvia() {
 		long dia = 1;
-
+		double perimetro =  0;
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_JOB_DIAS_LLUVIA))) {
 
 			while(dia <= ULTIMO_DIA){
@@ -46,7 +57,8 @@ public class JobClimaDias {
 				double area = Triangulo.getArea(fp, bp, vp);
 				if(area > 0){
 					if(Triangulo.esPuntoInteriorTriangulo(fp, bp, vp, sol)){
-						String insert = getInsert(dia, ClimaTipos.LLUVIA.getValorS());
+						perimetro = MatematicaUtils.getPerimetro(fp, bp, vp);
+						String insert = getStringInsertDias(dia, ClimaTipos.LLUVIA_I.getValorI(), perimetro);
 						bw.write(insert+"\n");
 					}
 				}
@@ -56,6 +68,8 @@ public class JobClimaDias {
 			e.printStackTrace();
 		}
 	}
+
+
 
 	private static void jobPeridoSequia() {
 		long dia = 1;
@@ -74,7 +88,7 @@ public class JobClimaDias {
 
 					BigDecimal yaux = recta.getValorY(sol.getX());
 					if(MatematicaUtils.esSemejante(yaux, bp.getY(), 0.5)){
-						String insert = getInsert(dia, ClimaTipos.SEQUIA.getValorS());
+						String insert = getStringInsertDias(dia, ClimaTipos.SEQUIA_I.getValorI());
 						bw.write(insert+"\n");
 					}
 				}
@@ -103,7 +117,7 @@ public class JobClimaDias {
 
 					BigDecimal yaux = recta.getValorY(sol.getX());
 					if(!MatematicaUtils.esSemejante(yaux, bp.getY(), 0.5)){
-						String insert = getInsert(dia, ClimaTipos.IDEAL.getValorS());
+						String insert = getStringInsertDias(dia, ClimaTipos.IDEAL_I.getValorI());
 						bw.write(insert+"\n");
 					}
 				}
@@ -115,9 +129,20 @@ public class JobClimaDias {
 		}
 	}
 
-	private static String getInsert(long dia, String clima) {
+	private static String getStringInsertDias(long dia, int clima) {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("INSERT INTO public.clima(dia, nombre) ").append("VALUES (").append(dia).append(", '").append(clima).append("');");
+		stringBuilder.append("INSERT INTO public.dias(numero, id_climas) ").append("VALUES (").
+		append(dia).append(", ").
+		append(clima).append(");");
+		return stringBuilder.toString();
+	}
+	
+	private static String getStringInsertDias(long dia, int clima, double perimetro) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("INSERT INTO public.dias(numero, id_climas, intensidad_lluvia) ").append("VALUES (")
+		.append(dia).append(", ").append(clima)
+		.append(", ").append(perimetro)
+		.append(");");
 		return stringBuilder.toString();
 	}
 

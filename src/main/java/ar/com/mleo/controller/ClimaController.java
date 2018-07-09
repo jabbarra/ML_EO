@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ar.com.mleo.bean.Clima;
 import ar.com.mleo.bean.ClimaEstado;
+import ar.com.mleo.bean.Informe;
 import ar.com.mleo.service.ClimaService;
-
-
-
 
 
 @RestController
@@ -25,30 +23,59 @@ public class ClimaController {
 	@Autowired
 	private ClimaService climaService;
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ClimaEstado getLocalidadesByCliente(@PathVariable(value="id") Long  id) {
-		ClimaEstado  clima = new ClimaEstado();
-		clima.setDia(566);
-		clima.setClima("lluvia");
-		return clima;
+	@RequestMapping(value = "/{dia}", method = RequestMethod.GET)
+    public ClimaEstado getClimaByDia(@PathVariable(value="dia") Long  dia) {
+		ClimaEstado climaEstado= climaService.getClimaDelDia(dia);
+		return climaEstado;
     }
 	
 	@RequestMapping(value = "/climas", method = RequestMethod.GET)
 	public List<Clima> getClimas() {
-		
 		List<Clima> climas = new ArrayList<Clima>();
 		try {
 			climas = climaService.getClimas();
-			climaService.calcularPeriodoLLuvia();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return climas;
 	}
+	
+	@RequestMapping(value = "/sequias", method = RequestMethod.GET)
+	public Informe getSequias() {
+		Informe informe = new Informe();
+		try {
+			informe = climaService.getPeriodosSequia();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return informe;
+	}
+	
+	@RequestMapping(value = "/lluvias", method = RequestMethod.GET)
+	public Informe getLLuvias() {
+		Informe informe = new Informe();
+		try {
+			informe = climaService.getPeriodoLLuvia();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return informe;
+	}
+	
+	@RequestMapping(value = "/ideales", method = RequestMethod.GET)
+	public Informe getIdeales() {
+		Informe informe = new Informe();
+		try {
+			informe = climaService.getCondicionesOptimas();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return informe;
+	}
 
 	@RequestMapping(method = RequestMethod.GET)
     public String getDia() {
-		return "HOY";
+		return "Servicio disponible...";
 		
     }
 

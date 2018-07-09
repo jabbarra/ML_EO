@@ -30,5 +30,5 @@ public class ClimaEntity {
 	public void setNOMBRE(String nOMBRE) {
 		NOMBRE = nOMBRE;
 	}
-
+	
 }
