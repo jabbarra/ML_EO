@@ -11,7 +11,7 @@ import ar.com.mleo.utils.ClimaTipos;
 import ar.com.mleo.utils.MatematicaUtils;
 
 public class MainPeriodosLLuvia {
-	private static final String FILE_INFORME_PERIODO_LLUVIA = "/logs/informe-periodos-lluvia.txt";
+	private static final String FILE_INFORME_PERIODO_LLUVIA = "/archivos_mleo/informe-periodos-lluvia.txt";
 	private static final long ULTIMO_DIA = 365 * 10;
 	private static Planeta ferengisPlaneta = null;
 	private static Planeta betasoidesPlaneta = null;

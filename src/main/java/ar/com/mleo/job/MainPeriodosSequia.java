@@ -13,7 +13,7 @@ import ar.com.mleo.utils.MatematicaUtils;
 import ar.com.mleo.utils.Triangulo;
 
 public class MainPeriodosSequia {
-	private static final String FILE_INFORME_PERIODO_SEQUIA = "/logs/informe-periodos-sequia.txt";
+	private static final String FILE_INFORME_PERIODO_SEQUIA = "/archivos_mleo/informe-periodos-sequia.txt";
 	private static final long ULTIMO_DIA = 365 * 10;
 	private static Planeta ferengisPlaneta = null;
 	private static Planeta betasoidesPlaneta = null;

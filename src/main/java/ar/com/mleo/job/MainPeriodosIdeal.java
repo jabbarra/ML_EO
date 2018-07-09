@@ -13,7 +13,7 @@ import ar.com.mleo.utils.MatematicaUtils;
 import ar.com.mleo.utils.Triangulo;
 
 public class MainPeriodosIdeal {
-	private static final String FILE_INFORME_PERIODO_IDEAL = "/logs/informe-periodos-ideal.txt";
+	private static final String FILE_INFORME_PERIODO_IDEAL = "/archivos_mleo/informe-periodos-ideal.txt";
 	private static final long ULTIMO_DIA = 365 * 10;
 	private static Planeta ferengisPlaneta = null;
 	private static Planeta betasoidesPlaneta = null;

@@ -14,9 +14,9 @@ import ar.com.mleo.utils.Triangulo;
 
 public class JobClimaDias {
 	
-	private static final String FILE_JOB_DIAS_LLUVIA = "/logs/insert-dias-lluvia.txt";
-	private static final String FILE_JOB_DIAS_SEQUIA = "/logs/insert-dias-sequia.txt";
-	private static final String FILE_JOB_DIAS_IDEAL = "/logs/insert-dias-ideal.txt";
+	private static final String FILE_JOB_DIAS_LLUVIA = "/archivos_mleo/insert-dias-lluvia.sql";
+	private static final String FILE_JOB_DIAS_SEQUIA = "/archivos_mleo/insert-dias-sequia.sql";
+	private static final String FILE_JOB_DIAS_IDEAL = "/archivos_mleo/insert-dias-ideal.sql";
 	
 	private static final long ULTIMO_DIA = 365 * 10;
 	private static Planeta ferengisPlaneta = null;

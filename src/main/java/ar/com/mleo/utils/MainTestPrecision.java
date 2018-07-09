@@ -7,10 +7,10 @@ import java.math.BigDecimal;
 
 import ar.com.mleo.bean.Punto;
 
-public class MainTest {
+public class MainTestPrecision {
 	
 	public static void main(String[] args) {
-
+		testAlgoritmoAlinear();
 		testAlinearconOrigen();
 		
 		testAlinearsinOrigen();

@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ar.com.mleo.bean.Clima;
@@ -23,8 +24,10 @@ public class ClimaController {
 	@Autowired
 	private ClimaService climaService;
 
-	@RequestMapping(value = "/{dia}", method = RequestMethod.GET)
-    public ClimaEstado getClimaByDia(@PathVariable(value="dia") Long  dia) {
+	
+	@RequestMapping(method = RequestMethod.GET)
+	@ResponseBody
+    public ClimaEstado getClimaByDia(@RequestParam(value="dia", required = true) Long dia) {
 		ClimaEstado climaEstado= climaService.getClimaDelDia(dia);
 		return climaEstado;
     }
@@ -72,11 +75,5 @@ public class ClimaController {
 		}
 		return informe;
 	}
-
-	@RequestMapping(method = RequestMethod.GET)
-    public String getDia() {
-		return "Servicio disponible...";
-		
-    }
 
 }

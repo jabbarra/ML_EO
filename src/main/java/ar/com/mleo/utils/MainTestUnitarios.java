@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import ar.com.mleo.bean.Punto;
 
-public class MainTestAlinear {
+public class MainTestUnitarios {
 
 	public static void main(String[] args) {
 		testPuntoInteriorTriangulo();
