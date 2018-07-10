@@ -7,6 +7,13 @@ import java.math.RoundingMode;
 import ar.com.mleo.bean.Punto;
 
 public class  Triangulo {
+	/**
+	 * Devuelve true si el triangulo generado por los tres puntos pasados por parametro esta orientados positivamente
+	 * @param a
+	 * @param b
+	 * @param c
+	 * @return
+	 */
 	public static boolean esOrientacionPositiva(Punto a, Punto b, Punto c){
 		boolean esPositivo = false;
 		BigDecimal primerTermino = (a.getX().subtract(c.getX())).multiply((b.getY().subtract(c.getY())));
@@ -19,6 +26,14 @@ public class  Triangulo {
 		return esPositivo;
 	}
 	
+	/**
+	 * Devuelve true si el punto @param p esta dentro del triangulo generado por los puntos @param a, @param b, @param c
+	 * @param a
+	 * @param b
+	 * @param c
+	 * @param p
+	 * @return
+	 */
 	public static boolean esPuntoInteriorTriangulo(Punto a, Punto b, Punto c, Punto p){
 		boolean esInterior = false;
 		if(esOrientacionPositiva(a, b, c)&&
@@ -36,6 +51,14 @@ public class  Triangulo {
 		return esInterior;
 	}
 	
+	/**
+	 * Devuelve el area del triangulo generado por los tres puntos pasados por parametro
+	 * Para calcular el area utiliza la formula de heron
+	 * @param a
+	 * @param b
+	 * @param c
+	 * @return
+	 */
 	public static double getArea(Punto a, Punto b, Punto c){
 		double terminoUno = Math.pow((b.getX().subtract(a.getX())).doubleValue(), 2);
 		double terminoDos = Math.pow((b.getY().subtract(a.getY())).doubleValue(), 2);
@@ -61,6 +84,13 @@ public class  Triangulo {
 		return area;
 	}
 	
+	/**
+	 * Devuelve el perimetro del triangulo generado por los tres puntos pasados por parametro
+	 * @param a
+	 * @param b
+	 * @param c
+	 * @return
+	 */
 	public static double getPerimetro(Punto a, Punto b, Punto c){
 		double terminoUno = Math.pow((b.getX().subtract(a.getX())).doubleValue(), 2);
 		double terminoDos = Math.pow((b.getY().subtract(a.getY())).doubleValue(), 2);

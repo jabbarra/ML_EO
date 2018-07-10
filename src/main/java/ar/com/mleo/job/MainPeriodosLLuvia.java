@@ -9,6 +9,7 @@ import ar.com.mleo.bean.Planeta;
 import ar.com.mleo.bean.Punto;
 import ar.com.mleo.utils.ClimaTipos;
 import ar.com.mleo.utils.MatematicaUtils;
+import ar.com.mleo.utils.Triangulo;
 
 public class MainPeriodosLLuvia {
 	private static final String FILE_INFORME_PERIODO_LLUVIA = "/archivos_mleo/informe-periodos-lluvia.txt";
@@ -46,9 +47,9 @@ public class MainPeriodosLLuvia {
 				Punto bp = MatematicaUtils.getCoordeadasRectangular(betasoidesPlaneta.getRadio(), betasoidesPlaneta.getAngulo(), betasoidesPlaneta.getPeriodo(), new BigDecimal(dia));
 				Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vulcanosPlaneta.getRadio(), vulcanosPlaneta.getAngulo(), vulcanosPlaneta.getPeriodo(),  new BigDecimal(dia));
 				
-				double area = MatematicaUtils.getArea(fp, bp, vp);
+				double area = Triangulo.getArea(fp, bp, vp);
 				if(area > 0){
-					if(MatematicaUtils.esPuntoInteriorTriangulo(fp, bp, vp, sol)){
+					if(Triangulo.esPuntoInteriorTriangulo(fp, bp, vp, sol)){
 				
 						if(diaAnterior ==  -1 || (diaAnterior+1) != dia){
 							contadorPeriodos++;
@@ -60,7 +61,7 @@ public class MainPeriodosLLuvia {
 							bw.write(ClimaTipos.LLUVIA.getValorS()+"\n");
 						}
 						diaAnterior = dia;
-						perimetro = MatematicaUtils.getPerimetro(fp, bp, vp);
+						perimetro = Triangulo.getPerimetro(fp, bp, vp);
 						if(dia == 1 ||  perimetroMax < perimetro){
 							perimetroMax = perimetro;
 							diaperimetroMax = dia;

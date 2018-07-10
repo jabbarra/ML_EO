@@ -57,7 +57,7 @@ public class JobClimaDias {
 				double area = Triangulo.getArea(fp, bp, vp);
 				if(area > 0){
 					if(Triangulo.esPuntoInteriorTriangulo(fp, bp, vp, sol)){
-						perimetro = MatematicaUtils.getPerimetro(fp, bp, vp);
+						perimetro = Triangulo.getPerimetro(fp, bp, vp);
 						String insert = getStringInsertDias(dia, ClimaTipos.LLUVIA_I.getValorI(), perimetro);
 						bw.write(insert+"\n");
 					}

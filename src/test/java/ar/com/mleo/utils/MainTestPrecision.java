@@ -243,9 +243,9 @@ public class MainTestPrecision {
 				Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 				
 				
-				double area = MatematicaUtils.getArea(fp, bp, vp);
+				double area = Triangulo.getArea(fp, bp, vp);
 				bw.write("DIA: "+ dia);
-				if(MatematicaUtils.esPuntoInteriorTriangulo(fp, bp, vp, p0)){
+				if(Triangulo.esPuntoInteriorTriangulo(fp, bp, vp, p0)){
 					bw.write(" SOL_adentro ");
 				}else{
 					bw.write(" SOL_afuera ");
@@ -256,7 +256,7 @@ public class MainTestPrecision {
 				bw.write(" Veje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
 				if(-1<area && area<1){
 					System.out.println("DIA: "+ dia);
-					if(MatematicaUtils.esPuntoInteriorTriangulo(fp, bp, vp, p0)){
+					if(Triangulo.esPuntoInteriorTriangulo(fp, bp, vp, p0)){
 						System.out.println(" SOL_adentro ");
 					}else{
 						System.out.println(" SOL_afuera ");
@@ -392,15 +392,15 @@ public class MainTestPrecision {
 				Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
 				Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 				
-				double area = MatematicaUtils.getArea(fp, bp, vp);
+				double area = Triangulo.getArea(fp, bp, vp);
 				if(area > 0){
-					if(MatematicaUtils.esPuntoInteriorTriangulo(fp, bp, vp, p0)){
-						perimetro = MatematicaUtils.getPerimetro(fp, bp, vp);
+					if(Triangulo.esPuntoInteriorTriangulo(fp, bp, vp, p0)){
+						perimetro = Triangulo.getPerimetro(fp, bp, vp);
 						if(dia == 1 ||  perimetroMax < perimetro){
-							perimetroMax = MatematicaUtils.getPerimetro(fp, bp, vp);
+							perimetroMax = Triangulo.getPerimetro(fp, bp, vp);
 						}
 						if(dia == 1 ||  perimetroMin > perimetro){
-							perimetroMin = MatematicaUtils.getPerimetro(fp, bp, vp);
+							perimetroMin = Triangulo.getPerimetro(fp, bp, vp);
 						}
 						bw.write("DIA: "+ dia);
 						bw.write(" SOL_adentro ");
@@ -460,7 +460,7 @@ public class MainTestPrecision {
 				Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
 				Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 				
-				double area = MatematicaUtils.getArea(fp, bp, vp);
+				double area = Triangulo.getArea(fp, bp, vp);
 				if(-1<area && area<1){
 	
 					FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
@@ -520,7 +520,7 @@ public class MainTestPrecision {
 				Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
 				Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 				
-				double area = MatematicaUtils.getArea(fp, bp, vp);
+				double area = Triangulo.getArea(fp, bp, vp);
 				if(-1<area && area<1){
 	
 					FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
