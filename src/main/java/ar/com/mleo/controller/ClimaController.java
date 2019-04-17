@@ -20,18 +20,18 @@ import ar.com.mleo.service.ClimaService;
 @RequestMapping("/clima")
 public class ClimaController {
 
-	
+
 	@Autowired
 	private ClimaService climaService;
 
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
     public ClimaEstado getClimaByDia(@RequestParam(value="dia", required = true) Long dia) {
 		ClimaEstado climaEstado= climaService.getClimaDelDia(dia);
 		return climaEstado;
     }
-	
+
 	@RequestMapping(value = "/climas", method = RequestMethod.GET)
 	public List<Clima> getClimas() {
 		List<Clima> climas = new ArrayList<Clima>();
@@ -42,7 +42,7 @@ public class ClimaController {
 		}
 		return climas;
 	}
-	
+
 	@RequestMapping(value = "/sequias", method = RequestMethod.GET)
 	public Informe getSequias() {
 		Informe informe = new Informe();
@@ -53,7 +53,7 @@ public class ClimaController {
 		}
 		return informe;
 	}
-	
+
 	@RequestMapping(value = "/lluvias", method = RequestMethod.GET)
 	public Informe getLLuvias() {
 		Informe informe = new Informe();
@@ -64,7 +64,7 @@ public class ClimaController {
 		}
 		return informe;
 	}
-	
+
 	@RequestMapping(value = "/ideales", method = RequestMethod.GET)
 	public Informe getIdeales() {
 		Informe informe = new Informe();
