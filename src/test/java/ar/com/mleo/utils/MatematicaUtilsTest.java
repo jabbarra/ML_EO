@@ -1,12 +1,12 @@
 package ar.com.mleo.utils;
 
-import static org.junit.Assert.*;
+import ar.com.mleo.bean.Punto;
+import org.junit.Test;
 
 import java.math.BigDecimal;
 
-import org.junit.Test;
-
-import ar.com.mleo.bean.Punto;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class MatematicaUtilsTest {
 

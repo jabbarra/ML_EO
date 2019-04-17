@@ -1,11 +1,11 @@
 package ar.com.mleo.utils;
 
+import ar.com.mleo.bean.Punto;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
-
-import ar.com.mleo.bean.Punto;
 
 public class MainTestPrecision {
 	
