@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import ar.com.mleo.bean.Clima;
 import ar.com.mleo.bean.ClimaEstado;
@@ -24,6 +20,11 @@ public class ClimaController {
 	@Autowired
 	private ClimaService climaService;
 
+
+	@GetMapping("/test")
+	public String test(){
+		return "It's ok";
+	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
