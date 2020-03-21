@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MleoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MleoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MleoApplication.class, args);
+    }
 }
