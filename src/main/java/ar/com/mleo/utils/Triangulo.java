@@ -1,10 +1,10 @@
 package ar.com.mleo.utils;
 
+import ar.com.mleo.bean.Punto;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
-
-import ar.com.mleo.bean.Punto;
 
 public class Triangulo {
     /**

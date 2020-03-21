@@ -1,12 +1,11 @@
 package ar.com.mleo.mapper;
 
 
-import java.util.List;
-
+import ar.com.mleo.mapper.entity.ClimaEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import ar.com.mleo.mapper.entity.ClimaEntity;
+import java.util.List;
 
 
 @Mapper

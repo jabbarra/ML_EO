@@ -1,11 +1,5 @@
 package ar.com.mleo.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import ar.com.mleo.bean.Clima;
 import ar.com.mleo.bean.ClimaEstado;
 import ar.com.mleo.bean.Informe;
@@ -16,6 +10,11 @@ import ar.com.mleo.mapper.entity.ClimaEntity;
 import ar.com.mleo.mapper.entity.DiaEntity;
 import ar.com.mleo.service.ClimaService;
 import ar.com.mleo.utils.ClimaTipos;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ClimaServiceImpl implements ClimaService {

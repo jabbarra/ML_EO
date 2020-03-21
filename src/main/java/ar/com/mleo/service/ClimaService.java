@@ -1,10 +1,10 @@
 package ar.com.mleo.service;
 
-import java.util.List;
-
 import ar.com.mleo.bean.Clima;
 import ar.com.mleo.bean.ClimaEstado;
 import ar.com.mleo.bean.Informe;
+
+import java.util.List;
 
 
 public interface ClimaService {
