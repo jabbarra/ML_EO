@@ -9,9 +9,11 @@ import com.obarra.forecast.utils.TrianguloUtil;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @Log4j2
 public class MainPeriodosIdeal {
@@ -40,7 +42,9 @@ public class MainPeriodosIdeal {
         long diaAnterior = -1;
         long contadorPeriodos = 0;
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_INFORME_PERIODO_IDEAL))) {
+        try (BufferedWriter bw =
+                     Files.newBufferedWriter(Paths.get(FILE_INFORME_PERIODO_IDEAL),
+                             StandardCharsets.UTF_8)) {
 
             while (dia <= ULTIMO_DIA) {
                 Punto fp = MatematicaUtil.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
@@ -75,7 +79,7 @@ public class MainPeriodosIdeal {
             log.error(e);
         }
 
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder(200);
         stringBuilder.append("Habrá ")
                 .append(contadorPeriodos)
                 .append(" períodos de condiciones óptimas de presión y temperatura.")

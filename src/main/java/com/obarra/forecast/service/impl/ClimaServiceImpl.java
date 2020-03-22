@@ -58,7 +58,7 @@ public class ClimaServiceImpl implements ClimaService {
 
         Informe informe = generarInformedeClima(ClimaTipos.LLUVIA.getValorS(), dias);
 
-        StringBuilder stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder(100);
         stringBuilder.append(informe.getTitulo())
                 .append(" El pico máximo de lluvia será el día: ")
                 .append(diaMaximaIntensidad.getNumero());

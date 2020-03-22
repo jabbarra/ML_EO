@@ -11,6 +11,9 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @Log4j2
 public class MainPeriodosLLuvia {
@@ -42,8 +45,9 @@ public class MainPeriodosLLuvia {
         double perimetroMax = 0;
         long diaperimetroMax = 0;
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_INFORME_PERIODO_LLUVIA))) {
-
+        try (BufferedWriter bw =
+                     Files.newBufferedWriter(Paths.get(FILE_INFORME_PERIODO_LLUVIA),
+                             StandardCharsets.UTF_8)) {
             while (dia <= ULTIMO_DIA) {
                 Punto fp = MatematicaUtil.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
                 Punto bp = MatematicaUtil.getCoordeadasRectangular(betasoidesPlaneta.getRadio(), betasoidesPlaneta.getAngulo(), betasoidesPlaneta.getPeriodo(), new BigDecimal(dia));

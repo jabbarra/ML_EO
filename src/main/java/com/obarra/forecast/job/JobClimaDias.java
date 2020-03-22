@@ -12,6 +12,9 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @Log4j2
 public final class JobClimaDias {
@@ -62,7 +65,8 @@ public final class JobClimaDias {
         long dia = 1;
         double perimetro = 0;
         try (BufferedWriter bw =
-                     new BufferedWriter(new FileWriter(FILE_JOB_DIAS_LLUVIA))) {
+                     Files.newBufferedWriter(Paths.get(FILE_JOB_DIAS_LLUVIA),
+                             StandardCharsets.UTF_8)) {
 
             while (dia <= ULTIMO_DIA) {
                 Punto fp = MatematicaUtil
@@ -103,7 +107,9 @@ public final class JobClimaDias {
     private static void jobPeridoSequia() {
         long dia = 1;
 
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_JOB_DIAS_SEQUIA))) {
+        try (BufferedWriter bw =
+                Files.newBufferedWriter(Paths.get(FILE_JOB_DIAS_SEQUIA),
+                        StandardCharsets.UTF_8)) {
 
             while (dia <= ULTIMO_DIA) {
                 Punto fp = MatematicaUtil.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
@@ -131,9 +137,9 @@ public final class JobClimaDias {
 
     private static void jobPeridoIdeal() {
         long dia = 1;
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_JOB_DIAS_IDEAL))) {
-
+        try (BufferedWriter bw =
+                     Files.newBufferedWriter(Paths.get(FILE_JOB_DIAS_IDEAL),
+                             StandardCharsets.UTF_8)) {
             while (dia <= ULTIMO_DIA) {
                 Punto fp = MatematicaUtil.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
                 Punto bp = MatematicaUtil.getCoordeadasRectangular(betasoidesPlaneta.getRadio(), betasoidesPlaneta.getAngulo(), betasoidesPlaneta.getPeriodo(), new BigDecimal(dia));
