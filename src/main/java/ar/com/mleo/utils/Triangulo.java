@@ -98,9 +98,9 @@ public final class Triangulo {
         aux = aux.divide(new BigDecimal(2), 8, RoundingMode.HALF_UP);
 
         double area = Math.sqrt(semiperimetro
-                        * (semiperimetro - ab)
-                        * (semiperimetro - ac)
-                        * (semiperimetro - bc));
+                * (semiperimetro - ab)
+                * (semiperimetro - ac)
+                * (semiperimetro - bc));
         return area;
     }
 
