@@ -2,7 +2,6 @@ package com.obarra.forecast.utils;
 
 import com.obarra.forecast.bean.Punto;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 

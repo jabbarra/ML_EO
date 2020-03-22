@@ -9,7 +9,6 @@ import com.obarra.forecast.utils.TrianguloUtil;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
