@@ -62,18 +62,18 @@ public class MainTestPrecision {
             anguloRad = Math.toRadians(5);
             vAngulo = new BigDecimal(anguloRad.toString());
 
-            Punto fp = MatematicaUtils.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
-            Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
-            Punto vp = MatematicaUtils.getCoordeadasRectangular(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
+            Punto fp = MatematicaUtil.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
+            Punto bp = MatematicaUtil.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
+            Punto vp = MatematicaUtil.getCoordeadasRectangular(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 
             FuncionCuadratica recta = new FuncionCuadratica(fp, p0);
 
             BigDecimal yaux = recta.getValorY(bp.getX());
-            if (MatematicaUtils.esSemejante(yaux, bp.getY(), 0.5)) {
+            if (MatematicaUtil.esSemejante(yaux, bp.getY(), 0.5)) {
 //				log.info("F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
 //				log.info("B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString()+"\n");
                 yaux = recta.getValorY(vp.getX());
-                if (MatematicaUtils.esSemejante(yaux, vp.getY(), 0.5)) {
+                if (MatematicaUtil.esSemejante(yaux, vp.getY(), 0.5)) {
                     log.info("F eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
                     log.info("B eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
                     log.info("V eje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
@@ -114,14 +114,14 @@ public class MainTestPrecision {
             anguloRad = Math.toRadians(5);
             vAngulo = new BigDecimal(anguloRad.toString());
 
-            Punto fp = MatematicaUtils.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
-            Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
-            Punto vp = MatematicaUtils.getCoordeadasRectangular(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
+            Punto fp = MatematicaUtil.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
+            Punto bp = MatematicaUtil.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
+            Punto vp = MatematicaUtil.getCoordeadasRectangular(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 
             FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
             BigDecimal yaux = recta.getValorY(vp.getX());
 
-            if (MatematicaUtils.esSemejante(yaux, vp.getY(), 0.5)) {
+            if (MatematicaUtil.esSemejante(yaux, vp.getY(), 0.5)) {
                 log.info("F eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
                 log.info("B eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString() + "\n");
 
@@ -176,11 +176,11 @@ public class MainTestPrecision {
         while (dia <= ultimoDia) {
 
 
-            Punto fp = MatematicaUtils.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
-            Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
-            Punto vp = MatematicaUtils.getCoordeadasRectangular(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
+            Punto fp = MatematicaUtil.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
+            Punto bp = MatematicaUtil.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
+            Punto vp = MatematicaUtil.getCoordeadasRectangular(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 
-            if (MatematicaUtils.estanAlineados(fp, bp, vp)) {
+            if (MatematicaUtil.estanAlineados(fp, bp, vp)) {
                 log.info("fp eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
                 log.info("bp eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
                 log.info("vp eje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
@@ -236,14 +236,14 @@ public class MainTestPrecision {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILENAME))) {
 
             while (dia <= ultimoDia) {
-                Punto fp = MatematicaUtils.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
-                Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
-                Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
+                Punto fp = MatematicaUtil.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
+                Punto bp = MatematicaUtil.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
+                Punto vp = MatematicaUtil.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 
 
-                double area = Triangulo.getArea(fp, bp, vp);
+                double area = TrianguloUtil.getArea(fp, bp, vp);
                 bw.write("DIA: " + dia);
-                if (Triangulo.esPuntoInteriorTriangulo(fp, bp, vp, p0)) {
+                if (TrianguloUtil.esPuntoInteriorTriangulo(fp, bp, vp, p0)) {
                     bw.write(" SOL_adentro ");
                 } else {
                     bw.write(" SOL_afuera ");
@@ -254,7 +254,7 @@ public class MainTestPrecision {
                 bw.write(" Veje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
                 if (-1 < area && area < 1) {
                     log.info("DIA: " + dia);
-                    if (Triangulo.esPuntoInteriorTriangulo(fp, bp, vp, p0)) {
+                    if (TrianguloUtil.esPuntoInteriorTriangulo(fp, bp, vp, p0)) {
                         log.info(" SOL_adentro ");
                     } else {
                         log.info(" SOL_afuera ");
@@ -338,8 +338,8 @@ public class MainTestPrecision {
         p0.setY(new BigDecimal("0"));
 
 
-        if (MatematicaUtils.estanAlineados(b, c, a)) {
-            if (MatematicaUtils.estanAlineados(b, c, p0)) {
+        if (MatematicaUtil.estanAlineados(b, c, a)) {
+            if (MatematicaUtil.estanAlineados(b, c, p0)) {
                 log.info("p1 eje x: " + c.getX().toString() + "  " + "eje y: " + c.getY().toString());
                 log.info("p2 eje x: " + b.getX().toString() + "  " + "eje y: " + b.getY().toString());
                 log.info("p3 eje x: " + a.getX().toString() + "  " + "eje y: " + a.getY().toString() + "\n");
@@ -383,19 +383,19 @@ public class MainTestPrecision {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILENAME))) {
 
             while (dia <= ultimoDia) {
-                Punto fp = MatematicaUtils.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
-                Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
-                Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
+                Punto fp = MatematicaUtil.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
+                Punto bp = MatematicaUtil.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
+                Punto vp = MatematicaUtil.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 
-                double area = Triangulo.getArea(fp, bp, vp);
+                double area = TrianguloUtil.getArea(fp, bp, vp);
                 if (area > 0) {
-                    if (Triangulo.esPuntoInteriorTriangulo(fp, bp, vp, p0)) {
-                        perimetro = Triangulo.getPerimetro(fp, bp, vp);
+                    if (TrianguloUtil.esPuntoInteriorTriangulo(fp, bp, vp, p0)) {
+                        perimetro = TrianguloUtil.getPerimetro(fp, bp, vp);
                         if (dia == 1 || perimetroMax < perimetro) {
-                            perimetroMax = Triangulo.getPerimetro(fp, bp, vp);
+                            perimetroMax = TrianguloUtil.getPerimetro(fp, bp, vp);
                         }
                         if (dia == 1 || perimetroMin > perimetro) {
-                            perimetroMin = Triangulo.getPerimetro(fp, bp, vp);
+                            perimetroMin = TrianguloUtil.getPerimetro(fp, bp, vp);
                         }
                         bw.write("DIA: " + dia);
                         bw.write(" SOL_adentro ");
@@ -451,17 +451,17 @@ public class MainTestPrecision {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILENAME))) {
 
             while (dia <= ultimoDia) {
-                Punto fp = MatematicaUtils.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
-                Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
-                Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
+                Punto fp = MatematicaUtil.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
+                Punto bp = MatematicaUtil.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
+                Punto vp = MatematicaUtil.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 
-                double area = Triangulo.getArea(fp, bp, vp);
+                double area = TrianguloUtil.getArea(fp, bp, vp);
                 if (-1 < area && area < 1) {
 
                     FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
 
                     BigDecimal yaux = recta.getValorY(p0.getX());
-                    if (MatematicaUtils.esSemejante(yaux, bp.getY(), 0.5)) {
+                    if (MatematicaUtil.esSemejante(yaux, bp.getY(), 0.5)) {
                         bw.write("DIA: " + dia);
                         bw.write(" AREA: " + area);
                         bw.write(" Feje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
@@ -511,17 +511,17 @@ public class MainTestPrecision {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILENAME))) {
 
             while (dia <= ultimoDia) {
-                Punto fp = MatematicaUtils.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
-                Punto bp = MatematicaUtils.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
-                Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
+                Punto fp = MatematicaUtil.getCoordeadasRectangular(fRadio, fAngulo, fPeriodo, new BigDecimal(dia));
+                Punto bp = MatematicaUtil.getCoordeadasRectangular(bRadio, bAngulo, bPeriodo, new BigDecimal(dia));
+                Punto vp = MatematicaUtil.getCoordeadasRectangularAntihorario(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 
-                double area = Triangulo.getArea(fp, bp, vp);
+                double area = TrianguloUtil.getArea(fp, bp, vp);
                 if (-1 < area && area < 1) {
 
                     FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
 
                     BigDecimal yaux = recta.getValorY(p0.getX());
-                    if (!MatematicaUtils.esSemejante(yaux, bp.getY(), 0.5)) {
+                    if (!MatematicaUtil.esSemejante(yaux, bp.getY(), 0.5)) {
                         bw.write("DIA: " + dia);
                         bw.write(" AREA: " + area);
                         bw.write(" Feje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());

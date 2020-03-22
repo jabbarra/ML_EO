@@ -4,8 +4,8 @@ import com.obarra.forecast.bean.Planeta;
 import com.obarra.forecast.bean.Punto;
 import com.obarra.forecast.utils.ClimaTipos;
 import com.obarra.forecast.utils.FuncionCuadratica;
-import com.obarra.forecast.utils.MatematicaUtils;
-import com.obarra.forecast.utils.Triangulo;
+import com.obarra.forecast.utils.MatematicaUtil;
+import com.obarra.forecast.utils.TrianguloUtil;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.BufferedWriter;
@@ -56,27 +56,27 @@ public final class JobClimaDias {
                      new BufferedWriter(new FileWriter(FILE_JOB_DIAS_LLUVIA))) {
 
             while (dia <= ULTIMO_DIA) {
-                Punto fp = MatematicaUtils
+                Punto fp = MatematicaUtil
                         .getCoordeadasRectangular(ferengisPlaneta.getRadio(),
                                 ferengisPlaneta.getAngulo(),
                                 ferengisPlaneta.getPeriodo(),
                                 new BigDecimal(dia));
-                Punto bp = MatematicaUtils
+                Punto bp = MatematicaUtil
                         .getCoordeadasRectangular(betasoidesPlaneta.getRadio(),
                                 betasoidesPlaneta.getAngulo(),
                                 betasoidesPlaneta.getPeriodo(),
                                 new BigDecimal(dia));
-                Punto vp = MatematicaUtils
+                Punto vp = MatematicaUtil
                         .getCoordeadasRectangularAntihorario(
                                 vulcanosPlaneta.getRadio(),
                                 vulcanosPlaneta.getAngulo(),
                                 vulcanosPlaneta.getPeriodo(),
                                 new BigDecimal(dia));
 
-                double area = Triangulo.getArea(fp, bp, vp);
+                double area = TrianguloUtil.getArea(fp, bp, vp);
                 if (area > 0) {
-                    if (Triangulo.esPuntoInteriorTriangulo(fp, bp, vp, sol)) {
-                        perimetro = Triangulo.getPerimetro(fp, bp, vp);
+                    if (TrianguloUtil.esPuntoInteriorTriangulo(fp, bp, vp, sol)) {
+                        perimetro = TrianguloUtil.getPerimetro(fp, bp, vp);
                         String insert = getStringInsertDias(dia,
                                 ClimaTipos.LLUVIA_I.getValorI(),
                                 perimetro);
@@ -97,17 +97,17 @@ public final class JobClimaDias {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_JOB_DIAS_SEQUIA))) {
 
             while (dia <= ULTIMO_DIA) {
-                Punto fp = MatematicaUtils.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
-                Punto bp = MatematicaUtils.getCoordeadasRectangular(betasoidesPlaneta.getRadio(), betasoidesPlaneta.getAngulo(), betasoidesPlaneta.getPeriodo(), new BigDecimal(dia));
-                Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vulcanosPlaneta.getRadio(), vulcanosPlaneta.getAngulo(), vulcanosPlaneta.getPeriodo(), new BigDecimal(dia));
+                Punto fp = MatematicaUtil.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
+                Punto bp = MatematicaUtil.getCoordeadasRectangular(betasoidesPlaneta.getRadio(), betasoidesPlaneta.getAngulo(), betasoidesPlaneta.getPeriodo(), new BigDecimal(dia));
+                Punto vp = MatematicaUtil.getCoordeadasRectangularAntihorario(vulcanosPlaneta.getRadio(), vulcanosPlaneta.getAngulo(), vulcanosPlaneta.getPeriodo(), new BigDecimal(dia));
 
-                double area = Triangulo.getArea(fp, bp, vp);
+                double area = TrianguloUtil.getArea(fp, bp, vp);
                 if (-1 < area && area < 1) {
 
                     FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
 
                     BigDecimal yaux = recta.getValorY(sol.getX());
-                    if (MatematicaUtils.esSemejante(yaux, bp.getY(), 0.5)) {
+                    if (MatematicaUtil.esSemejante(yaux, bp.getY(), 0.5)) {
                         String insert = getStringInsertDias(dia, ClimaTipos.SEQUIA_I.getValorI());
                         bw.write(insert + "\n");
                     }
@@ -126,17 +126,17 @@ public final class JobClimaDias {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_JOB_DIAS_IDEAL))) {
 
             while (dia <= ULTIMO_DIA) {
-                Punto fp = MatematicaUtils.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
-                Punto bp = MatematicaUtils.getCoordeadasRectangular(betasoidesPlaneta.getRadio(), betasoidesPlaneta.getAngulo(), betasoidesPlaneta.getPeriodo(), new BigDecimal(dia));
-                Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vulcanosPlaneta.getRadio(), vulcanosPlaneta.getAngulo(), vulcanosPlaneta.getPeriodo(), new BigDecimal(dia));
+                Punto fp = MatematicaUtil.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
+                Punto bp = MatematicaUtil.getCoordeadasRectangular(betasoidesPlaneta.getRadio(), betasoidesPlaneta.getAngulo(), betasoidesPlaneta.getPeriodo(), new BigDecimal(dia));
+                Punto vp = MatematicaUtil.getCoordeadasRectangularAntihorario(vulcanosPlaneta.getRadio(), vulcanosPlaneta.getAngulo(), vulcanosPlaneta.getPeriodo(), new BigDecimal(dia));
 
-                double area = Triangulo.getArea(fp, bp, vp);
+                double area = TrianguloUtil.getArea(fp, bp, vp);
                 if (-1 < area && area < 1) {
 
                     FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
 
                     BigDecimal yaux = recta.getValorY(sol.getX());
-                    if (!MatematicaUtils.esSemejante(yaux, bp.getY(), 0.5)) {
+                    if (!MatematicaUtil.esSemejante(yaux, bp.getY(), 0.5)) {
                         String insert = getStringInsertDias(dia, ClimaTipos.IDEAL_I.getValorI());
                         bw.write(insert + "\n");
                     }
@@ -149,7 +149,8 @@ public final class JobClimaDias {
         }
     }
 
-    private static String getStringInsertDias(long dia, int clima) {
+    private static String getStringInsertDias(final long dia,
+                                              final int clima) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("INSERT INTO public.dias(numero, id_climas) ").append("VALUES (").
                 append(dia).append(", ").
@@ -157,7 +158,9 @@ public final class JobClimaDias {
         return stringBuilder.toString();
     }
 
-    private static String getStringInsertDias(long dia, int clima, double perimetro) {
+    private static String getStringInsertDias(final long dia,
+                                              final int clima,
+                                              final double perimetro) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("INSERT INTO public.dias(numero, id_climas, intensidad_lluvia) ").append("VALUES (")
                 .append(dia).append(", ").append(clima)

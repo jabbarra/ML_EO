@@ -27,9 +27,9 @@ public class ClimaServiceImpl implements ClimaService {
 
     @Override
     public List<Clima> getClimas() {
-        List<ClimaEntity> climasE = climaMapper.findClimas();
+        final List<ClimaEntity> climasE = climaMapper.findClimas();
 
-        List<Clima> climas = new ArrayList<Clima>();
+        List<Clima> climas = new ArrayList<>();
         Clima c = new Clima();
         for (ClimaEntity climaEntity : climasE) {
             c = new Clima();

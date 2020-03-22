@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 
-public final class Triangulo {
-    private Triangulo() {
+public final class TrianguloUtil {
+    private TrianguloUtil() {
     }
 
     /**
@@ -97,11 +97,10 @@ public final class Triangulo {
         BigDecimal aux = new BigDecimal(dividendo, MathContext.DECIMAL64);
         aux = aux.divide(new BigDecimal(2), 8, RoundingMode.HALF_UP);
 
-        double area = Math.sqrt(semiperimetro
+        return Math.sqrt(semiperimetro
                 * (semiperimetro - ab)
                 * (semiperimetro - ac)
                 * (semiperimetro - bc));
-        return area;
     }
 
     /**
@@ -131,8 +130,6 @@ public final class Triangulo {
         double bc = Math.sqrt(terminoUno + terminoDos);
         bc = bc < 0 ? -bc : bc;
 
-        double perimetro = ab + ac + bc;
-
-        return perimetro;
+        return ab + ac + bc;
     }
 }

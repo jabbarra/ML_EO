@@ -4,8 +4,8 @@ import com.obarra.forecast.bean.Planeta;
 import com.obarra.forecast.bean.Punto;
 import com.obarra.forecast.utils.ClimaTipos;
 import com.obarra.forecast.utils.FuncionCuadratica;
-import com.obarra.forecast.utils.MatematicaUtils;
-import com.obarra.forecast.utils.Triangulo;
+import com.obarra.forecast.utils.MatematicaUtil;
+import com.obarra.forecast.utils.TrianguloUtil;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.BufferedWriter;
@@ -43,17 +43,17 @@ public class MainPeriodosIdeal {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_INFORME_PERIODO_IDEAL))) {
 
             while (dia <= ULTIMO_DIA) {
-                Punto fp = MatematicaUtils.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
-                Punto bp = MatematicaUtils.getCoordeadasRectangular(betasoidesPlaneta.getRadio(), betasoidesPlaneta.getAngulo(), betasoidesPlaneta.getPeriodo(), new BigDecimal(dia));
-                Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vulcanosPlaneta.getRadio(), vulcanosPlaneta.getAngulo(), vulcanosPlaneta.getPeriodo(), new BigDecimal(dia));
+                Punto fp = MatematicaUtil.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
+                Punto bp = MatematicaUtil.getCoordeadasRectangular(betasoidesPlaneta.getRadio(), betasoidesPlaneta.getAngulo(), betasoidesPlaneta.getPeriodo(), new BigDecimal(dia));
+                Punto vp = MatematicaUtil.getCoordeadasRectangularAntihorario(vulcanosPlaneta.getRadio(), vulcanosPlaneta.getAngulo(), vulcanosPlaneta.getPeriodo(), new BigDecimal(dia));
 
-                double area = Triangulo.getArea(fp, bp, vp);
+                double area = TrianguloUtil.getArea(fp, bp, vp);
                 if (-1 < area && area < 1) {
 
                     FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
 
                     BigDecimal yaux = recta.getValorY(sol.getX());
-                    if (!MatematicaUtils.esSemejante(yaux, bp.getY(), 0.5)) {
+                    if (!MatematicaUtil.esSemejante(yaux, bp.getY(), 0.5)) {
                         if (diaAnterior == -1 || (diaAnterior + 1) != dia) {
                             contadorPeriodos++;
                             bw.write("PERIODO NUMERO: " + contadorPeriodos + "\n");

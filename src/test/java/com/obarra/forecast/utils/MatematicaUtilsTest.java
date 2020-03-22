@@ -17,7 +17,7 @@ public class MatematicaUtilsTest {
         BigDecimal periodo = new BigDecimal("1");
         BigDecimal tiempo = new BigDecimal("1");
 
-        Punto coordenadas = MatematicaUtils.getCoordeadasRectangular(radio, angulo, periodo, tiempo);
+        Punto coordenadas = MatematicaUtil.getCoordeadasRectangular(radio, angulo, periodo, tiempo);
 
         assertEquals(1.05, coordenadas.getX().doubleValue(), 0.1);
         assertEquals(1.70, coordenadas.getY().doubleValue(), 0.1);
@@ -27,7 +27,7 @@ public class MatematicaUtilsTest {
         periodo = new BigDecimal("1");
         tiempo = new BigDecimal("1");
 
-        coordenadas = MatematicaUtils.getCoordeadasRectangular(radio, angulo, periodo, tiempo);
+        coordenadas = MatematicaUtil.getCoordeadasRectangular(radio, angulo, periodo, tiempo);
 
         assertEquals(-1.00, coordenadas.getX().doubleValue(), 0.1);
         assertEquals(0.99, coordenadas.getY().doubleValue(), 0.1);
@@ -40,7 +40,7 @@ public class MatematicaUtilsTest {
         BigDecimal periodo = new BigDecimal("1");
         BigDecimal tiempo = new BigDecimal("1");
 
-        Punto coordenadas = MatematicaUtils.getCoordeadasRectangularAntihorario(radio, angulo, periodo, tiempo);
+        Punto coordenadas = MatematicaUtil.getCoordeadasRectangularAntihorario(radio, angulo, periodo, tiempo);
 
         assertEquals(1.05, coordenadas.getX().doubleValue(), 0.1);
         assertNotEquals(1.70, coordenadas.getY().doubleValue(), 0.1);
@@ -61,13 +61,13 @@ public class MatematicaUtilsTest {
         p3.setX(new BigDecimal("0"));
         p3.setY(new BigDecimal("0"));
 
-        boolean resultado = MatematicaUtils.estanAlineados(p1, p2, p3);
+        boolean resultado = MatematicaUtil.estanAlineados(p1, p2, p3);
         assertEquals(true, resultado);
 
         p3 = new Punto();
         p3.setX(new BigDecimal("5"));
         p3.setY(new BigDecimal("2"));
-        resultado = MatematicaUtils.estanAlineados(p1, p2, p3);
+        resultado = MatematicaUtil.estanAlineados(p1, p2, p3);
         assertEquals(false, resultado);
     }
 
@@ -75,12 +75,12 @@ public class MatematicaUtilsTest {
     public void testEsSemejante() {
         BigDecimal a = new BigDecimal("2");
         BigDecimal b = new BigDecimal("2");
-        boolean resultado = MatematicaUtils.esSemejante(a, b, 0.1);
+        boolean resultado = MatematicaUtil.esSemejante(a, b, 0.1);
         assertEquals(true, resultado);
 
         a = new BigDecimal("2.78");
         b = new BigDecimal("2");
-        resultado = MatematicaUtils.esSemejante(a, b, 0.1);
+        resultado = MatematicaUtil.esSemejante(a, b, 0.1);
         assertEquals(false, resultado);
     }
 

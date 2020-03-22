@@ -27,13 +27,12 @@ public class ClimaController {
     @ResponseBody
     public ClimaEstado getClimaByDia(
             final @RequestParam(value = "dia", required = true) Long dia) {
-        ClimaEstado climaEstado = climaService.getClimaDelDia(dia);
-        return climaEstado;
+        return climaService.getClimaDelDia(dia);
     }
 
     @RequestMapping(value = "/climas", method = RequestMethod.GET)
     public List<Clima> getClimas() {
-        List<Clima> climas = new ArrayList<Clima>();
+        List<Clima> climas = new ArrayList<>();
         try {
             climas = climaService.getClimas();
         } catch (Exception e) {

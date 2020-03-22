@@ -27,7 +27,7 @@ public class TrianguloTest {
         p3.setX(new BigDecimal("-3"));
         p3.setY(new BigDecimal("-3"));
 
-        boolean resultado = Triangulo.esPuntoInteriorTriangulo(p1, p2, p3, p);
+        boolean resultado = TrianguloUtil.esPuntoInteriorTriangulo(p1, p2, p3, p);
         assertEquals(true, resultado);
 
         p1 = new Punto();
@@ -42,7 +42,7 @@ public class TrianguloTest {
         p3.setX(new BigDecimal("-2"));
         p3.setY(new BigDecimal("2"));
 
-        resultado = Triangulo.esPuntoInteriorTriangulo(p1, p2, p3, p);
+        resultado = TrianguloUtil.esPuntoInteriorTriangulo(p1, p2, p3, p);
         assertEquals(false, resultado);
 
 
@@ -58,7 +58,7 @@ public class TrianguloTest {
         p3.setX(new BigDecimal("1"));
         p3.setY(new BigDecimal("0"));
 
-        resultado = Triangulo.esPuntoInteriorTriangulo(p1, p2, p3, p);
+        resultado = TrianguloUtil.esPuntoInteriorTriangulo(p1, p2, p3, p);
         assertEquals(false, resultado);
 
     }
@@ -77,7 +77,7 @@ public class TrianguloTest {
         c.setX(new BigDecimal("5"));
         c.setY(new BigDecimal("6"));
 
-        double resultado = Triangulo.getArea(a, b, c);
+        double resultado = TrianguloUtil.getArea(a, b, c);
         assertEquals(21.5, resultado, 0.1);
 
         a = new Punto();
@@ -93,7 +93,7 @@ public class TrianguloTest {
         c.setY(new BigDecimal("-4"));
 
 
-        resultado = Triangulo.getArea(a, b, c);
+        resultado = TrianguloUtil.getArea(a, b, c);
         assertEquals(32.0, resultado, 0.1);
 
     }
@@ -112,7 +112,7 @@ public class TrianguloTest {
         c.setX(new BigDecimal("5"));
         c.setY(new BigDecimal("6"));
 
-        double resultado = Triangulo.getPerimetro(a, b, c);
+        double resultado = TrianguloUtil.getPerimetro(a, b, c);
         assertEquals(21.29, resultado, 0.1);
 
         a = new Punto();
@@ -128,7 +128,7 @@ public class TrianguloTest {
         c.setY(new BigDecimal("-4"));
 
 
-        resultado = Triangulo.getPerimetro(a, b, c);
+        resultado = TrianguloUtil.getPerimetro(a, b, c);
         assertEquals(25.88, resultado, 0.1);
     }
 

@@ -3,8 +3,8 @@ package com.obarra.forecast.job;
 import com.obarra.forecast.bean.Planeta;
 import com.obarra.forecast.bean.Punto;
 import com.obarra.forecast.utils.ClimaTipos;
-import com.obarra.forecast.utils.MatematicaUtils;
-import com.obarra.forecast.utils.Triangulo;
+import com.obarra.forecast.utils.MatematicaUtil;
+import com.obarra.forecast.utils.TrianguloUtil;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.BufferedWriter;
@@ -45,13 +45,13 @@ public class MainPeriodosLLuvia {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_INFORME_PERIODO_LLUVIA))) {
 
             while (dia <= ULTIMO_DIA) {
-                Punto fp = MatematicaUtils.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
-                Punto bp = MatematicaUtils.getCoordeadasRectangular(betasoidesPlaneta.getRadio(), betasoidesPlaneta.getAngulo(), betasoidesPlaneta.getPeriodo(), new BigDecimal(dia));
-                Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vulcanosPlaneta.getRadio(), vulcanosPlaneta.getAngulo(), vulcanosPlaneta.getPeriodo(), new BigDecimal(dia));
+                Punto fp = MatematicaUtil.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
+                Punto bp = MatematicaUtil.getCoordeadasRectangular(betasoidesPlaneta.getRadio(), betasoidesPlaneta.getAngulo(), betasoidesPlaneta.getPeriodo(), new BigDecimal(dia));
+                Punto vp = MatematicaUtil.getCoordeadasRectangularAntihorario(vulcanosPlaneta.getRadio(), vulcanosPlaneta.getAngulo(), vulcanosPlaneta.getPeriodo(), new BigDecimal(dia));
 
-                double area = Triangulo.getArea(fp, bp, vp);
+                double area = TrianguloUtil.getArea(fp, bp, vp);
                 if (area > 0) {
-                    if (Triangulo.esPuntoInteriorTriangulo(fp, bp, vp, sol)) {
+                    if (TrianguloUtil.esPuntoInteriorTriangulo(fp, bp, vp, sol)) {
 
                         if (diaAnterior == -1 || (diaAnterior + 1) != dia) {
                             contadorPeriodos++;
@@ -63,7 +63,7 @@ public class MainPeriodosLLuvia {
                             bw.write(ClimaTipos.LLUVIA.getValorS() + "\n");
                         }
                         diaAnterior = dia;
-                        perimetro = Triangulo.getPerimetro(fp, bp, vp);
+                        perimetro = TrianguloUtil.getPerimetro(fp, bp, vp);
                         if (dia == 1 || perimetroMax < perimetro) {
                             perimetroMax = perimetro;
                             diaperimetroMax = dia;

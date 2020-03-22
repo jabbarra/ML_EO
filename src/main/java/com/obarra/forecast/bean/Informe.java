@@ -15,7 +15,7 @@ public class Informe {
      */
     public List<Periodo> getListaPeriodos() {
         if (this.listaPeriodos == null) {
-            this.listaPeriodos = new ArrayList<Periodo>();
+            this.listaPeriodos = new ArrayList<>();
         }
         return listaPeriodos;
     }

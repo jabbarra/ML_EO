@@ -19,7 +19,7 @@ public class Planeta {
                    final String periodo,
                    final String radio) {
 
-        Double anguloRad = Math.toRadians(Double.parseDouble(angulo));
+        final Double anguloRad = Math.toRadians(Double.parseDouble(angulo));
         this.angulo = new BigDecimal(anguloRad.toString());
         this.periodo = new BigDecimal(periodo);
         this.radio = new BigDecimal(radio);

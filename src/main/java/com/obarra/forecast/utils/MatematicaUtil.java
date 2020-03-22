@@ -5,9 +5,9 @@ import com.obarra.forecast.bean.Punto;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public final class MatematicaUtils {
+public final class MatematicaUtil {
 
-    private MatematicaUtils() {
+    private MatematicaUtil() {
     }
 
     /**
@@ -110,6 +110,7 @@ public final class MatematicaUtils {
         if (ymin < y.doubleValue() && y.doubleValue() < ymax) {
             return true;
         }
+
         return false;
     }
 }

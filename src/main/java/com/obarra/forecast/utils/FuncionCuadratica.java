@@ -34,7 +34,6 @@ public class FuncionCuadratica {
      * @return y
      */
     public BigDecimal getValorY(final BigDecimal x) {
-        BigDecimal y = (pendiente.multiply(x)).add(ordenadaOrigen);
-        return y;
+        return (pendiente.multiply(x)).add(ordenadaOrigen);
     }
 }
