@@ -12,11 +12,11 @@ public enum ClimaTipos {
     private String valorS;
     private int valorI;
 
-    ClimaTipos(int valorI) {
+    ClimaTipos(final int valorI) {
         this.valorI = valorI;
     }
 
-    ClimaTipos(String valorS) {
+    ClimaTipos(final String valorS) {
         this.valorS = valorS;
     }
 
@@ -26,27 +26,11 @@ public enum ClimaTipos {
     public String getValorS() {
         return valorS;
     }
-
-    /**
-     * @param valorS the valorS to set
-     */
-    public void setValorS(String valorS) {
-        this.valorS = valorS;
-    }
-
     /**
      * @return the valorI
      */
     public int getValorI() {
         return valorI;
     }
-
-    /**
-     * @param valorI the valorI to set
-     */
-    public void setValorI(int valorI) {
-        this.valorI = valorI;
-    }
-
 
 }

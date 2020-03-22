@@ -41,7 +41,7 @@ public class ClimaServiceImpl implements ClimaService {
     }
 
     @Override
-    public ClimaEstado getClimaDelDia(Long dia) {
+    public ClimaEstado getClimaDelDia(final Long dia) {
         ClimaEstado climaEstado = new ClimaEstado();
         climaEstado.setClima(ClimaTipos.INDEFINIDO.getValorS());
         climaEstado.setDia(dia);
@@ -56,13 +56,15 @@ public class ClimaServiceImpl implements ClimaService {
 
     @Override
     public Informe getPeriodoLLuvia() {
-        List<DiaEntity> dias = diaMapper.findDiasByClima(ClimaTipos.LLUVIA_I.getValorI());
+        List<DiaEntity> dias = diaMapper
+                .findDiasByClima(ClimaTipos.LLUVIA_I.getValorI());
         DiaEntity diaMaximaIntensidad = diaMapper.findDiaMaximaIntensidad();
 
-        Informe informe = this.generarInformedeClima(ClimaTipos.LLUVIA.getValorS(), dias);
+        Informe informe = generarInformedeClima(ClimaTipos.LLUVIA.getValorS(), dias);
 
         String titulo = informe.getTitulo();
-        titulo = titulo + " El pico máximo de lluvia será el día: " + diaMaximaIntensidad.getNumero();
+        titulo = titulo + " El pico máximo de lluvia será el día: "
+                + diaMaximaIntensidad.getNumero();
         informe.setTitulo(titulo);
 
         return informe;
@@ -83,7 +85,7 @@ public class ClimaServiceImpl implements ClimaService {
         return this.generarInformedeClima(ClimaTipos.IDEAL.getValorS(), dias);
     }
 
-    private Informe generarInformedeClima(String tipoClima, List<DiaEntity> dias) {
+    private Informe generarInformedeClima(final String tipoClima, final List<DiaEntity> dias) {
         Informe informe = new Informe();
 
         ClimaEstado clima = null;
@@ -114,7 +116,9 @@ public class ClimaServiceImpl implements ClimaService {
             diaAnterior = dia.getNumero();
         }
 
-        informe.setTitulo("Habrá " + contadorPeriodos + " períodos de " + tipoClima + ".");
+        informe.setTitulo("Habrá " + contadorPeriodos
+                + " períodos de " + tipoClima + ".");
+
         return informe;
     }
 

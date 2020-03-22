@@ -12,7 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-public class JobClimaDias {
+public final class JobClimaDias {
 
     private static final String FILE_JOB_DIAS_LLUVIA = "/archivos_mleo/insert-dias-lluvia.sql";
     private static final String FILE_JOB_DIAS_SEQUIA = "/archivos_mleo/insert-dias-sequia.sql";
@@ -33,12 +33,16 @@ public class JobClimaDias {
         sol.setY(new BigDecimal(0));
     }
 
+    private JobClimaDias() {
+    }
+
     public static void main(String[] args) {
         jobPeridoLLuvia();
         jobPeridoSequia();
         jobPeridoIdeal();
 
-        System.out.println("Se generaron exitosamente las condiciones de todos los días. Favor de revisar los archivos: ");
+        System.out.println("Se generaron exitosamente las condiciones "
+                + "de todos los días. Favor de revisar los archivos: ");
         System.out.println(FILE_JOB_DIAS_LLUVIA);
         System.out.println(FILE_JOB_DIAS_SEQUIA);
         System.out.println(FILE_JOB_DIAS_IDEAL);
@@ -47,18 +51,34 @@ public class JobClimaDias {
     private static void jobPeridoLLuvia() {
         long dia = 1;
         double perimetro = 0;
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_JOB_DIAS_LLUVIA))) {
+        try (BufferedWriter bw =
+                     new BufferedWriter(new FileWriter(FILE_JOB_DIAS_LLUVIA))) {
 
             while (dia <= ULTIMO_DIA) {
-                Punto fp = MatematicaUtils.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
-                Punto bp = MatematicaUtils.getCoordeadasRectangular(betasoidesPlaneta.getRadio(), betasoidesPlaneta.getAngulo(), betasoidesPlaneta.getPeriodo(), new BigDecimal(dia));
-                Punto vp = MatematicaUtils.getCoordeadasRectangularAntihorario(vulcanosPlaneta.getRadio(), vulcanosPlaneta.getAngulo(), vulcanosPlaneta.getPeriodo(), new BigDecimal(dia));
+                Punto fp = MatematicaUtils
+                        .getCoordeadasRectangular(ferengisPlaneta.getRadio(),
+                                ferengisPlaneta.getAngulo(),
+                                ferengisPlaneta.getPeriodo(),
+                                new BigDecimal(dia));
+                Punto bp = MatematicaUtils
+                        .getCoordeadasRectangular(betasoidesPlaneta.getRadio(),
+                                betasoidesPlaneta.getAngulo(),
+                                betasoidesPlaneta.getPeriodo(),
+                                new BigDecimal(dia));
+                Punto vp = MatematicaUtils
+                        .getCoordeadasRectangularAntihorario(
+                                vulcanosPlaneta.getRadio(),
+                                vulcanosPlaneta.getAngulo(),
+                                vulcanosPlaneta.getPeriodo(),
+                                new BigDecimal(dia));
 
                 double area = Triangulo.getArea(fp, bp, vp);
                 if (area > 0) {
                     if (Triangulo.esPuntoInteriorTriangulo(fp, bp, vp, sol)) {
                         perimetro = Triangulo.getPerimetro(fp, bp, vp);
-                        String insert = getStringInsertDias(dia, ClimaTipos.LLUVIA_I.getValorI(), perimetro);
+                        String insert = getStringInsertDias(dia,
+                                ClimaTipos.LLUVIA_I.getValorI(),
+                                perimetro);
                         bw.write(insert + "\n");
                     }
                 }

@@ -14,7 +14,10 @@ public class Planeta {
     private BigDecimal peridoSideral;
     private BigDecimal peridoSinodico;
 
-    public Planeta(String nombre, String angulo, String periodo, String radio) {
+    public Planeta(final String nombre,
+                   final String angulo,
+                   final String periodo,
+                   final String radio) {
 
         Double anguloRad = Math.toRadians(Double.parseDouble(angulo));
         this.angulo = new BigDecimal(anguloRad.toString());
