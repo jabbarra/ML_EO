@@ -98,19 +98,19 @@ public class ClimaServiceImpl implements ClimaService {
             if (diaAnterior == -1 || (diaAnterior + 1) != dia.getNumero()) {
                 contadorPeriodos++;
                 periodo = new Periodo();
-                periodo.setPeriodo(contadorPeriodos);
-                periodo.setListaClimas(new ArrayList<ClimaEstado>());
+                periodo.setValue(contadorPeriodos);
+                periodo.setClimaEstados(new ArrayList<ClimaEstado>());
                 informe.getListaPeriodos().add(periodo);
 
                 clima = new ClimaEstado();
                 clima.setClima(tipoClima);
                 clima.setDia(dia.getNumero());
-                periodo.getListaClimas().add(clima);
+                periodo.getClimaEstados().add(clima);
             } else {
                 clima = new ClimaEstado();
                 clima.setClima(tipoClima);
                 clima.setDia(dia.getNumero());
-                periodo.getListaClimas().add(clima);
+                periodo.getClimaEstados().add(clima);
             }
             diaAnterior = dia.getNumero();
         }

@@ -92,9 +92,9 @@ public final class TrianguloUtil {
 
         double semiperimetro = (ab + ac + bc) / 2;
 
-        double dividendo = ab + ac + bc;
+        Double dividendo = ab + ac + bc;
 
-        BigDecimal aux = new BigDecimal(dividendo, MathContext.DECIMAL64);
+        BigDecimal aux = new BigDecimal(dividendo.toString(), MathContext.DECIMAL64);
         aux = aux.divide(new BigDecimal(2), 8, RoundingMode.HALF_UP);
 
         return Math.sqrt(semiperimetro

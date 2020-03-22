@@ -2,13 +2,14 @@ package com.obarra.forecast.utils;
 
 import com.obarra.forecast.bean.Punto;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
  * @author omar_barra
  */
-public class FuncionCuadratica {
+public class FuncionCuadratica  {
     private BigDecimal pendiente;
     private BigDecimal ordenadaOrigen;
 
