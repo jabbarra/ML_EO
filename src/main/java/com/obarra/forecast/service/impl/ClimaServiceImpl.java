@@ -6,7 +6,6 @@ import com.obarra.forecast.bean.Informe;
 import com.obarra.forecast.bean.Periodo;
 import com.obarra.forecast.mapper.ClimaMapper;
 import com.obarra.forecast.mapper.DiaMapper;
-import com.obarra.forecast.mapper.entity.ClimaEntity;
 import com.obarra.forecast.mapper.entity.DiaEntity;
 import com.obarra.forecast.service.ClimaService;
 import com.obarra.forecast.utils.ClimaTipos;
@@ -15,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ClimaServiceImpl implements ClimaService {
@@ -27,17 +27,13 @@ public class ClimaServiceImpl implements ClimaService {
 
     @Override
     public List<Clima> getClimas() {
-        final List<ClimaEntity> climasE = climaMapper.findClimas();
-
-        List<Clima> climas = new ArrayList<>();
-        Clima c = new Clima();
-        for (ClimaEntity climaEntity : climasE) {
-            c = new Clima();
-            c.setNombre(climaEntity.getNombre());
-            climas.add(c);
-        }
-
-        return climas;
+        return climaMapper.findClimas()
+                .stream()
+                .map(e -> {
+                    Clima clima = new Clima();
+                    clima.setNombre(e.getNombre());
+                    return clima;
+                }).collect(Collectors.toList());
     }
 
     @Override
@@ -62,10 +58,11 @@ public class ClimaServiceImpl implements ClimaService {
 
         Informe informe = generarInformedeClima(ClimaTipos.LLUVIA.getValorS(), dias);
 
-        String titulo = informe.getTitulo();
-        titulo = titulo + " El pico máximo de lluvia será el día: "
-                + diaMaximaIntensidad.getNumero();
-        informe.setTitulo(titulo);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(informe.getTitulo())
+                .append(" El pico máximo de lluvia será el día: ")
+                .append(diaMaximaIntensidad.getNumero());
+        informe.setTitulo(stringBuilder.toString());
 
         return informe;
     }

@@ -16,23 +16,32 @@ import java.math.BigDecimal;
 @Log4j2
 public final class JobClimaDias {
 
+    private static final  String INSERT_DIAS_COMPLETE = "INSERT INTO public.dias(numero"
+            + ", id_climas"
+            + ", intensidad_lluvia)"
+            + " VALUES (%d, %d, %f);";
+
+    private static final String INSERT_DIAS = "INSERT INTO public.dias(numero"
+            + ", id_climas) "
+            + "VALUES (%d, %d);";
+
     private static final String FILE_JOB_DIAS_LLUVIA = "/archivos_mleo/insert-dias-lluvia.sql";
     private static final String FILE_JOB_DIAS_SEQUIA = "/archivos_mleo/insert-dias-sequia.sql";
     private static final String FILE_JOB_DIAS_IDEAL = "/archivos_mleo/insert-dias-ideal.sql";
 
     private static final long ULTIMO_DIA = 365 * 10;
-    private static Planeta ferengisPlaneta = null;
-    private static Planeta betasoidesPlaneta = null;
-    private static Planeta vulcanosPlaneta = null;
-    private static Punto sol = null;
+    private static Planeta ferengisPlaneta;
+    private static Planeta betasoidesPlaneta;
+    private static Planeta vulcanosPlaneta;
+    private static Punto sol;
 
     static {
         ferengisPlaneta = new Planeta("ferengis", "1", "1", "500");
         betasoidesPlaneta = new Planeta("betasoides", "3", "1", "2000");
         vulcanosPlaneta = new Planeta("vulcanos", "5", "1", "1000");
         sol = new Punto();
-        sol.setX(new BigDecimal(0));
-        sol.setY(new BigDecimal(0));
+        sol.setX(BigDecimal.ZERO);
+        sol.setY(BigDecimal.ZERO);
     }
 
     private JobClimaDias() {
@@ -151,22 +160,12 @@ public final class JobClimaDias {
 
     private static String getStringInsertDias(final long dia,
                                               final int clima) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("INSERT INTO public.dias(numero, id_climas) ").append("VALUES (").
-                append(dia).append(", ").
-                append(clima).append(");");
-        return stringBuilder.toString();
+        return String.format(INSERT_DIAS, dia, clima);
     }
 
     private static String getStringInsertDias(final long dia,
                                               final int clima,
                                               final double perimetro) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("INSERT INTO public.dias(numero, id_climas, intensidad_lluvia) ").append("VALUES (")
-                .append(dia).append(", ").append(clima)
-                .append(", ").append(perimetro)
-                .append(");");
-        return stringBuilder.toString();
+        return String.format(INSERT_DIAS_COMPLETE, dia, clima, perimetro);
     }
-
 }

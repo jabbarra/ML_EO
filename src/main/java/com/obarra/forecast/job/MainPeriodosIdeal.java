@@ -17,18 +17,18 @@ import java.math.BigDecimal;
 public class MainPeriodosIdeal {
     private static final String FILE_INFORME_PERIODO_IDEAL = "/archivos_mleo/informe-periodos-ideal.txt";
     private static final long ULTIMO_DIA = 365 * 10;
-    private static Planeta ferengisPlaneta = null;
-    private static Planeta betasoidesPlaneta = null;
-    private static Planeta vulcanosPlaneta = null;
-    private static Punto sol = null;
+    private static Planeta ferengisPlaneta;
+    private static Planeta betasoidesPlaneta;
+    private static Planeta vulcanosPlaneta;
+    private static Punto sol;
 
     static {
         ferengisPlaneta = new Planeta("ferengis", "1", "1", "500");
         betasoidesPlaneta = new Planeta("betasoides", "3", "1", "2000");
         vulcanosPlaneta = new Planeta("vulcanos", "5", "1", "1000");
         sol = new Punto();
-        sol.setX(new BigDecimal(0));
-        sol.setY(new BigDecimal(0));
+        sol.setX(BigDecimal.ZERO);
+        sol.setY(BigDecimal.ZERO);
     }
 
     public static void main(String[] args) {
