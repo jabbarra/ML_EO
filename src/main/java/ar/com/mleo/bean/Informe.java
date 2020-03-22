@@ -1,25 +1,14 @@
 package ar.com.mleo.bean;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class Informe {
     private String titulo;
     private List<Periodo> listaPeriodos;
-
-    /**
-     * @return the titulo
-     */
-    public String getTitulo() {
-        return titulo;
-    }
-
-    /**
-     * @param titulo the titulo to set
-     */
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
 
     /**
      * @return the listaPeriodos

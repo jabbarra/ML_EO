@@ -33,7 +33,7 @@ public class ClimaServiceImpl implements ClimaService {
         Clima c = new Clima();
         for (ClimaEntity climaEntity : climasE) {
             c = new Clima();
-            c.setNombre(climaEntity.getNOMBRE());
+            c.setNombre(climaEntity.getNombre());
             climas.add(c);
         }
 

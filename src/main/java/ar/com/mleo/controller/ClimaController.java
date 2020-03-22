@@ -5,7 +5,6 @@ import ar.com.mleo.bean.ClimaEstado;
 import ar.com.mleo.bean.Informe;
 import ar.com.mleo.service.ClimaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,24 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/clima")
-public class ClimaController {
-
+public  class ClimaController {
 
     @Autowired
     private ClimaService climaService;
 
-
-    @GetMapping("/test")
-    public String test() {
-        return "It's ok";
-    }
-
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public ClimaEstado getClimaByDia(@RequestParam(value = "dia", required = true) Long dia) {
+    public ClimaEstado getClimaByDia(
+            final @RequestParam(value = "dia", required = true) Long dia) {
         ClimaEstado climaEstado = climaService.getClimaDelDia(dia);
         return climaEstado;
     }
