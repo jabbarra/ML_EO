@@ -20,8 +20,12 @@ import java.util.List;
 @RequestMapping("/clima")
 public class ClimaController {
 
-    @Autowired
     private ClimaService climaService;
+
+    @Autowired
+    public ClimaController(final ClimaService climaService){
+        this.climaService = climaService;
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody

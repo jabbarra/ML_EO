@@ -23,10 +23,10 @@ public final class TrianguloUtil {
                                                 final Punto b,
                                                 final Punto c) {
         boolean esPositivo = false;
-        BigDecimal primerTermino = (a.getX()
-                .subtract(c.getX())).multiply((b.getY().subtract(c.getY())));
-        BigDecimal segundoTermino = (a.getY()
-                .subtract(c.getY())).multiply((b.getX().subtract(c.getX())));
+        BigDecimal primerTermino = (a.getAxisX()
+                .subtract(c.getAxisX())).multiply((b.getAxisY().subtract(c.getAxisY())));
+        BigDecimal segundoTermino = (a.getAxisY()
+                .subtract(c.getAxisY())).multiply((b.getAxisX().subtract(c.getAxisX())));
 
         BigDecimal orientacion = primerTermino.subtract(segundoTermino);
         if (orientacion.doubleValue() >= 0) {
@@ -78,16 +78,16 @@ public final class TrianguloUtil {
     public static double getArea(final Punto a,
                                  final Punto b,
                                  final Punto c) {
-        double terminoUno = Math.pow((b.getX().subtract(a.getX())).doubleValue(), 2);
-        double terminoDos = Math.pow((b.getY().subtract(a.getY())).doubleValue(), 2);
+        double terminoUno = Math.pow((b.getAxisX().subtract(a.getAxisX())).doubleValue(), 2);
+        double terminoDos = Math.pow((b.getAxisY().subtract(a.getAxisY())).doubleValue(), 2);
         double ab = Math.sqrt(terminoUno + terminoDos);
 
-        terminoUno = Math.pow((c.getX().subtract(a.getX())).doubleValue(), 2);
-        terminoDos = Math.pow((c.getY().subtract(a.getY())).doubleValue(), 2);
+        terminoUno = Math.pow((c.getAxisX().subtract(a.getAxisX())).doubleValue(), 2);
+        terminoDos = Math.pow((c.getAxisY().subtract(a.getAxisY())).doubleValue(), 2);
         double ac = Math.sqrt(terminoUno + terminoDos);
 
-        terminoUno = Math.pow((c.getX().subtract(b.getX())).doubleValue(), 2);
-        terminoDos = Math.pow((c.getY().subtract(b.getY())).doubleValue(), 2);
+        terminoUno = Math.pow((c.getAxisX().subtract(b.getAxisX())).doubleValue(), 2);
+        terminoDos = Math.pow((c.getAxisY().subtract(b.getAxisY())).doubleValue(), 2);
         double bc = Math.sqrt(terminoUno + terminoDos);
 
         double semiperimetro = (ab + ac + bc) / 2;
@@ -115,18 +115,18 @@ public final class TrianguloUtil {
     public static double getPerimetro(final Punto a,
                                       final Punto b,
                                       final Punto c) {
-        double terminoUno = Math.pow((b.getX().subtract(a.getX())).doubleValue(), 2);
-        double terminoDos = Math.pow((b.getY().subtract(a.getY())).doubleValue(), 2);
+        double terminoUno = Math.pow((b.getAxisX().subtract(a.getAxisX())).doubleValue(), 2);
+        double terminoDos = Math.pow((b.getAxisY().subtract(a.getAxisY())).doubleValue(), 2);
         double ab = Math.sqrt(terminoUno + terminoDos);
         ab = ab < 0 ? -ab : ab;
 
-        terminoUno = Math.pow((c.getX().subtract(a.getX())).doubleValue(), 2);
-        terminoDos = Math.pow((c.getY().subtract(a.getY())).doubleValue(), 2);
+        terminoUno = Math.pow((c.getAxisX().subtract(a.getAxisX())).doubleValue(), 2);
+        terminoDos = Math.pow((c.getAxisY().subtract(a.getAxisY())).doubleValue(), 2);
         double ac = Math.sqrt(terminoUno + terminoDos);
         ac = ac < 0 ? -ac : ac;
 
-        terminoUno = Math.pow((c.getX().subtract(b.getX())).doubleValue(), 2);
-        terminoDos = Math.pow((c.getY().subtract(b.getY())).doubleValue(), 2);
+        terminoUno = Math.pow((c.getAxisX().subtract(b.getAxisX())).doubleValue(), 2);
+        terminoDos = Math.pow((c.getAxisY().subtract(b.getAxisY())).doubleValue(), 2);
         double bc = Math.sqrt(terminoUno + terminoDos);
         bc = bc < 0 ? -bc : bc;
 

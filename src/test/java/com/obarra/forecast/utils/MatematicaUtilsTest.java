@@ -19,8 +19,8 @@ public class MatematicaUtilsTest {
 
         Punto coordenadas = MatematicaUtil.getCoordeadasRectangular(radio, angulo, periodo, tiempo);
 
-        assertEquals(1.05, coordenadas.getX().doubleValue(), 0.1);
-        assertEquals(1.70, coordenadas.getY().doubleValue(), 0.1);
+        assertEquals(1.05, coordenadas.getAxisX().doubleValue(), 0.1);
+        assertEquals(1.70, coordenadas.getAxisY().doubleValue(), 0.1);
 
         radio = new BigDecimal("1.414213562");
         angulo = new BigDecimal("2.3562");
@@ -29,8 +29,8 @@ public class MatematicaUtilsTest {
 
         coordenadas = MatematicaUtil.getCoordeadasRectangular(radio, angulo, periodo, tiempo);
 
-        assertEquals(-1.00, coordenadas.getX().doubleValue(), 0.1);
-        assertEquals(0.99, coordenadas.getY().doubleValue(), 0.1);
+        assertEquals(-1.00, coordenadas.getAxisX().doubleValue(), 0.1);
+        assertEquals(0.99, coordenadas.getAxisY().doubleValue(), 0.1);
     }
 
     @Test
@@ -42,31 +42,31 @@ public class MatematicaUtilsTest {
 
         Punto coordenadas = MatematicaUtil.getCoordeadasRectangularAntihorario(radio, angulo, periodo, tiempo);
 
-        assertEquals(1.05, coordenadas.getX().doubleValue(), 0.1);
-        assertNotEquals(1.70, coordenadas.getY().doubleValue(), 0.1);
+        assertEquals(1.05, coordenadas.getAxisX().doubleValue(), 0.1);
+        assertNotEquals(1.70, coordenadas.getAxisY().doubleValue(), 0.1);
 
     }
 
     @Test
     public void testEstanAlineados() {
         Punto p1 = new Punto();
-        p1.setX(new BigDecimal("1"));
-        p1.setY(new BigDecimal("1"));
+        p1.setAxisX(new BigDecimal("1"));
+        p1.setAxisY(new BigDecimal("1"));
 
         Punto p2 = new Punto();
-        p2.setX(new BigDecimal("3"));
-        p2.setY(new BigDecimal("3"));
+        p2.setAxisX(new BigDecimal("3"));
+        p2.setAxisY(new BigDecimal("3"));
 
         Punto p3 = new Punto();
-        p3.setX(new BigDecimal("0"));
-        p3.setY(new BigDecimal("0"));
+        p3.setAxisX(new BigDecimal("0"));
+        p3.setAxisY(new BigDecimal("0"));
 
         boolean resultado = MatematicaUtil.estanAlineados(p1, p2, p3);
         assertEquals(true, resultado);
 
         p3 = new Punto();
-        p3.setX(new BigDecimal("5"));
-        p3.setY(new BigDecimal("2"));
+        p3.setAxisX(new BigDecimal("5"));
+        p3.setAxisY(new BigDecimal("2"));
         resultado = MatematicaUtil.estanAlineados(p1, p2, p3);
         assertEquals(false, resultado);
     }

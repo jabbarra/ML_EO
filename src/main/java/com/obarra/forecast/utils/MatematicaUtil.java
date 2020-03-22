@@ -34,8 +34,8 @@ public final class MatematicaUtil {
         BigDecimal y = radio.multiply(new BigDecimal(sin.toString()));
 
         Punto punto = new Punto();
-        punto.setX(x);
-        punto.setY(y);
+        punto.setAxisX(x);
+        punto.setAxisY(y);
 
         return punto;
     }
@@ -64,8 +64,8 @@ public final class MatematicaUtil {
         BigDecimal y = radio.multiply(new BigDecimal(sin.toString()));
 
         Punto punto = new Punto();
-        punto.setX(x);
-        punto.setY(y);
+        punto.setAxisX(x);
+        punto.setAxisY(y);
 
         return punto;
     }
@@ -83,10 +83,10 @@ public final class MatematicaUtil {
     public static boolean estanAlineados(final Punto a,
                                          final Punto b,
                                          final Punto c) {
-        BigDecimal ab = (b.getX().subtract(a.getX()))
-                .divide((c.getX().subtract(b.getX())), 8, RoundingMode.HALF_UP);
-        BigDecimal bc = (b.getY().subtract(a.getY()))
-                .divide((c.getY().subtract(b.getY())), 8, RoundingMode.HALF_UP);
+        BigDecimal ab = (b.getAxisX().subtract(a.getAxisX()))
+                .divide((c.getAxisX().subtract(b.getAxisX())), 8, RoundingMode.HALF_UP);
+        BigDecimal bc = (b.getAxisY().subtract(a.getAxisY()))
+                .divide((c.getAxisY().subtract(b.getAxisY())), 8, RoundingMode.HALF_UP);
         if (esSemejante(ab, bc, 0.24)) {
             return true;
         }

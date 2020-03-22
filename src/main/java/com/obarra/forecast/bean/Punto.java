@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 
 @Data
 public class Punto {
-    private BigDecimal x;
-    private BigDecimal y;
-    private BigDecimal z;
+    private BigDecimal axisX;
+    private BigDecimal axisY;
+    private BigDecimal axisZ;
 
 }

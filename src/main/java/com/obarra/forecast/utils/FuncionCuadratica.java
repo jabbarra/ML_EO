@@ -19,12 +19,12 @@ public class FuncionCuadratica  {
      * @param p2
      */
     public FuncionCuadratica(final Punto p1, final Punto p2) {
-        this.pendiente = (p2.getY()
-                .subtract(p1.getY()))
-                .divide((p2.getX().subtract(p1.getX())),
+        this.pendiente = (p2.getAxisY()
+                .subtract(p1.getAxisY()))
+                .divide((p2.getAxisX().subtract(p1.getAxisX())),
                         8, RoundingMode.HALF_UP);
-        this.ordenadaOrigen = p1.getY()
-                .subtract((pendiente.multiply(p1.getX())));
+        this.ordenadaOrigen = p1.getAxisY()
+                .subtract((pendiente.multiply(p1.getAxisX())));
     }
 
     /**

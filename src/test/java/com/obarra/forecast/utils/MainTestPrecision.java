@@ -50,8 +50,8 @@ public class MainTestPrecision {
         BigDecimal vPeriodo = new BigDecimal("1");
 
         Punto p0 = new Punto();
-        p0.setX(new BigDecimal(0));
-        p0.setY(new BigDecimal(0));
+        p0.setAxisX(new BigDecimal(0));
+        p0.setAxisY(new BigDecimal(0));
 
 
         while (dia <= ultimoDia) {
@@ -68,15 +68,15 @@ public class MainTestPrecision {
 
             FuncionCuadratica recta = new FuncionCuadratica(fp, p0);
 
-            BigDecimal yaux = recta.getValorY(bp.getX());
-            if (MatematicaUtil.esSemejante(yaux, bp.getY(), 0.5)) {
+            BigDecimal yaux = recta.getValorY(bp.getAxisX());
+            if (MatematicaUtil.esSemejante(yaux, bp.getAxisY(), 0.5)) {
 //				log.info("F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
 //				log.info("B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString()+"\n");
-                yaux = recta.getValorY(vp.getX());
-                if (MatematicaUtil.esSemejante(yaux, vp.getY(), 0.5)) {
-                    log.info("F eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
-                    log.info("B eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
-                    log.info("V eje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
+                yaux = recta.getValorY(vp.getAxisX());
+                if (MatematicaUtil.esSemejante(yaux, vp.getAxisY(), 0.5)) {
+                    log.info("F eje x: " + fp.getAxisX().toString() + "  " + "eje y: " + fp.getAxisY().toString());
+                    log.info("B eje x: " + bp.getAxisX().toString() + "  " + "eje y: " + bp.getAxisY().toString());
+                    log.info("V eje x: " + vp.getAxisX().toString() + "  " + "eje y: " + vp.getAxisY().toString() + "\n");
                 }
             }
 
@@ -103,8 +103,8 @@ public class MainTestPrecision {
         BigDecimal vPeriodo = new BigDecimal("1");
 
         Punto p0 = new Punto();
-        p0.setX(new BigDecimal(0));
-        p0.setY(new BigDecimal(0));
+        p0.setAxisX(new BigDecimal(0));
+        p0.setAxisY(new BigDecimal(0));
 
         while (dia <= ultimoDia) {
             Double anguloRad = Math.toRadians(1);
@@ -119,11 +119,11 @@ public class MainTestPrecision {
             Punto vp = MatematicaUtil.getCoordeadasRectangular(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 
             FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
-            BigDecimal yaux = recta.getValorY(vp.getX());
+            BigDecimal yaux = recta.getValorY(vp.getAxisX());
 
-            if (MatematicaUtil.esSemejante(yaux, vp.getY(), 0.5)) {
-                log.info("F eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
-                log.info("B eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString() + "\n");
+            if (MatematicaUtil.esSemejante(yaux, vp.getAxisY(), 0.5)) {
+                log.info("F eje x: " + fp.getAxisX().toString() + "  " + "eje y: " + fp.getAxisY().toString());
+                log.info("B eje x: " + bp.getAxisX().toString() + "  " + "eje y: " + bp.getAxisY().toString() + "\n");
 
 //				yaux = recta.getValorY(p0.getX());
 //				if(esSemejante(yaux, p0, 0.5)){
@@ -169,8 +169,8 @@ public class MainTestPrecision {
         vAngulo = new BigDecimal(anguloRad.toString());
 
         Punto p0 = new Punto();
-        p0.setX(new BigDecimal(0));
-        p0.setY(new BigDecimal(0));
+        p0.setAxisX(new BigDecimal(0));
+        p0.setAxisY(new BigDecimal(0));
 
 
         while (dia <= ultimoDia) {
@@ -181,9 +181,9 @@ public class MainTestPrecision {
             Punto vp = MatematicaUtil.getCoordeadasRectangular(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 
             if (MatematicaUtil.estanAlineados(fp, bp, vp)) {
-                log.info("fp eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
-                log.info("bp eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
-                log.info("vp eje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
+                log.info("fp eje x: " + fp.getAxisX().toString() + "  " + "eje y: " + fp.getAxisY().toString());
+                log.info("bp eje x: " + bp.getAxisX().toString() + "  " + "eje y: " + bp.getAxisY().toString());
+                log.info("vp eje x: " + vp.getAxisX().toString() + "  " + "eje y: " + vp.getAxisY().toString() + "\n");
 //				if(MatematicaUtils.estanAlineados(fp, bp, p0)){
 //					log.info("fp eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
 //					log.info("bp eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
@@ -227,8 +227,8 @@ public class MainTestPrecision {
         vAngulo = new BigDecimal(anguloRad.toString());
 
         Punto p0 = new Punto();
-        p0.setX(new BigDecimal(0));
-        p0.setY(new BigDecimal(0));
+        p0.setAxisX(new BigDecimal(0));
+        p0.setAxisY(new BigDecimal(0));
 
 
         String FILENAME = "C:\\logs\\areas.txt";
@@ -249,9 +249,9 @@ public class MainTestPrecision {
                     bw.write(" SOL_afuera ");
                 }
                 bw.write(" AREA: " + area);
-                bw.write(" Feje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
-                bw.write(" Beje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
-                bw.write(" Veje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
+                bw.write(" Feje x: " + fp.getAxisX().toString() + "  " + "eje y: " + fp.getAxisY().toString());
+                bw.write(" Beje x: " + bp.getAxisX().toString() + "  " + "eje y: " + bp.getAxisY().toString());
+                bw.write(" Veje x: " + vp.getAxisX().toString() + "  " + "eje y: " + vp.getAxisY().toString() + "\n");
                 if (-1 < area && area < 1) {
                     log.info("DIA: " + dia);
                     if (TrianguloUtil.esPuntoInteriorTriangulo(fp, bp, vp, p0)) {
@@ -260,9 +260,9 @@ public class MainTestPrecision {
                         log.info(" SOL_afuera ");
                     }
                     log.info("AREA: " + area);
-                    log.info("F eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
-                    log.info("B eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
-                    log.info("V eje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
+                    log.info("F eje x: " + fp.getAxisX().toString() + "  " + "eje y: " + fp.getAxisY().toString());
+                    log.info("B eje x: " + bp.getAxisX().toString() + "  " + "eje y: " + bp.getAxisY().toString());
+                    log.info("V eje x: " + vp.getAxisX().toString() + "  " + "eje y: " + vp.getAxisY().toString() + "\n");
                     contador++;
                 }
 
@@ -322,27 +322,27 @@ public class MainTestPrecision {
 //		c.setY(new BigDecimal("6"));
 
         Punto a = new Punto();
-        a.setX(new BigDecimal("-2"));
-        a.setY(new BigDecimal("-3"));
+        a.setAxisX(new BigDecimal("-2"));
+        a.setAxisY(new BigDecimal("-3"));
 
         Punto b = new Punto();
-        b.setX(new BigDecimal("2"));
-        b.setY(new BigDecimal("3"));
+        b.setAxisX(new BigDecimal("2"));
+        b.setAxisY(new BigDecimal("3"));
 
         Punto c = new Punto();
-        c.setX(new BigDecimal("5"));
-        c.setY(new BigDecimal("7.5"));
+        c.setAxisX(new BigDecimal("5"));
+        c.setAxisY(new BigDecimal("7.5"));
 
         Punto p0 = new Punto();
-        p0.setX(new BigDecimal("0"));
-        p0.setY(new BigDecimal("0"));
+        p0.setAxisX(new BigDecimal("0"));
+        p0.setAxisY(new BigDecimal("0"));
 
 
         if (MatematicaUtil.estanAlineados(b, c, a)) {
             if (MatematicaUtil.estanAlineados(b, c, p0)) {
-                log.info("p1 eje x: " + c.getX().toString() + "  " + "eje y: " + c.getY().toString());
-                log.info("p2 eje x: " + b.getX().toString() + "  " + "eje y: " + b.getY().toString());
-                log.info("p3 eje x: " + a.getX().toString() + "  " + "eje y: " + a.getY().toString() + "\n");
+                log.info("p1 eje x: " + c.getAxisX().toString() + "  " + "eje y: " + c.getAxisY().toString());
+                log.info("p2 eje x: " + b.getAxisX().toString() + "  " + "eje y: " + b.getAxisY().toString());
+                log.info("p3 eje x: " + a.getAxisX().toString() + "  " + "eje y: " + a.getAxisY().toString() + "\n");
             }
         }
     }
@@ -373,8 +373,8 @@ public class MainTestPrecision {
         vAngulo = new BigDecimal(anguloRad.toString());
 
         Punto p0 = new Punto();
-        p0.setX(new BigDecimal(0));
-        p0.setY(new BigDecimal(0));
+        p0.setAxisX(new BigDecimal(0));
+        p0.setAxisY(new BigDecimal(0));
 
         double perimetro = 0;
         double perimetroMax = 0;
@@ -401,9 +401,9 @@ public class MainTestPrecision {
                         bw.write(" SOL_adentro ");
                         bw.write(" PERIMETRO: " + perimetro);
                         bw.write(" AREA: " + area);
-                        bw.write(" Feje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
-                        bw.write(" Beje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
-                        bw.write(" Veje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
+                        bw.write(" Feje x: " + fp.getAxisX().toString() + "  " + "eje y: " + fp.getAxisY().toString());
+                        bw.write(" Beje x: " + bp.getAxisX().toString() + "  " + "eje y: " + bp.getAxisY().toString());
+                        bw.write(" Veje x: " + vp.getAxisX().toString() + "  " + "eje y: " + vp.getAxisY().toString() + "\n");
 
                     }
                 }
@@ -443,8 +443,8 @@ public class MainTestPrecision {
         vAngulo = new BigDecimal(anguloRad.toString());
 
         Punto p0 = new Punto();
-        p0.setX(new BigDecimal(0));
-        p0.setY(new BigDecimal(0));
+        p0.setAxisX(new BigDecimal(0));
+        p0.setAxisY(new BigDecimal(0));
 
 
         String FILENAME = "C:\\logs\\peridoSequias.txt";
@@ -460,13 +460,13 @@ public class MainTestPrecision {
 
                     FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
 
-                    BigDecimal yaux = recta.getValorY(p0.getX());
-                    if (MatematicaUtil.esSemejante(yaux, bp.getY(), 0.5)) {
+                    BigDecimal yaux = recta.getValorY(p0.getAxisX());
+                    if (MatematicaUtil.esSemejante(yaux, bp.getAxisY(), 0.5)) {
                         bw.write("DIA: " + dia);
                         bw.write(" AREA: " + area);
-                        bw.write(" Feje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
-                        bw.write(" Beje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
-                        bw.write(" Veje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
+                        bw.write(" Feje x: " + fp.getAxisX().toString() + "  " + "eje y: " + fp.getAxisY().toString());
+                        bw.write(" Beje x: " + bp.getAxisX().toString() + "  " + "eje y: " + bp.getAxisY().toString());
+                        bw.write(" Veje x: " + vp.getAxisX().toString() + "  " + "eje y: " + vp.getAxisY().toString() + "\n");
                     }
                 }
                 dia++;
@@ -503,8 +503,8 @@ public class MainTestPrecision {
         vAngulo = new BigDecimal(anguloRad.toString());
 
         Punto p0 = new Punto();
-        p0.setX(new BigDecimal(0));
-        p0.setY(new BigDecimal(0));
+        p0.setAxisX(new BigDecimal(0));
+        p0.setAxisY(new BigDecimal(0));
 
 
         String FILENAME = "C:\\logs\\peridoIdeal.txt";
@@ -520,13 +520,13 @@ public class MainTestPrecision {
 
                     FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
 
-                    BigDecimal yaux = recta.getValorY(p0.getX());
-                    if (!MatematicaUtil.esSemejante(yaux, bp.getY(), 0.5)) {
+                    BigDecimal yaux = recta.getValorY(p0.getAxisX());
+                    if (!MatematicaUtil.esSemejante(yaux, bp.getAxisY(), 0.5)) {
                         bw.write("DIA: " + dia);
                         bw.write(" AREA: " + area);
-                        bw.write(" Feje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
-                        bw.write(" Beje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
-                        bw.write(" Veje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
+                        bw.write(" Feje x: " + fp.getAxisX().toString() + "  " + "eje y: " + fp.getAxisY().toString());
+                        bw.write(" Beje x: " + bp.getAxisX().toString() + "  " + "eje y: " + bp.getAxisY().toString());
+                        bw.write(" Veje x: " + vp.getAxisX().toString() + "  " + "eje y: " + vp.getAxisY().toString() + "\n");
                     }
                 }
                 dia++;

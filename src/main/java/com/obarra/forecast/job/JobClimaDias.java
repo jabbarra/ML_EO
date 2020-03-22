@@ -42,14 +42,14 @@ public final class JobClimaDias {
         betasoidesPlaneta = new Planeta("betasoides", "3", "1", "2000");
         vulcanosPlaneta = new Planeta("vulcanos", "5", "1", "1000");
         sol = new Punto();
-        sol.setX(BigDecimal.ZERO);
-        sol.setY(BigDecimal.ZERO);
+        sol.setAxisX(BigDecimal.ZERO);
+        sol.setAxisY(BigDecimal.ZERO);
     }
 
     private JobClimaDias() {
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         jobPeridoLLuvia();
         jobPeridoSequia();
         jobPeridoIdeal();
@@ -120,8 +120,8 @@ public final class JobClimaDias {
 
                     FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
 
-                    BigDecimal yaux = recta.getValorY(sol.getX());
-                    if (MatematicaUtil.esSemejante(yaux, bp.getY(), 0.5)) {
+                    BigDecimal yaux = recta.getValorY(sol.getAxisX());
+                    if (MatematicaUtil.esSemejante(yaux, bp.getAxisY(), 0.5)) {
                         String insert = getStringInsertDias(dia, ClimaTipos.SEQUIA_I.getValorI());
                         bw.write(insert + "\n");
                     }
@@ -149,8 +149,8 @@ public final class JobClimaDias {
 
                     FuncionCuadratica recta = new FuncionCuadratica(fp, bp);
 
-                    BigDecimal yaux = recta.getValorY(sol.getX());
-                    if (!MatematicaUtil.esSemejante(yaux, bp.getY(), 0.5)) {
+                    BigDecimal yaux = recta.getValorY(sol.getAxisX());
+                    if (!MatematicaUtil.esSemejante(yaux, bp.getAxisY(), 0.5)) {
                         String insert = getStringInsertDias(dia, ClimaTipos.IDEAL_I.getValorI());
                         bw.write(insert + "\n");
                     }
