@@ -4,6 +4,7 @@ import com.obarra.forecast.bean.Clima;
 import com.obarra.forecast.bean.ClimaEstado;
 import com.obarra.forecast.bean.Informe;
 import com.obarra.forecast.service.ClimaService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,9 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j2
 @RestController
 @RequestMapping("/clima")
-public  class ClimaController {
+public class ClimaController {
 
     @Autowired
     private ClimaService climaService;
@@ -35,7 +37,7 @@ public  class ClimaController {
         try {
             climas = climaService.getClimas();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e);
         }
         return climas;
     }
@@ -46,7 +48,7 @@ public  class ClimaController {
         try {
             informe = climaService.getPeriodosSequia();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e);
         }
         return informe;
     }
@@ -57,7 +59,7 @@ public  class ClimaController {
         try {
             informe = climaService.getPeriodoLLuvia();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e);
         }
         return informe;
     }
@@ -68,7 +70,7 @@ public  class ClimaController {
         try {
             informe = climaService.getCondicionesOptimas();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e);
         }
         return informe;
     }

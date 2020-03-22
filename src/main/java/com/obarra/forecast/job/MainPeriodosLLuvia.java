@@ -5,12 +5,14 @@ import com.obarra.forecast.bean.Punto;
 import com.obarra.forecast.utils.ClimaTipos;
 import com.obarra.forecast.utils.MatematicaUtils;
 import com.obarra.forecast.utils.Triangulo;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+@Log4j2
 public class MainPeriodosLLuvia {
     private static final String FILE_INFORME_PERIODO_LLUVIA = "/archivos_mleo/informe-periodos-lluvia.txt";
     private static final long ULTIMO_DIA = 365 * 10;
@@ -75,11 +77,11 @@ public class MainPeriodosLLuvia {
             bw.write("El pico máximo de lluvia será el día: " + diaperimetroMax);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e);
         }
 
-        System.out.println("Habrá " + contadorPeriodos + " períodos de lluvia. Para ver el detalle favor de revisar el archivo: " + FILE_INFORME_PERIODO_LLUVIA);
-        System.out.println("El pico máximo de lluvia será el día: " + diaperimetroMax);
+        log.info("Habrá " + contadorPeriodos + " períodos de lluvia. Para ver el detalle favor de revisar el archivo: " + FILE_INFORME_PERIODO_LLUVIA);
+        log.info("El pico máximo de lluvia será el día: " + diaperimetroMax);
     }
 
 }

@@ -6,12 +6,14 @@ import com.obarra.forecast.utils.ClimaTipos;
 import com.obarra.forecast.utils.FuncionCuadratica;
 import com.obarra.forecast.utils.MatematicaUtils;
 import com.obarra.forecast.utils.Triangulo;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+@Log4j2
 public class MainPeriodosSequia {
     private static final String FILE_INFORME_PERIODO_SEQUIA = "/archivos_mleo/informe-periodos-sequia.txt";
     private static final long ULTIMO_DIA = 365 * 10;
@@ -68,10 +70,10 @@ public class MainPeriodosSequia {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e);
         }
 
-        System.out.println("Habrá " + contadorPeriodos + " períodos de sequía. Para ver el detalle favor de revisar el archivo: " + FILE_INFORME_PERIODO_SEQUIA);
+        log.info("Habrá " + contadorPeriodos + " períodos de sequía. Para ver el detalle favor de revisar el archivo: " + FILE_INFORME_PERIODO_SEQUIA);
     }
 
 }

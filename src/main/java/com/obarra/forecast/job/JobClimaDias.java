@@ -6,12 +6,14 @@ import com.obarra.forecast.utils.ClimaTipos;
 import com.obarra.forecast.utils.FuncionCuadratica;
 import com.obarra.forecast.utils.MatematicaUtils;
 import com.obarra.forecast.utils.Triangulo;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+@Log4j2
 public final class JobClimaDias {
 
     private static final String FILE_JOB_DIAS_LLUVIA = "/archivos_mleo/insert-dias-lluvia.sql";
@@ -41,11 +43,10 @@ public final class JobClimaDias {
         jobPeridoSequia();
         jobPeridoIdeal();
 
-        System.out.println("Se generaron exitosamente las condiciones "
-                + "de todos los días. Favor de revisar los archivos: ");
-        System.out.println(FILE_JOB_DIAS_LLUVIA);
-        System.out.println(FILE_JOB_DIAS_SEQUIA);
-        System.out.println(FILE_JOB_DIAS_IDEAL);
+        log.info("Se generaron exitosamente las condiciones ");
+        log.info(FILE_JOB_DIAS_LLUVIA);
+        log.info(FILE_JOB_DIAS_SEQUIA);
+        log.info(FILE_JOB_DIAS_IDEAL);
     }
 
     private static void jobPeridoLLuvia() {
@@ -85,7 +86,7 @@ public final class JobClimaDias {
                 dia++;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e);
         }
     }
 
@@ -115,7 +116,7 @@ public final class JobClimaDias {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e);
         }
     }
 
@@ -144,7 +145,7 @@ public final class JobClimaDias {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e);
         }
     }
 

@@ -94,8 +94,7 @@ public class ClimaServiceImpl implements ClimaService {
 
         Periodo periodo = null;
 
-        for (int i = 0; i < dias.size(); i++) {
-            DiaEntity dia = dias.get(i);
+        for (DiaEntity dia : dias) {
             if (diaAnterior == -1 || (diaAnterior + 1) != dia.getNumero()) {
                 contadorPeriodos++;
                 periodo = new Periodo();

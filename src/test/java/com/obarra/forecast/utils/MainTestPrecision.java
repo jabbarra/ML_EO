@@ -1,12 +1,14 @@
 package com.obarra.forecast.utils;
 
 import com.obarra.forecast.bean.Punto;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+@Log4j2
 public class MainTestPrecision {
 
     public static void main(String[] args) {
@@ -68,13 +70,13 @@ public class MainTestPrecision {
 
             BigDecimal yaux = recta.getValorY(bp.getX());
             if (MatematicaUtils.esSemejante(yaux, bp.getY(), 0.5)) {
-//				System.out.println("F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
-//				System.out.println("B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString()+"\n");
+//				log.info("F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
+//				log.info("B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString()+"\n");
                 yaux = recta.getValorY(vp.getX());
                 if (MatematicaUtils.esSemejante(yaux, vp.getY(), 0.5)) {
-                    System.out.println("F eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
-                    System.out.println("B eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
-                    System.out.println("V eje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
+                    log.info("F eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
+                    log.info("B eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
+                    log.info("V eje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
                 }
             }
 
@@ -120,18 +122,18 @@ public class MainTestPrecision {
             BigDecimal yaux = recta.getValorY(vp.getX());
 
             if (MatematicaUtils.esSemejante(yaux, vp.getY(), 0.5)) {
-                System.out.println("F eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
-                System.out.println("B eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString() + "\n");
+                log.info("F eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
+                log.info("B eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString() + "\n");
 
 //				yaux = recta.getValorY(p0.getX());
 //				if(esSemejante(yaux, p0, 0.5)){
-//					System.out.println("F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
-//					System.out.println("B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
-//					System.out.println("V eje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
+//					log.info("F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
+//					log.info("B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
+//					log.info("V eje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
 //				}else{
-//					System.out.println("-F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
-//					System.out.println("-B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
-//					System.out.println("-V eje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
+//					log.info("-F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
+//					log.info("-B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
+//					log.info("-V eje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
 //				}
             }
 
@@ -179,17 +181,17 @@ public class MainTestPrecision {
             Punto vp = MatematicaUtils.getCoordeadasRectangular(vRadio, vAngulo, vPeriodo, new BigDecimal(dia));
 
             if (MatematicaUtils.estanAlineados(fp, bp, vp)) {
-                System.out.println("fp eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
-                System.out.println("bp eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
-                System.out.println("vp eje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
+                log.info("fp eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
+                log.info("bp eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
+                log.info("vp eje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
 //				if(MatematicaUtils.estanAlineados(fp, bp, p0)){
-//					System.out.println("fp eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
-//					System.out.println("bp eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
-//					System.out.println("vp eje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
+//					log.info("fp eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
+//					log.info("bp eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
+//					log.info("vp eje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
 //				}else{
-//					System.out.println("-fp eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
-//					System.out.println("-bp eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
-//					System.out.println("-vp eje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
+//					log.info("-fp eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
+//					log.info("-bp eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
+//					log.info("-vp eje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
 //				}
             }
 
@@ -251,16 +253,16 @@ public class MainTestPrecision {
                 bw.write(" Beje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
                 bw.write(" Veje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
                 if (-1 < area && area < 1) {
-                    System.out.println("DIA: " + dia);
+                    log.info("DIA: " + dia);
                     if (Triangulo.esPuntoInteriorTriangulo(fp, bp, vp, p0)) {
-                        System.out.println(" SOL_adentro ");
+                        log.info(" SOL_adentro ");
                     } else {
-                        System.out.println(" SOL_afuera ");
+                        log.info(" SOL_afuera ");
                     }
-                    System.out.println("AREA: " + area);
-                    System.out.println("F eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
-                    System.out.println("B eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
-                    System.out.println("V eje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
+                    log.info("AREA: " + area);
+                    log.info("F eje x: " + fp.getX().toString() + "  " + "eje y: " + fp.getY().toString());
+                    log.info("B eje x: " + bp.getX().toString() + "  " + "eje y: " + bp.getY().toString());
+                    log.info("V eje x: " + vp.getX().toString() + "  " + "eje y: " + vp.getY().toString() + "\n");
                     contador++;
                 }
 
@@ -273,11 +275,11 @@ public class MainTestPrecision {
 //					bw.write(" Veje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
 //				}
 //				else{
-//					System.out.println("DIA: "+ dia);
-//					System.out.println("AREA: "+ MatematicaUtils.getArea(fp, bp, vp));
-//					System.out.println("F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
-//					System.out.println("B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
-//					System.out.println("V eje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
+//					log.info("DIA: "+ dia);
+//					log.info("AREA: "+ MatematicaUtils.getArea(fp, bp, vp));
+//					log.info("F eje x: "+fp.getX().toString()+"  "+ "eje y: "+fp.getY().toString());
+//					log.info("B eje x: "+bp.getX().toString()+"  "+ "eje y: "+bp.getY().toString());
+//					log.info("V eje x: "+vp.getX().toString()+"  "+ "eje y: "+vp.getY().toString()+"\n");
 //				}
                 dia++;
             }
@@ -288,7 +290,7 @@ public class MainTestPrecision {
 
         }
 
-        System.out.println("con: " + contador);
+        log.info("con: " + contador);
 
     }
 
@@ -338,9 +340,9 @@ public class MainTestPrecision {
 
         if (MatematicaUtils.estanAlineados(b, c, a)) {
             if (MatematicaUtils.estanAlineados(b, c, p0)) {
-                System.out.println("p1 eje x: " + c.getX().toString() + "  " + "eje y: " + c.getY().toString());
-                System.out.println("p2 eje x: " + b.getX().toString() + "  " + "eje y: " + b.getY().toString());
-                System.out.println("p3 eje x: " + a.getX().toString() + "  " + "eje y: " + a.getY().toString() + "\n");
+                log.info("p1 eje x: " + c.getX().toString() + "  " + "eje y: " + c.getY().toString());
+                log.info("p2 eje x: " + b.getX().toString() + "  " + "eje y: " + b.getY().toString());
+                log.info("p3 eje x: " + a.getX().toString() + "  " + "eje y: " + a.getY().toString() + "\n");
             }
         }
     }

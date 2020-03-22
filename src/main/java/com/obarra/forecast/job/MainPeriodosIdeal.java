@@ -6,12 +6,14 @@ import com.obarra.forecast.utils.ClimaTipos;
 import com.obarra.forecast.utils.FuncionCuadratica;
 import com.obarra.forecast.utils.MatematicaUtils;
 import com.obarra.forecast.utils.Triangulo;
+import lombok.extern.log4j.Log4j2;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 
+@Log4j2
 public class MainPeriodosIdeal {
     private static final String FILE_INFORME_PERIODO_IDEAL = "/archivos_mleo/informe-periodos-ideal.txt";
     private static final long ULTIMO_DIA = 365 * 10;
@@ -70,10 +72,10 @@ public class MainPeriodosIdeal {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e);
         }
 
-        System.out.println("Habrá " + contadorPeriodos + " períodos de condiciones óptimas de presión y temperatura. Para ver el detalle favor de revisar el archivo: " + FILE_INFORME_PERIODO_IDEAL);
+        log.info("Habrá " + contadorPeriodos + " períodos de condiciones óptimas de presión y temperatura. Para ver el detalle favor de revisar el archivo: " + FILE_INFORME_PERIODO_IDEAL);
     }
 
 }
