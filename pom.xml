@@ -9,12 +9,12 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>ar.com.mleo</groupId>
-    <artifactId>mleo</artifactId>
+    <groupId>com.obarra</groupId>
+    <artifactId>forecast-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>mleo</name>
-    <description>Clima sistema solar</description>
+    <name>forecast-service</name>
+    <description>Forecast Service</description>
 
     <properties>
         <java.version>1.8</java.version>
