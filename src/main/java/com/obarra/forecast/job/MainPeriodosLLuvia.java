@@ -80,8 +80,18 @@ public class MainPeriodosLLuvia {
             log.error(e);
         }
 
-        log.info("Habrá " + contadorPeriodos + " períodos de lluvia. Para ver el detalle favor de revisar el archivo: " + FILE_INFORME_PERIODO_LLUVIA);
-        log.info("El pico máximo de lluvia será el día: " + diaperimetroMax);
+        StringBuilder stringBuilderCounter = new StringBuilder();
+        stringBuilderCounter.append("Habrá ")
+                .append(contadorPeriodos)
+                .append(" períodos de lluvia.")
+                .append(" Para ver el detalle favor de revisar el archivo:")
+                .append(FILE_INFORME_PERIODO_LLUVIA);
+        log.info(stringBuilderCounter.toString());
+
+        StringBuilder stringBuilderMaximum = new StringBuilder();
+        stringBuilderMaximum.append("El pico máximo de lluvia será el día: ")
+                .append(diaperimetroMax);
+        log.info(stringBuilderMaximum.toString());
     }
 
 }

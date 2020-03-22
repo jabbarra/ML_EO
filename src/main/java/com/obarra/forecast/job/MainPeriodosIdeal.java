@@ -75,7 +75,14 @@ public class MainPeriodosIdeal {
             log.error(e);
         }
 
-        log.info("Habrá " + contadorPeriodos + " períodos de condiciones óptimas de presión y temperatura. Para ver el detalle favor de revisar el archivo: " + FILE_INFORME_PERIODO_IDEAL);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Habrá ")
+                .append(contadorPeriodos)
+                .append(" períodos de condiciones óptimas de presión y temperatura.")
+                .append(" Para ver el detalle favor de revisar el archivo:")
+                .append(FILE_INFORME_PERIODO_IDEAL);
+
+        log.info(stringBuilder.toString());
     }
 
 }

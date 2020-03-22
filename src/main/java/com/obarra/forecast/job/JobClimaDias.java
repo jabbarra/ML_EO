@@ -43,7 +43,7 @@ public final class JobClimaDias {
         jobPeridoSequia();
         jobPeridoIdeal();
 
-        log.info("Se generaron exitosamente las condiciones ");
+        log.info("Se generaron exitosamente las condiciones de todos los días. Favor de revisar los archivos:");
         log.info(FILE_JOB_DIAS_LLUVIA);
         log.info(FILE_JOB_DIAS_SEQUIA);
         log.info(FILE_JOB_DIAS_IDEAL);

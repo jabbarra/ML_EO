@@ -73,7 +73,13 @@ public class MainPeriodosSequia {
             log.error(e);
         }
 
-        log.info("Habrá " + contadorPeriodos + " períodos de sequía. Para ver el detalle favor de revisar el archivo: " + FILE_INFORME_PERIODO_SEQUIA);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Habrá ")
+                .append(contadorPeriodos)
+                .append(" períodos de sequía. Para ver el detalle favor de revisar el archivo:")
+                .append(FILE_INFORME_PERIODO_SEQUIA);
+
+        log.info(stringBuilder.toString());
     }
 
 }
