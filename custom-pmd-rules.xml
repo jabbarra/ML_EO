@@ -14,17 +14,17 @@
     </rule>
     <rule ref="category/java/codestyle.xml/LongVariable">
         <properties>
-            <property name="minimum" value="30" />
+            <property name="minimum" value="30"/>
         </properties>
     </rule>
     <rule ref="category/java/codestyle.xml/ShortVariable">
         <properties>
-            <property name="minimum" value="2" />
+            <property name="minimum" value="2"/>
         </properties>
     </rule>
     <rule ref="category/java/codestyle.xml/TooManyStaticImports">
         <properties>
-            <property name="maximumStaticImports" value="10" />
+            <property name="maximumStaticImports" value="10"/>
         </properties>
     </rule>
 
@@ -35,7 +35,8 @@
     <rule ref="category/java/design.xml/UseUtilityClass">
         <properties>
             <!--Ignore UseUtilityClass on classes named Application-->
-            <property name="violationSuppressXPath" value="./ancestor::ClassOrInterfaceDeclaration[contains(@Image, 'Application')]"/>
+            <property name="violationSuppressXPath"
+                      value="./ancestor::ClassOrInterfaceDeclaration[contains(@Image, 'Application')]"/>
         </properties>
     </rule>
 
