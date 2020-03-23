@@ -19,7 +19,7 @@ import static com.obarra.forecast.enums.ClimaTipos.IDEAL;
 @Log4j2
 public class MainPeriodosIdeal {
     private static final String FILE_INFORME_PERIODO_IDEAL = "/archivos_mleo/informe-periodos-ideal.txt";
-    private static final long ULTIMO_DIA = 365 * 10;
+    private static final long ULTIMO_DIA = 365 * 10L;
     private static Planeta ferengisPlaneta;
     private static Planeta betasoidesPlaneta;
     private static Planeta vulcanosPlaneta;

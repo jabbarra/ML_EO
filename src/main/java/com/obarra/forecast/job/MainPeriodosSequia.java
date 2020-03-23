@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 @Log4j2
 public class MainPeriodosSequia {
     private static final String FILE_INFORME_PERIODO_SEQUIA = "/archivos_mleo/informe-periodos-sequia.txt";
-    private static final long ULTIMO_DIA = 365 * 10;
+    private static final long ULTIMO_DIA = 365 * 10L;
     private static Planeta ferengisPlaneta;
     private static Planeta betasoidesPlaneta;
     private static Planeta vulcanosPlaneta;

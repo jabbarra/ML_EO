@@ -33,7 +33,7 @@ public final class JobClimaDias {
             + ", id_climas) "
             + "VALUES (%d, %d);";
 
-    private static final long ULTIMO_DIA = 365 * 10;
+    private static final long ULTIMO_DIA = 365 * 10L;
     private static Planeta ferengisPlaneta;
     private static Planeta betasoidesPlaneta;
     private static Planeta vulcanosPlaneta;
