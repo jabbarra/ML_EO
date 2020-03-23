@@ -6,5 +6,4 @@ import lombok.Data;
 public class ClimaEntity {
     private Long id;
     private String nombre;
-
 }

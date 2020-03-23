@@ -3,8 +3,6 @@ package com.obarra.forecast.utils;
 import com.obarra.forecast.bean.Punto;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
 
 public final class TrianguloUtil {
     private TrianguloUtil() {

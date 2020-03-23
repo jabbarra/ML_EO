@@ -17,6 +17,9 @@ import java.nio.file.Paths;
 import static com.obarra.forecast.enums.ClimaTipos.IDEAL_I;
 import static com.obarra.forecast.enums.ClimaTipos.LLUVIA_I;
 import static com.obarra.forecast.enums.ClimaTipos.SEQUIA_I;
+import static com.obarra.forecast.enums.FileJobEnum.FILE_JOB_DIAS_IDEAL;
+import static com.obarra.forecast.enums.FileJobEnum.FILE_JOB_DIAS_LLUVIA;
+import static com.obarra.forecast.enums.FileJobEnum.FILE_JOB_DIAS_SEQUIA;
 
 @Log4j2
 public final class JobClimaDias {
@@ -29,10 +32,6 @@ public final class JobClimaDias {
     private static final String INSERT_DIAS = "INSERT INTO public.dias(numero"
             + ", id_climas) "
             + "VALUES (%d, %d);";
-
-    private static final String FILE_JOB_DIAS_LLUVIA = "/archivos_mleo/insert-dias-lluvia.sql";
-    private static final String FILE_JOB_DIAS_SEQUIA = "/archivos_mleo/insert-dias-sequia.sql";
-    private static final String FILE_JOB_DIAS_IDEAL = "/archivos_mleo/insert-dias-ideal.sql";
 
     private static final long ULTIMO_DIA = 365 * 10;
     private static Planeta ferengisPlaneta;
@@ -67,7 +66,7 @@ public final class JobClimaDias {
         long dia = 1;
         double perimetro = 0;
         try (BufferedWriter bw =
-                     Files.newBufferedWriter(Paths.get(FILE_JOB_DIAS_LLUVIA),
+                     Files.newBufferedWriter(Paths.get(FILE_JOB_DIAS_LLUVIA.getValue()),
                              StandardCharsets.UTF_8)) {
 
             while (dia <= ULTIMO_DIA) {
@@ -110,7 +109,7 @@ public final class JobClimaDias {
         long dia = 1;
 
         try (BufferedWriter bw =
-                Files.newBufferedWriter(Paths.get(FILE_JOB_DIAS_SEQUIA),
+                Files.newBufferedWriter(Paths.get(FILE_JOB_DIAS_SEQUIA.getValue()),
                         StandardCharsets.UTF_8)) {
 
             while (dia <= ULTIMO_DIA) {
@@ -140,7 +139,7 @@ public final class JobClimaDias {
     private static void jobPeridoIdeal() {
         long dia = 1;
         try (BufferedWriter bw =
-                     Files.newBufferedWriter(Paths.get(FILE_JOB_DIAS_IDEAL),
+                     Files.newBufferedWriter(Paths.get(FILE_JOB_DIAS_IDEAL.getValue()),
                              StandardCharsets.UTF_8)) {
             while (dia <= ULTIMO_DIA) {
                 Punto fp = MatematicaUtil.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
