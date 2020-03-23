@@ -19,7 +19,9 @@
     <properties>
         <java.version>1.8</java.version>
         <main.basedir>${project.basedir}</main.basedir>
-        <skip.pmd.check>false</skip.pmd.check>
+        <skip.checkstyle.check>true</skip.checkstyle.check>
+        <skip.pmd.check>true</skip.pmd.check>
+        <skip.spotbugs.check>false</skip.spotbugs.check>
         <phase.code.check>verify</phase.code.check>
     </properties>
 
@@ -82,11 +84,12 @@
                 <version>3.1.1</version>
                 <configuration>
                     <configLocation>sun_checks.xml</configLocation>
+                    <skip>${skip.checkstyle.check}</skip>
                 </configuration>
                 <executions>
                     <execution>
-                        <id>compile</id>
-                        <phase>none</phase>
+                        <id>verify</id>
+                        <phase>${phase.code.check}</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
@@ -117,6 +120,9 @@
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
                 <version>3.1.12.2</version>
+                <configuration>
+                    <skip>${skip.spotbugs.check}</skip>
+                </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>com.github.spotbugs</groupId>
@@ -127,7 +133,7 @@
                 <executions>
                     <execution>
                         <id>verify</id>
-                        <phase>verify</phase>
+                        <phase>${phase.code.check}</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
