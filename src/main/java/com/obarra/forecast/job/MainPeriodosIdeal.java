@@ -15,6 +15,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static com.obarra.forecast.enums.ClimaTipos.*;
+
 @Log4j2
 public class MainPeriodosIdeal {
     private static final String FILE_INFORME_PERIODO_IDEAL = "/archivos_mleo/informe-periodos-ideal.txt";
@@ -62,10 +64,10 @@ public class MainPeriodosIdeal {
                             contadorPeriodos++;
                             bw.write("PERIODO NUMERO: " + contadorPeriodos + "\n");
                             bw.write("Día: " + dia + " ");
-                            bw.write(ClimaTipos.IDEAL.getValorS() + "\n");
+                            bw.write(IDEAL.getValorS() + "\n");
                         } else {
                             bw.write("Día: " + dia + " ");
-                            bw.write(ClimaTipos.IDEAL.getValorS() + "\n");
+                            bw.write(IDEAL.getValorS() + "\n");
                         }
                         diaAnterior = dia;
                     }

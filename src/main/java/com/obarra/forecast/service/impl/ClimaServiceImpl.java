@@ -8,13 +8,20 @@ import com.obarra.forecast.mapper.ClimaMapper;
 import com.obarra.forecast.mapper.DiaMapper;
 import com.obarra.forecast.mapper.entity.DiaEntity;
 import com.obarra.forecast.service.ClimaService;
-import com.obarra.forecast.enums.ClimaTipos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static com.obarra.forecast.enums.ClimaTipos.IDEAL;
+import static com.obarra.forecast.enums.ClimaTipos.IDEAL_I;
+import static com.obarra.forecast.enums.ClimaTipos.INDEFINIDO;
+import static com.obarra.forecast.enums.ClimaTipos.LLUVIA;
+import static com.obarra.forecast.enums.ClimaTipos.LLUVIA_I;
+import static com.obarra.forecast.enums.ClimaTipos.SEQUIA;
+import static com.obarra.forecast.enums.ClimaTipos.SEQUIA_I;
 
 @Service
 public class ClimaServiceImpl implements ClimaService {
@@ -43,7 +50,7 @@ public class ClimaServiceImpl implements ClimaService {
     @Override
     public ClimaEstado getClimaDelDia(final Long dia) {
         final ClimaEstado climaEstado = new ClimaEstado();
-        climaEstado.setClima(ClimaTipos.INDEFINIDO.getValorS());
+        climaEstado.setClima(INDEFINIDO.getValorS());
         climaEstado.setDia(dia);
 
         final DiaEntity diaE = diaMapper.findByDia(dia);
@@ -57,10 +64,10 @@ public class ClimaServiceImpl implements ClimaService {
     @Override
     public Informe getPeriodoLLuvia() {
         final List<DiaEntity> dias = diaMapper
-                .findDiasByClima(ClimaTipos.LLUVIA_I.getValorI());
+                .findDiasByClima(LLUVIA_I.getValorI());
         final DiaEntity diaMaximaIntensidad = diaMapper.findDiaMaximaIntensidad();
 
-        final Informe informe = generarInformedeClima(ClimaTipos.LLUVIA.getValorS(), dias);
+        final Informe informe = generarInformedeClima(LLUVIA.getValorS(), dias);
 
         final StringBuilder stringBuilder = new StringBuilder(100);
         stringBuilder.append(informe.getTitulo())
@@ -74,16 +81,16 @@ public class ClimaServiceImpl implements ClimaService {
 
     @Override
     public Informe getPeriodosSequia() {
-        final List<DiaEntity> dias = diaMapper.findDiasByClima(ClimaTipos.SEQUIA_I.getValorI());
+        final List<DiaEntity> dias = diaMapper.findDiasByClima(SEQUIA_I.getValorI());
 
-        return this.generarInformedeClima(ClimaTipos.SEQUIA.getValorS(), dias);
+        return this.generarInformedeClima(SEQUIA.getValorS(), dias);
     }
 
     @Override
     public Informe getCondicionesOptimas() {
-        final List<DiaEntity> dias = diaMapper.findDiasByClima(ClimaTipos.IDEAL_I.getValorI());
+        final List<DiaEntity> dias = diaMapper.findDiasByClima(IDEAL_I.getValorI());
 
-        return this.generarInformedeClima(ClimaTipos.IDEAL.getValorS(), dias);
+        return this.generarInformedeClima(IDEAL.getValorS(), dias);
     }
 
     private Informe generarInformedeClima(final String tipoClima, final List<DiaEntity> dias) {

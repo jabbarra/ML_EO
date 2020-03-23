@@ -15,6 +15,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static com.obarra.forecast.enums.ClimaTipos.*;
+
 @Log4j2
 public final class JobClimaDias {
 
@@ -90,7 +92,7 @@ public final class JobClimaDias {
                 if (area > 0 && TrianguloUtil.esPuntoInteriorTriangulo(fp, bp, vp, sol)) {
                     perimetro = TrianguloUtil.getPerimetro(fp, bp, vp);
                     String insert = getStringInsertDias(dia,
-                            ClimaTipos.LLUVIA_I.getValorI(),
+                            LLUVIA_I.getValorI(),
                             perimetro);
                     bw.write(insert + "\n");
                 }
@@ -122,7 +124,7 @@ public final class JobClimaDias {
 
                     BigDecimal yaux = recta.getValorY(sol.getAxisX());
                     if (MatematicaUtil.esSemejante(yaux, bp.getAxisY(), 0.5)) {
-                        String insert = getStringInsertDias(dia, ClimaTipos.SEQUIA_I.getValorI());
+                        String insert = getStringInsertDias(dia, SEQUIA_I.getValorI());
                         bw.write(insert + "\n");
                     }
                 }
@@ -151,7 +153,7 @@ public final class JobClimaDias {
 
                     BigDecimal yaux = recta.getValorY(sol.getAxisX());
                     if (!MatematicaUtil.esSemejante(yaux, bp.getAxisY(), 0.5)) {
-                        String insert = getStringInsertDias(dia, ClimaTipos.IDEAL_I.getValorI());
+                        String insert = getStringInsertDias(dia, IDEAL_I.getValorI());
                         bw.write(insert + "\n");
                     }
                 }
