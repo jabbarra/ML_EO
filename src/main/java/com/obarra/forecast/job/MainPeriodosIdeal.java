@@ -2,7 +2,6 @@ package com.obarra.forecast.job;
 
 import com.obarra.forecast.bean.Planeta;
 import com.obarra.forecast.bean.Punto;
-import com.obarra.forecast.enums.ClimaTipos;
 import com.obarra.forecast.utils.FuncionCuadratica;
 import com.obarra.forecast.utils.MatematicaUtil;
 import com.obarra.forecast.utils.TrianguloUtil;
@@ -15,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static com.obarra.forecast.enums.ClimaTipos.*;
+import static com.obarra.forecast.enums.ClimaTipos.IDEAL;
 
 @Log4j2
 public class MainPeriodosIdeal {

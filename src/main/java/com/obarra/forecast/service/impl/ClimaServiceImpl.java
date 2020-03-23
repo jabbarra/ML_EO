@@ -96,12 +96,9 @@ public class ClimaServiceImpl implements ClimaService {
     private Informe generarInformedeClima(final String tipoClima, final List<DiaEntity> dias) {
         final Informe informe = new Informe();
 
-        ClimaEstado clima = null;
         long diaAnterior = -1;
         long contadorPeriodos = 0;
-
         Periodo periodo = null;
-
         for (final DiaEntity dia : dias) {
             if (diaAnterior == -1 || (diaAnterior + 1) != dia.getNumero()) {
                 contadorPeriodos++;
@@ -110,12 +107,12 @@ public class ClimaServiceImpl implements ClimaService {
                 periodo.setClimaEstados(new ArrayList<ClimaEstado>());
                 informe.getListaPeriodos().add(periodo);
 
-                clima = new ClimaEstado();
+                ClimaEstado clima = new ClimaEstado();
                 clima.setClima(tipoClima);
                 clima.setDia(dia.getNumero());
                 periodo.getClimaEstados().add(clima);
             } else {
-                clima = new ClimaEstado();
+                ClimaEstado clima = new ClimaEstado();
                 clima.setClima(tipoClima);
                 clima.setDia(dia.getNumero());
                 periodo.getClimaEstados().add(clima);
@@ -128,5 +125,4 @@ public class ClimaServiceImpl implements ClimaService {
 
         return informe;
     }
-
 }
