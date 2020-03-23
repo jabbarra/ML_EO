@@ -16,6 +16,3 @@ before_install:
   - echo $JAVA_HOME
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-
-
-## to do test notification, deploy, matrix
