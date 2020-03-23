@@ -19,9 +19,9 @@
     <properties>
         <java.version>1.8</java.version>
         <main.basedir>${project.basedir}</main.basedir>
-        <skip.checkstyle.check>true</skip.checkstyle.check>
-        <skip.pmd.check>true</skip.pmd.check>
-        <skip.spotbugs.check>true</skip.spotbugs.check>
+        <skip.checkstyle.check>false</skip.checkstyle.check>
+        <skip.pmd.check>false</skip.pmd.check>
+        <skip.spotbugs.check>false</skip.spotbugs.check>
         <phase.code.check>verify</phase.code.check>
     </properties>
 
