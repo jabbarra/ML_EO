@@ -2,7 +2,7 @@ package com.obarra.forecast.job;
 
 import com.obarra.forecast.bean.Planeta;
 import com.obarra.forecast.bean.Punto;
-import com.obarra.forecast.utils.ClimaTipos;
+import com.obarra.forecast.enums.ClimaTipos;
 import com.obarra.forecast.utils.FuncionCuadratica;
 import com.obarra.forecast.utils.MatematicaUtil;
 import com.obarra.forecast.utils.TrianguloUtil;

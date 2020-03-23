@@ -8,7 +8,7 @@ import com.obarra.forecast.mapper.ClimaMapper;
 import com.obarra.forecast.mapper.DiaMapper;
 import com.obarra.forecast.mapper.entity.DiaEntity;
 import com.obarra.forecast.service.ClimaService;
-import com.obarra.forecast.utils.ClimaTipos;
+import com.obarra.forecast.enums.ClimaTipos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +19,8 @@ import java.util.stream.Collectors;
 @Service
 public class ClimaServiceImpl implements ClimaService {
 
-    private ClimaMapper climaMapper;
-    private DiaMapper diaMapper;
+    private final ClimaMapper climaMapper;
+    private final DiaMapper diaMapper;
 
     @Autowired
     public ClimaServiceImpl(final ClimaMapper climaMapper,

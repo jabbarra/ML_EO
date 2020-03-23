@@ -87,10 +87,8 @@ public final class MatematicaUtil {
                 .divide((c.getAxisX().subtract(b.getAxisX())), 8, RoundingMode.HALF_UP);
         BigDecimal bc = (b.getAxisY().subtract(a.getAxisY()))
                 .divide((c.getAxisY().subtract(b.getAxisY())), 8, RoundingMode.HALF_UP);
-        if (esSemejante(ab, bc, 0.24)) {
-            return true;
-        }
-        return false;
+
+        return esSemejante(ab, bc, 0.24);
     }
 
     /**
@@ -107,10 +105,6 @@ public final class MatematicaUtil {
                                       final double desvio) {
         double ymin = yaux.doubleValue() - desvio;
         double ymax = yaux.doubleValue() + desvio;
-        if (ymin < y.doubleValue() && y.doubleValue() < ymax) {
-            return true;
-        }
-
-        return false;
+        return ymin < y.doubleValue() && y.doubleValue() < ymax;
     }
 }

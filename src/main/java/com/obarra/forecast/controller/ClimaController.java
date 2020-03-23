@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
@@ -20,7 +19,7 @@ import java.util.List;
 @RequestMapping("/clima")
 public class ClimaController {
 
-    private ClimaService climaService;
+    private final ClimaService climaService;
 
     @Autowired
     public ClimaController(final ClimaService climaService){
@@ -36,46 +35,21 @@ public class ClimaController {
 
     @RequestMapping(value = "/climas", method = RequestMethod.GET)
     public List<Clima> getClimas() {
-        List<Clima> climas = new ArrayList<>();
-        try {
-            climas = climaService.getClimas();
-        } catch (Exception e) {
-            log.error(e);
-        }
-        return climas;
+        return climaService.getClimas();
     }
 
     @RequestMapping(value = "/sequias", method = RequestMethod.GET)
     public Informe getSequias() {
-        Informe informe = new Informe();
-        try {
-            informe = climaService.getPeriodosSequia();
-        } catch (Exception e) {
-            log.error(e);
-        }
-        return informe;
+        return  climaService.getPeriodosSequia();
     }
 
     @RequestMapping(value = "/lluvias", method = RequestMethod.GET)
     public Informe getLLuvias() {
-        Informe informe = new Informe();
-        try {
-            informe = climaService.getPeriodoLLuvia();
-        } catch (Exception e) {
-            log.error(e);
-        }
-        return informe;
+        return climaService.getPeriodoLLuvia();
     }
 
     @RequestMapping(value = "/ideales", method = RequestMethod.GET)
     public Informe getIdeales() {
-        Informe informe = new Informe();
-        try {
-            informe = climaService.getCondicionesOptimas();
-        } catch (Exception e) {
-            log.error(e);
-        }
-        return informe;
+        return climaService.getCondicionesOptimas();
     }
-
 }

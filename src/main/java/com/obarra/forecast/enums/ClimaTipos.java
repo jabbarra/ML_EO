@@ -1,4 +1,4 @@
-package com.obarra.forecast.utils;
+package com.obarra.forecast.enums;
 
 public enum ClimaTipos {
     LLUVIA("LLuvia"),

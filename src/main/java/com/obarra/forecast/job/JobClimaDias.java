@@ -2,7 +2,7 @@ package com.obarra.forecast.job;
 
 import com.obarra.forecast.bean.Planeta;
 import com.obarra.forecast.bean.Punto;
-import com.obarra.forecast.utils.ClimaTipos;
+import com.obarra.forecast.enums.ClimaTipos;
 import com.obarra.forecast.utils.FuncionCuadratica;
 import com.obarra.forecast.utils.MatematicaUtil;
 import com.obarra.forecast.utils.TrianguloUtil;
@@ -86,15 +86,15 @@ public final class JobClimaDias {
                                 new BigDecimal(dia));
 
                 double area = TrianguloUtil.getArea(fp, bp, vp);
-                if (area > 0) {
-                    if (TrianguloUtil.esPuntoInteriorTriangulo(fp, bp, vp, sol)) {
-                        perimetro = TrianguloUtil.getPerimetro(fp, bp, vp);
-                        String insert = getStringInsertDias(dia,
-                                ClimaTipos.LLUVIA_I.getValorI(),
-                                perimetro);
-                        bw.write(insert + "\n");
-                    }
+
+                if (area > 0 && TrianguloUtil.esPuntoInteriorTriangulo(fp, bp, vp, sol)) {
+                    perimetro = TrianguloUtil.getPerimetro(fp, bp, vp);
+                    String insert = getStringInsertDias(dia,
+                            ClimaTipos.LLUVIA_I.getValorI(),
+                            perimetro);
+                    bw.write(insert + "\n");
                 }
+
                 dia++;
             }
         } catch (IOException e) {
