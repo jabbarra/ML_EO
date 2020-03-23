@@ -31,7 +31,7 @@ public class ClimaServiceImpl implements ClimaService {
 
     @Autowired
     public ClimaServiceImpl(final ClimaMapper climaMapper,
-                            final DiaMapper diaMapper){
+                            final DiaMapper diaMapper) {
         this.climaMapper = climaMapper;
         this.diaMapper = diaMapper;
     }

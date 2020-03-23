@@ -26,6 +26,7 @@ public enum ClimaTipos {
     public String getValorS() {
         return valorS;
     }
+
     /**
      * @return the valorI
      */

@@ -8,7 +8,7 @@ import java.math.RoundingMode;
 /**
  * @author omar_barra
  */
-public class FuncionCuadratica  {
+public class FuncionCuadratica {
     private BigDecimal pendiente;
     private BigDecimal ordenadaOrigen;
 

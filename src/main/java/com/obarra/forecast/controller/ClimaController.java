@@ -22,7 +22,7 @@ public class ClimaController {
     private final ClimaService climaService;
 
     @Autowired
-    public ClimaController(final ClimaService climaService){
+    public ClimaController(final ClimaService climaService) {
         this.climaService = climaService;
     }
 
@@ -40,7 +40,7 @@ public class ClimaController {
 
     @RequestMapping(value = "/sequias", method = RequestMethod.GET)
     public Informe getSequias() {
-        return  climaService.getPeriodosSequia();
+        return climaService.getPeriodosSequia();
     }
 
     @RequestMapping(value = "/lluvias", method = RequestMethod.GET)

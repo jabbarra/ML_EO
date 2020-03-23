@@ -24,7 +24,7 @@ import static com.obarra.forecast.enums.FileJobEnum.FILE_JOB_DIAS_SEQUIA;
 @Log4j2
 public final class JobClimaDias {
 
-    private static final  String INSERT_DIAS_COMPLETE = "INSERT INTO public.dias(numero"
+    private static final String INSERT_DIAS_COMPLETE = "INSERT INTO public.dias(numero"
             + ", id_climas"
             + ", intensidad_lluvia)"
             + " VALUES (%d, %d, %f);";
@@ -109,8 +109,8 @@ public final class JobClimaDias {
         long dia = 1;
 
         try (BufferedWriter bw =
-                Files.newBufferedWriter(Paths.get(FILE_JOB_DIAS_SEQUIA.getValue()),
-                        StandardCharsets.UTF_8)) {
+                     Files.newBufferedWriter(Paths.get(FILE_JOB_DIAS_SEQUIA.getValue()),
+                             StandardCharsets.UTF_8)) {
 
             while (dia <= ULTIMO_DIA) {
                 Punto fp = MatematicaUtil.getCoordeadasRectangular(ferengisPlaneta.getRadio(), ferengisPlaneta.getAngulo(), ferengisPlaneta.getPeriodo(), new BigDecimal(dia));
