@@ -18,6 +18,9 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <main.basedir>${project.basedir}</main.basedir>
+        <skip.pmd.check>false</skip.pmd.check>
+        <phase.code.check>verify</phase.code.check>
     </properties>
 
     <dependencies>
@@ -96,26 +99,14 @@
                 <version>3.13.0</version>
                 <configuration>
                     <rulesets>
-                        <!--
-          <ruleset>/category/java/bestpractices.xml</ruleset>
-
-                        <ruleset>/category/java/codestyle.xml</ruleset>
-                        <ruleset>/category/java/design.xml</ruleset>
-                        <ruleset>/category/java/errorprone.xml</ruleset>
-
-                        -->
-                        <ruleset>/category/java/multithreading.xml</ruleset>
-                        <ruleset>/category/java/performance.xml</ruleset>
-
-
-
-
+                        <ruleset>${main.basedir}/custom-pmd-rules.xml</ruleset>
                     </rulesets>
+                    <skip>${skip.pmd.check}</skip>
                 </configuration>
                 <executions>
                     <execution>
                         <id>verify</id>
-                        <phase>verify</phase>
+                        <phase>${phase.code.check}</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
