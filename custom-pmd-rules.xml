@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<ruleset name="Custom Rules"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>
+        Custom rules
+    </description>
+    <rule ref="category/java/bestpractices.xml"/>
+
+    <rule ref="category/java/codestyle.xml">
+        <exclude name="OnlyOneReturn"/>
+    </rule>
+    <rule ref="category/java/codestyle.xml/LongVariable">
+        <properties>
+            <property name="minimum" value="30"/>
+        </properties>
+    </rule>
+    <rule ref="category/java/codestyle.xml/ShortVariable">
+        <properties>
+            <property name="minimum" value="2"/>
+        </properties>
+    </rule>
+    <rule ref="category/java/codestyle.xml/TooManyStaticImports">
+        <properties>
+            <property name="maximumStaticImports" value="10"/>
+        </properties>
+    </rule>
+
+    <rule ref="category/java/design.xml">
+        <!-- LawOfDemeter should not be apply to java 8-->
+        <exclude name="LawOfDemeter"/>
+    </rule>
+    <rule ref="category/java/design.xml/UseUtilityClass">
+        <properties>
+            <!--Ignore UseUtilityClass on classes named Application-->
+            <property name="violationSuppressXPath"
+                      value="./ancestor::ClassOrInterfaceDeclaration[contains(@Image, 'Application')]"/>
+        </properties>
+    </rule>
+
+    <rule ref="category/java/errorprone.xml">
+    </rule>
+
+    <rule ref="category/java/performance.xml"/>
+
+    <rule ref="category/java/multithreading.xml"/>
+    <!--
+    <rule ref="category/java/documentation.xml"/>
+    -->
+</ruleset>
