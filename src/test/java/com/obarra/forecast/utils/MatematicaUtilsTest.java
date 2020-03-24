@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MatematicaUtilsTest {
 
@@ -43,7 +42,7 @@ public class MatematicaUtilsTest {
         Punto coordenadas = MatematicaUtil.getCoordeadasRectangularAntihorario(radio, angulo, periodo, tiempo);
 
         assertEquals(1.05, coordenadas.getAxisX().doubleValue(), 0.1);
-        assertNotEquals(1.70, coordenadas.getAxisY().doubleValue(), 0.1);
+        assertNotEquals(1.70, coordenadas.getAxisY().doubleValue());
 
     }
 

@@ -1,11 +1,12 @@
 package com.obarra.forecast.utils;
 
 import com.obarra.forecast.bean.Punto;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.Assert.assertEquals;
+
 
 public class FuncionCuadraticaTest {
 

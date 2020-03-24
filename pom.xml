@@ -19,9 +19,10 @@
     <properties>
         <java.version>1.8</java.version>
         <main.basedir>${project.basedir}</main.basedir>
-        <skip.checkstyle.check>false</skip.checkstyle.check>
-        <skip.pmd.check>false</skip.pmd.check>
-        <skip.spotbugs.check>false</skip.spotbugs.check>
+        <skip.checkstyle.check>true</skip.checkstyle.check>
+        <skip.pmd.check>true</skip.pmd.check>
+        <skip.spotbugs.check>true</skip.spotbugs.check>
+        <skip.jacoco.check>false</skip.jacoco.check>
         <phase.code.check>verify</phase.code.check>
     </properties>
 
@@ -48,32 +49,19 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-launcher</artifactId>
-            <version>1.4.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.4.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>5.4.2</version>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.2.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.21.0</version>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -144,6 +132,9 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.2</version>
+                <configuration>
+                    <skip>${skip.jacoco.check}</skip>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -157,10 +148,9 @@
                             <goal>report</goal>
                         </goals>
                     </execution>
-                    <!-- Add this checking -->
                     <execution>
                         <id>jacoco-check</id>
-                        <phase>test</phase>
+                        <phase>${phase.code.check}</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
@@ -172,7 +162,7 @@
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.0</minimum>
+                                            <minimum>0.9</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
