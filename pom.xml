@@ -22,7 +22,7 @@
         <skip.checkstyle.check>true</skip.checkstyle.check>
         <skip.pmd.check>true</skip.pmd.check>
         <skip.spotbugs.check>true</skip.spotbugs.check>
-        <skip.jacoco.check>false</skip.jacoco.check>
+        <skip.jacoco.check>true</skip.jacoco.check>
         <phase.code.check>verify</phase.code.check>
     </properties>
 
