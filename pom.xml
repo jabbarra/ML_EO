@@ -19,7 +19,7 @@
     <properties>
         <java.version>1.8</java.version>
         <main.basedir>${project.basedir}</main.basedir>
-        <skip.checkstyle.check>true</skip.checkstyle.check>
+        <skip.checkstyle.check>false</skip.checkstyle.check>
         <skip.pmd.check>true</skip.pmd.check>
         <skip.spotbugs.check>true</skip.spotbugs.check>
         <skip.jacoco.check>true</skip.jacoco.check>
@@ -59,6 +59,7 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.21.0</version>
             </plugin>
@@ -71,7 +72,7 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.1.1</version>
                 <configuration>
-                    <configLocation>sun_checks.xml</configLocation>
+                    <configLocation>${main.basedir}/custom_sun_checks.xml</configLocation>
                     <skip>${skip.checkstyle.check}</skip>
                 </configuration>
                 <executions>
