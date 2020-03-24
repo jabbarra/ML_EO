@@ -29,6 +29,11 @@ public class ClimaServiceImpl implements ClimaService {
     private final ClimaMapper climaMapper;
     private final DiaMapper diaMapper;
 
+    /**
+     * {@inheritDoc}
+     * @param climaMapper
+     * @param diaMapper
+     */
     @Autowired
     public ClimaServiceImpl(final ClimaMapper climaMapper,
                             final DiaMapper diaMapper) {
@@ -36,6 +41,10 @@ public class ClimaServiceImpl implements ClimaService {
         this.diaMapper = diaMapper;
     }
 
+    /**
+     * {@inheritDoc}
+     * @return
+     */
     @Override
     public List<Clima> getClimas() {
         return climaMapper.findClimas()
@@ -47,6 +56,11 @@ public class ClimaServiceImpl implements ClimaService {
                 }).collect(Collectors.toList());
     }
 
+    /**
+     * {@inheritDoc}
+     * @param dia
+     * @return
+     */
     @Override
     public ClimaEstado getClimaDelDia(final Long dia) {
         final ClimaEstado climaEstado = new ClimaEstado();
@@ -61,6 +75,10 @@ public class ClimaServiceImpl implements ClimaService {
         return climaEstado;
     }
 
+    /**
+     * {@inheritDoc}
+     * @return
+     */
     @Override
     public Informe getPeriodoLLuvia() {
         final List<DiaEntity> dias = diaMapper
@@ -78,7 +96,10 @@ public class ClimaServiceImpl implements ClimaService {
         return informe;
     }
 
-
+    /**
+     * {@inheritDoc}
+     * @return
+     */
     @Override
     public Informe getPeriodosSequia() {
         final List<DiaEntity> dias = diaMapper.findDiasByClima(SEQUIA_I.getValorI());
@@ -86,6 +107,10 @@ public class ClimaServiceImpl implements ClimaService {
         return this.generarInformedeClima(SEQUIA.getValorS(), dias);
     }
 
+    /**
+     * {@inheritDoc}
+     * @return
+     */
     @Override
     public Informe getCondicionesOptimas() {
         final List<DiaEntity> dias = diaMapper.findDiasByClima(IDEAL_I.getValorI());

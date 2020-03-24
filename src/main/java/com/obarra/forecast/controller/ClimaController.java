@@ -16,7 +16,7 @@ import java.util.List;
 @Log4j2
 @RestController
 @RequestMapping("/clima")
-public class ClimaController {
+public final class ClimaController {
 
     private final ClimaService climaService;
 
