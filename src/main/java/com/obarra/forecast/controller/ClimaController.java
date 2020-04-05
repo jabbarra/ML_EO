@@ -25,12 +25,6 @@ public final class ClimaController {
         this.climaService = climaService;
     }
 
-    @GetMapping
-    public ClimaEstado getClimaByDia(
-            final @RequestParam(value = "dia", required = true) Long dia) {
-        return climaService.getClimaDelDia(dia);
-    }
-
     @GetMapping(value = "/weathers")
     public List<Clima> getClimas() {
         return climaService.getClimas();
