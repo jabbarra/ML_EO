@@ -130,6 +130,9 @@ public class ClimaServiceImpl implements ClimaService {
                 periodo = new Periodo();
                 periodo.setValue(contadorPeriodos);
                 periodo.setClimaEstados(new ArrayList<ClimaEstado>());
+                if (informe.getListaPeriodos() == null){
+                    informe.setListaPeriodos(new ArrayList<>());
+                }
                 informe.getListaPeriodos().add(periodo);
 
                 ClimaEstado clima = new ClimaEstado();
@@ -140,6 +143,9 @@ public class ClimaServiceImpl implements ClimaService {
                 ClimaEstado clima = new ClimaEstado();
                 clima.setClima(tipoClima);
                 clima.setDia(dia.getNumero());
+                if (informe.getListaPeriodos() == null){
+                    informe.setListaPeriodos(new ArrayList<>());
+                }
                 periodo.getClimaEstados().add(clima);
             }
             diaAnterior = dia.getNumero();
