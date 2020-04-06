@@ -14,7 +14,7 @@ public class WeatherServiceImpl implements WeatherService {
     /**
      * This interacts with data base and maps the results.
      */
-    private WeatherMapper weatherMapper;
+    private final WeatherMapper weatherMapper;
 
     /**
      * Constructor.

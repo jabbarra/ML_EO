@@ -2,36 +2,41 @@ package com.obarra.forecast.controller;
 
 import com.obarra.forecast.bean.Informe;
 import com.obarra.forecast.service.ForecastService;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Log4j2
 @RestController
-@RequestMapping("/clima")
+@RequestMapping("/forecast")
 public final class ForecastController {
 
-    private final ForecastService climaService;
+    /**
+     * Forecast Service.
+     */
+    private final ForecastService forecastService;
 
+    /**
+     * Constructor.
+     * @param forecastService
+     */
     @Autowired
-    public ForecastController(final ForecastService climaService) {
-        this.climaService = climaService;
+    public ForecastController(final ForecastService forecastService) {
+        this.forecastService = forecastService;
     }
 
-    @GetMapping(value = "/droughts")
-    public Informe getSequias() {
-        return climaService.getPeriodosSequia();
+    @GetMapping("/drought")
+    public Informe getDrought() {
+        return forecastService.getPeriodosSequia();
     }
 
-    @GetMapping(value = "/rains")
-    public Informe getLLuvias() {
-        return climaService.getPeriodoLLuvia();
+    @GetMapping("/rain")
+    public Informe getRain() {
+        return forecastService.getPeriodoLLuvia();
     }
 
-    @GetMapping(value = "/idealDays")
-    public Informe getIdeales() {
-        return climaService.getCondicionesOptimas();
+    @GetMapping("/optimum")
+    public Informe getOptimum() {
+        return forecastService.getCondicionesOptimas();
     }
 }
