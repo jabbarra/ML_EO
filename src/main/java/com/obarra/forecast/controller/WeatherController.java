@@ -1,7 +1,7 @@
 package com.obarra.forecast.controller;
 
+import com.obarra.forecast.bean.Weather;
 import com.obarra.forecast.dto.WeatherDTO;
-import com.obarra.forecast.dto.DayDTO;
 import com.obarra.forecast.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,7 +35,7 @@ public final class WeatherController {
      * @return A day with its weather
      */
     @GetMapping
-    public DayDTO findByDay(final @RequestParam("day") Long day) {
+    public WeatherDTO findByDay(final @RequestParam("day") Long day) {
         return weatherService.findByDay(day);
     }
 
@@ -43,7 +43,7 @@ public final class WeatherController {
      * @return All weathers
      */
     @GetMapping("/list")
-    public List<WeatherDTO> list() {
+    public List<Weather> list() {
         return weatherService.findAll();
     }
 }

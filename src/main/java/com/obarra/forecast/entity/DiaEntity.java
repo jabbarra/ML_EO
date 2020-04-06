@@ -1,4 +1,4 @@
-package com.obarra.forecast.mapper.entity;
+package com.obarra.forecast.entity;
 
 import lombok.Data;
 

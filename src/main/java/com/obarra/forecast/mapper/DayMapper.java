@@ -1,6 +1,6 @@
 package com.obarra.forecast.mapper;
 
-import com.obarra.forecast.mapper.entity.DiaEntity;
+import com.obarra.forecast.entity.DiaEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -8,13 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 @Mapper
-public interface DiaMapper {
-
-    @Select("select d.numero as numero,"
-            + " c.nombre as clima "
-            + "from public.dias as d, public.climas as c "
-            + "where d.id_climas = c.id and d.numero = #{dia}")
-    DiaEntity findByDia(@Param("dia") Long dia);
+public interface DayMapper {
 
     @Select("select d.numero as numero "
             + "from public.dias as d "

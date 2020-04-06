@@ -1,16 +1,19 @@
 package com.obarra.forecast.dto;
 
+import com.obarra.forecast.bean.Weather;
 import lombok.Data;
 
+/**
+ * This class represents Information of the weather of a day.
+ */
 @Data
 public class WeatherDTO {
     /**
-     * Identification of weather
+     * Numeric value of the day.
      */
-    private String id;
-
+    private Long day;
     /**
-     * Name of weather.
+     * Weather of the day.
      */
-    private String name;
+    private Weather weather;
 }

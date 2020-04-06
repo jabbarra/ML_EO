@@ -4,8 +4,8 @@ import com.obarra.forecast.bean.ClimaEstado;
 import com.obarra.forecast.bean.Informe;
 import com.obarra.forecast.bean.Periodo;
 import com.obarra.forecast.mapper.WeatherMapper;
-import com.obarra.forecast.mapper.DiaMapper;
-import com.obarra.forecast.mapper.entity.DiaEntity;
+import com.obarra.forecast.mapper.DayMapper;
+import com.obarra.forecast.entity.DiaEntity;
 import com.obarra.forecast.service.ForecastService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ import static com.obarra.forecast.enums.ClimaTipos.SEQUIA_I;
 public class ForecastServiceImpl implements ForecastService {
 
     private final WeatherMapper climaMapper;
-    private final DiaMapper diaMapper;
+    private final DayMapper diaMapper;
 
     /**
      * {@inheritDoc}
@@ -33,7 +33,7 @@ public class ForecastServiceImpl implements ForecastService {
      */
     @Autowired
     public ForecastServiceImpl(final WeatherMapper climaMapper,
-                               final DiaMapper diaMapper) {
+                               final DayMapper diaMapper) {
         this.climaMapper = climaMapper;
         this.diaMapper = diaMapper;
     }
