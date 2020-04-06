@@ -3,10 +3,10 @@ package com.obarra.forecast.service.impl;
 import com.obarra.forecast.bean.ClimaEstado;
 import com.obarra.forecast.bean.Informe;
 import com.obarra.forecast.bean.Periodo;
-import com.obarra.forecast.mapper.ClimaMapper;
+import com.obarra.forecast.mapper.WeatherMapper;
 import com.obarra.forecast.mapper.DiaMapper;
 import com.obarra.forecast.mapper.entity.DiaEntity;
-import com.obarra.forecast.service.ClimaService;
+import com.obarra.forecast.service.ForecastService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +21,9 @@ import static com.obarra.forecast.enums.ClimaTipos.SEQUIA;
 import static com.obarra.forecast.enums.ClimaTipos.SEQUIA_I;
 
 @Service
-public class ClimaServiceImpl implements ClimaService {
+public class ForecastServiceImpl implements ForecastService {
 
-    private final ClimaMapper climaMapper;
+    private final WeatherMapper climaMapper;
     private final DiaMapper diaMapper;
 
     /**
@@ -32,8 +32,8 @@ public class ClimaServiceImpl implements ClimaService {
      * @param diaMapper
      */
     @Autowired
-    public ClimaServiceImpl(final ClimaMapper climaMapper,
-                            final DiaMapper diaMapper) {
+    public ForecastServiceImpl(final WeatherMapper climaMapper,
+                               final DiaMapper diaMapper) {
         this.climaMapper = climaMapper;
         this.diaMapper = diaMapper;
     }

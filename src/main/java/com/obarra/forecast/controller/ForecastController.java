@@ -1,7 +1,7 @@
 package com.obarra.forecast.controller;
 
 import com.obarra.forecast.bean.Informe;
-import com.obarra.forecast.service.ClimaService;
+import com.obarra.forecast.service.ForecastService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Log4j2
 @RestController
 @RequestMapping("/clima")
-public final class ClimaController {
+public final class ForecastController {
 
-    private final ClimaService climaService;
+    private final ForecastService climaService;
 
     @Autowired
-    public ClimaController(final ClimaService climaService) {
+    public ForecastController(final ForecastService climaService) {
         this.climaService = climaService;
     }
 
