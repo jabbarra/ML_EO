@@ -1,6 +1,5 @@
 package com.obarra.forecast.service.impl;
 
-import com.obarra.forecast.bean.Clima;
 import com.obarra.forecast.bean.ClimaEstado;
 import com.obarra.forecast.bean.Informe;
 import com.obarra.forecast.bean.Periodo;
@@ -13,11 +12,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.obarra.forecast.enums.ClimaTipos.IDEAL;
 import static com.obarra.forecast.enums.ClimaTipos.IDEAL_I;
-import static com.obarra.forecast.enums.ClimaTipos.INDEFINIDO;
 import static com.obarra.forecast.enums.ClimaTipos.LLUVIA;
 import static com.obarra.forecast.enums.ClimaTipos.LLUVIA_I;
 import static com.obarra.forecast.enums.ClimaTipos.SEQUIA;
@@ -41,39 +38,7 @@ public class ClimaServiceImpl implements ClimaService {
         this.diaMapper = diaMapper;
     }
 
-    /**
-     * {@inheritDoc}
-     * @return
-     */
-    @Override
-    public List<Clima> getClimas() {
-        return climaMapper.findClimas()
-                .stream()
-                .map(e -> {
-                    final Clima clima = new Clima();
-                    clima.setNombre(e.getNombre());
-                    return clima;
-                }).collect(Collectors.toList());
-    }
 
-    /**
-     * {@inheritDoc}
-     * @param dia
-     * @return
-     */
-    @Override
-    public ClimaEstado getClimaDelDia(final Long dia) {
-        final ClimaEstado climaEstado = new ClimaEstado();
-        climaEstado.setClima(INDEFINIDO.getValorS());
-        climaEstado.setDia(dia);
-
-        final DiaEntity diaE = diaMapper.findByDia(dia);
-        if (diaE != null) {
-            climaEstado.setClima(diaE.getClima());
-            climaEstado.setDia(diaE.getNumero());
-        }
-        return climaEstado;
-    }
 
     /**
      * {@inheritDoc}

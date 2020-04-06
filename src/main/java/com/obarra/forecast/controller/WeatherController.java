@@ -1,12 +1,15 @@
 package com.obarra.forecast.controller;
 
-import com.obarra.forecast.bean.ClimaEstado;
-import com.obarra.forecast.service.ClimaService;
+import com.obarra.forecast.dto.WeatherDTO;
+import com.obarra.forecast.dto.DayDTO;
+import com.obarra.forecast.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/weather")
@@ -15,24 +18,32 @@ public final class WeatherController {
     /**
      * Weather Service.
      */
-    private final ClimaService climaService;
+    private final WeatherService weatherService;
 
     /**
      * Constructor.
-     * @param climaService
+     * @param weatherService
      */
     @Autowired
-    public WeatherController(final ClimaService climaService) {
-        this.climaService = climaService;
+    public WeatherController(final WeatherService weatherService) {
+        this.weatherService = weatherService;
     }
 
     /**
      * Finds the weather of day passed by parameter.
      * @param day Numeric value of de day
-     * @return Weather of day passed by parameter
+     * @return A day with its weather
      */
     @GetMapping
-    public ClimaEstado findByDay(final @RequestParam("day") Long day) {
-        return climaService.getClimaDelDia(day);
+    public DayDTO findByDay(final @RequestParam("day") Long day) {
+        return weatherService.findByDay(day);
+    }
+
+    /**
+     * @return All weathers
+     */
+    @GetMapping("/list")
+    public List<WeatherDTO> list() {
+        return weatherService.findAll();
     }
 }
