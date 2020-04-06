@@ -3,7 +3,7 @@ package com.obarra.forecast.service.impl;
 import com.obarra.forecast.bean.Weather;
 import com.obarra.forecast.dto.RainReportDTO;
 import com.obarra.forecast.dto.ReportDTO;
-import com.obarra.forecast.entity.DiaEntity;
+import com.obarra.forecast.bean.DiaEntity;
 import com.obarra.forecast.enums.WeatherEnum;
 import com.obarra.forecast.mapper.DayMapper;
 import com.obarra.forecast.mapper.WeatherMapper;
