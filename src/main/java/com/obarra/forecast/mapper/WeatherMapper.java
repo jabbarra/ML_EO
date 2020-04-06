@@ -23,4 +23,10 @@ public interface WeatherMapper {
             + "inner join public.climas c on d.id_climas = c.id "
             + "where d.numero = #{dia}")
     Weather findByDia(@Param("dia") Long dia);
+
+    @Select("select c.id, "
+            + "c.nombre as name "
+            + "from public.climas c "
+            + "where c.id = #{id}")
+    Weather findById(@Param("id") Long id);
 }

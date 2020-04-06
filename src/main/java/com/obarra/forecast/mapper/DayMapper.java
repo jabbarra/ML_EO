@@ -13,7 +13,7 @@ public interface DayMapper {
     @Select("select d.numero as numero "
             + "from public.dias as d "
             + "where d.id_climas = #{idClima}  order by numero ASC")
-    List<DiaEntity> findDiasByClima(int idClima);
+    List<DiaEntity> findDiasByClima(Long idClima);
 
     @Select("SELECT d.numero as numero "
             + "FROM public.dias as d "

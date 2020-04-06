@@ -1,13 +1,9 @@
 package com.obarra.forecast.service;
 
-import com.obarra.forecast.bean.Informe;
-
+import com.obarra.forecast.dto.ReportDTO;
 
 public interface ForecastService {
-
-    Informe getPeriodosSequia();
-
-    Informe getPeriodoLLuvia();
-
-    Informe getCondicionesOptimas();
+    ReportDTO getDroughtPeriods();
+    ReportDTO getRainPeriods();
+    ReportDTO getOptimumPeriods();
 }

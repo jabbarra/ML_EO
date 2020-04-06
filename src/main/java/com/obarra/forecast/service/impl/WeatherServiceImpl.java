@@ -25,6 +25,11 @@ public class WeatherServiceImpl implements WeatherService {
         this.weatherMapper = weatherMapper;
     }
 
+    @Override
+    public Weather findById(Long id) {
+        return weatherMapper.findById(id);
+    }
+
     /**
      * {@inheritDoc}
      * @return List of all Weather.
