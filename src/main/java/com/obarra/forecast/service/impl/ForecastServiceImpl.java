@@ -1,8 +1,8 @@
 package com.obarra.forecast.service.impl;
 
 import com.obarra.forecast.bean.Weather;
-import com.obarra.forecast.dto.RainReportDTO;
-import com.obarra.forecast.dto.ReportDTO;
+import com.obarra.forecast.dto.ForecastRainDTO;
+import com.obarra.forecast.dto.ForecastDTO;
 import com.obarra.forecast.enums.WeatherEnum;
 import com.obarra.forecast.mapper.DayMapper;
 import com.obarra.forecast.mapper.WeatherMapper;
@@ -32,7 +32,7 @@ public class ForecastServiceImpl implements ForecastService {
      * @return
      */
     @Override
-    public ReportDTO getDroughtPeriods() {
+    public ForecastDTO getDroughtPeriods() {
         return generateReport(DROUGHT);
     }
 
@@ -42,7 +42,7 @@ public class ForecastServiceImpl implements ForecastService {
      * @return
      */
     @Override
-    public ReportDTO getOptimumPeriods() {
+    public ForecastDTO getOptimumPeriods() {
         return generateReport(OPTIMUM);
     }
 
@@ -53,10 +53,10 @@ public class ForecastServiceImpl implements ForecastService {
      * @return
      */
     @Override
-    public ReportDTO getRainPeriods() {
-        final ReportDTO reportDTO = generateReport(RAIN);
+    public ForecastDTO getRainPeriods() {
+        final ForecastDTO reportDTO = generateReport(RAIN);
 
-        final RainReportDTO rainReportDTO = new RainReportDTO();
+        final ForecastRainDTO rainReportDTO = new ForecastRainDTO();
         rainReportDTO.setWeather(reportDTO.getWeather());
 
         rainReportDTO.setQuantityPeriods(reportDTO.getQuantityPeriods());
@@ -66,9 +66,9 @@ public class ForecastServiceImpl implements ForecastService {
         return rainReportDTO;
     }
 
-    private ReportDTO generateReport(final WeatherEnum weatherEnum) {
+    private ForecastDTO generateReport(final WeatherEnum weatherEnum) {
         final Weather weather = weatherMapper.findById(weatherEnum.value());
-        final ReportDTO reportDTO = new ReportDTO();
+        final ForecastDTO reportDTO = new ForecastDTO();
         reportDTO.setWeather(weather);
 
         reportDTO.setQuantityPeriods(dayMapper

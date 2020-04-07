@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
     /**
      * Entry point of Spring boot.
-     * @param args variables of environment
+     * @param args variables of environment.
      */
     public static void main(final String[] args) {
         SpringApplication.run(Application.class, args);

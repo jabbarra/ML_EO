@@ -1,6 +1,6 @@
 package com.obarra.forecast.controller;
 
-import com.obarra.forecast.dto.ReportDTO;
+import com.obarra.forecast.dto.ForecastDTO;
 import com.obarra.forecast.service.ForecastService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,17 +27,17 @@ public final class ForecastController {
     }
 
     @GetMapping("/drought")
-    public ReportDTO getDrought() {
+    public ForecastDTO getDrought() {
         return forecastService.getDroughtPeriods();
     }
 
     @GetMapping("/rain")
-    public ReportDTO getRain() {
+    public ForecastDTO getRain() {
         return forecastService.getRainPeriods();
     }
 
     @GetMapping("/optimum")
-    public ReportDTO getOptimum() {
+    public ForecastDTO getOptimum() {
         return forecastService.getOptimumPeriods();
     }
 }

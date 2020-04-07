@@ -1,11 +1,11 @@
 package com.obarra.forecast.service;
 
-import com.obarra.forecast.dto.ReportDTO;
+import com.obarra.forecast.dto.ForecastDTO;
 
 public interface ForecastService {
-    ReportDTO getDroughtPeriods();
+    ForecastDTO getDroughtPeriods();
 
-    ReportDTO getRainPeriods();
+    ForecastDTO getRainPeriods();
 
-    ReportDTO getOptimumPeriods();
+    ForecastDTO getOptimumPeriods();
 }
