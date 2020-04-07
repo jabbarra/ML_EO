@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Weather {
     /**
-     * Identification of weather
+     * Identification of weather.
      */
     private String id;
 
