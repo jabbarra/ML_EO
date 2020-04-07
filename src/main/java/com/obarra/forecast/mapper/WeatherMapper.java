@@ -12,19 +12,19 @@ public interface WeatherMapper {
      * Finds all Weather, and maps to DTO
      * @return List of Weather
      */
-    @Select("select id,nombre as name from public.climas order by nombre ASC")
+    @Select("select weather_type_id id, name from weather_type order by name ASC")
     List<Weather> findWeather();
 
-    @Select("select c.id, "
-            + "c.nombre as name "
-            + "from public.dias d "
-            + "inner join public.climas c on d.id_climas = c.id "
-            + "where d.numero = #{dia}")
-    Weather findByDia(@Param("dia") Long dia);
+    @Select("select t.weather_type_id id, "
+            + "t.name "
+            + "from weather_day d "
+            + "inner join weather_type t on d.weather_type_id = t.weather_type_id "
+            + "where d.day = #{day}")
+    Weather findByDia(@Param("day") Long day);
 
-    @Select("select c.id, "
-            + "c.nombre as name "
-            + "from public.climas c "
-            + "where c.id = #{id}")
+    @Select("select t.weather_type_id id, "
+            + "t.name "
+            + "from weather_type t "
+            + "where t.weather_type_id = #{id}")
     Weather findById(@Param("id") Long id);
 }

@@ -3,7 +3,6 @@ package com.obarra.forecast.service.impl;
 import com.obarra.forecast.bean.Weather;
 import com.obarra.forecast.dto.RainReportDTO;
 import com.obarra.forecast.dto.ReportDTO;
-import com.obarra.forecast.bean.DiaEntity;
 import com.obarra.forecast.enums.WeatherEnum;
 import com.obarra.forecast.mapper.DayMapper;
 import com.obarra.forecast.mapper.WeatherMapper;
@@ -11,18 +10,14 @@ import com.obarra.forecast.service.ForecastService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 import static com.obarra.forecast.enums.WeatherEnum.DROUGHT;
 import static com.obarra.forecast.enums.WeatherEnum.OPTIMUM;
 import static com.obarra.forecast.enums.WeatherEnum.RAIN;
 
 @Service
 public class ForecastServiceImpl implements ForecastService {
-
     private final WeatherMapper weatherMapper;
     private final DayMapper dayMapper;
-
 
     @Autowired
     public ForecastServiceImpl(final WeatherMapper weatherMapper,
@@ -66,7 +61,7 @@ public class ForecastServiceImpl implements ForecastService {
         //TODO review quantity
         rainReportDTO.setQuantityPeriods(reportDTO.getQuantityPeriods());
 
-        rainReportDTO.setMaximumIntensityDay(dayMapper.findDiaMaximaIntensidad().getNumero());
+        rainReportDTO.setMaximumIntensityDay(dayMapper.findMaximumRainIntensityDay());
 
         return rainReportDTO;
     }
@@ -76,8 +71,8 @@ public class ForecastServiceImpl implements ForecastService {
         final ReportDTO reportDTO = new ReportDTO();
         reportDTO.setWeather(weather);
 
-        final List<DiaEntity> dias = dayMapper.findDiasByClima(weatherEnum.value());
-        reportDTO.setQuantityPeriods(Long.valueOf(dias.size()));
+        Long count = dayMapper.countPeriodsOfWeatherType(weatherEnum.value());
+        reportDTO.setQuantityPeriods(count);
         return reportDTO;
     }
 

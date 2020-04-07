@@ -1,22 +1,19 @@
 package com.obarra.forecast.mapper;
 
-import com.obarra.forecast.bean.DiaEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import java.util.List;
-
 @Mapper
 public interface DayMapper {
+    @Select("select count(*) "
+            + "from (select distinct period "
+            + "from weather_day "
+            + "where weather_type_id = #{weatherType}) diff_periodC")
+    Long countPeriodsOfWeatherType(Long weatherType);
 
-    @Select("select d.numero as numero "
-            + "from public.dias as d "
-            + "where d.id_climas = #{idClima}  order by numero ASC")
-    List<DiaEntity> findDiasByClima(Long idClima);
-
-    @Select("SELECT d.numero as numero "
-            + "FROM public.dias as d "
-            + "where d.intensidad_lluvia = (SELECT MAX(dd.intensidad_lluvia) "
-            + "FROM public.dias as dd where dd.id_climas = 1)")
-    DiaEntity findDiaMaximaIntensidad();
+    @Select("SELECT d.day "
+            + "FROM weather_day d "
+            + "where d.rain_intensity = (SELECT MAX(dd.rain_intensity) "
+            + "FROM weather_day dd where dd.weather_type_id = 1)")
+    Long findMaximumRainIntensityDay();
 }
