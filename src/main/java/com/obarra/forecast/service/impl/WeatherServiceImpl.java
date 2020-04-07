@@ -18,6 +18,7 @@ public class WeatherServiceImpl implements WeatherService {
 
     /**
      * Constructor.
+     *
      * @param weatherMapper
      */
     @Autowired
@@ -32,6 +33,7 @@ public class WeatherServiceImpl implements WeatherService {
 
     /**
      * {@inheritDoc}
+     *
      * @return List of all Weather.
      */
     @Override
@@ -41,6 +43,7 @@ public class WeatherServiceImpl implements WeatherService {
 
     /**
      * {@inheritDoc}
+     *
      * @param day
      * @return A day with its weather.
      */

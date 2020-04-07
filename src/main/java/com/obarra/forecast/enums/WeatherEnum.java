@@ -9,6 +9,7 @@ public enum WeatherEnum {
 
     /**
      * Constructor.
+     *
      * @param value
      */
     WeatherEnum(final Long value) {

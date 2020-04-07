@@ -22,6 +22,7 @@ public final class WeatherController {
 
     /**
      * Constructor.
+     *
      * @param weatherService
      */
     @Autowired
@@ -31,6 +32,7 @@ public final class WeatherController {
 
     /**
      * Finds the weather of day passed by parameter.
+     *
      * @param day Numeric value of de day
      * @return A day with its weather
      */

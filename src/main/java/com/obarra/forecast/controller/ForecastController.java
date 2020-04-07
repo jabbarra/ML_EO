@@ -18,6 +18,7 @@ public final class ForecastController {
 
     /**
      * Constructor.
+     *
      * @param forecastService
      */
     @Autowired
