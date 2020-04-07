@@ -58,7 +58,7 @@ public class ForecastServiceImpl implements ForecastService {
 
         final RainReportDTO rainReportDTO = new RainReportDTO();
         rainReportDTO.setWeather(reportDTO.getWeather());
-        //TODO review quantity
+
         rainReportDTO.setQuantityPeriods(reportDTO.getQuantityPeriods());
 
         rainReportDTO.setMaximumIntensityDay(dayMapper.findMaximumRainIntensityDay());
@@ -71,8 +71,8 @@ public class ForecastServiceImpl implements ForecastService {
         final ReportDTO reportDTO = new ReportDTO();
         reportDTO.setWeather(weather);
 
-        Long count = dayMapper.countPeriodsOfWeatherType(weatherEnum.value());
-        reportDTO.setQuantityPeriods(count);
+        reportDTO.setQuantityPeriods(dayMapper
+                .countPeriodsOfWeatherType(weatherEnum.value()));
         return reportDTO;
     }
 
