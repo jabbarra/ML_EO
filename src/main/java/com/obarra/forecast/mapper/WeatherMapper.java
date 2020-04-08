@@ -22,7 +22,7 @@ public interface WeatherMapper {
             + "from weather_day d "
             + "inner join weather_type t on d.weather_type_id = t.weather_type_id "
             + "where d.day = #{day}")
-    Weather findByDia(@Param("day") Long day);
+    Weather findByDay(@Param("day") Long day);
 
     @Select("select t.weather_type_id id, "
             + "t.name "

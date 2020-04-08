@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class WeatherServiceImpl implements WeatherService {
@@ -28,16 +29,6 @@ public class WeatherServiceImpl implements WeatherService {
 
     /**
      * {@inheritDoc}
-     * @param id Identification of a type of weather.
-     * @return The type of weather of given id.
-     */
-    @Override
-    public Weather findById(final Long id) {
-        return weatherMapper.findById(id);
-    }
-
-    /**
-     * {@inheritDoc}
      *
      * @return List of all Weather.
      */
@@ -54,11 +45,14 @@ public class WeatherServiceImpl implements WeatherService {
      */
     @Override
     public WeatherDTO findByDay(final Long day) {
-        final WeatherDTO weatherDTO = new WeatherDTO();
-        weatherDTO.setDay(day);
+        final Weather weather = weatherMapper.findByDay(day);
+        if(Objects.isNull(weather)) {
+            return new WeatherDTO();
+        }
 
-        final Weather weatherBD = weatherMapper.findByDia(day);
-        weatherDTO.setWeather(weatherBD);
+        final WeatherDTO weatherDTO = new WeatherDTO();
+        weatherDTO.setWeather(weather);
+        weatherDTO.setDay(day);
 
         return weatherDTO;
     }

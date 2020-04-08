@@ -7,7 +7,7 @@ public class Weather {
     /**
      * Identification of weather.
      */
-    private String id;
+    private Long id;
 
     /**
      * Name of weather.
