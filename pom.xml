@@ -21,7 +21,7 @@
         <main.basedir>${project.basedir}</main.basedir>
         <skip.checkstyle.check>true</skip.checkstyle.check>
         <skip.pmd.check>true</skip.pmd.check>
-        <skip.spotbugs.check>true</skip.spotbugs.check>
+        <skip.spotbugs.check>false</skip.spotbugs.check>
         <skip.jacoco.check>false</skip.jacoco.check>
         <phase.code.check>verify</phase.code.check>
     </properties>
@@ -154,6 +154,9 @@
                 <version>0.8.2</version>
                 <configuration>
                     <skip>${skip.jacoco.check}</skip>
+                    <excludes>
+                        <exclude>**/*Application.*</exclude>
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>

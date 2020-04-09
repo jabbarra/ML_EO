@@ -166,4 +166,18 @@ class ForecastServiceImplTest {
         verify(dayMapper).countPeriodsOfWeatherType(1L);
         verify(dayMapper).findMaximumRainIntensityDay();
     }
+
+    @Test
+    void getOptimumPeriodsWhenDayMapperMaximumThrowsException() {
+        doReturn(weather).when(weatherMapper).findById(1L);
+        doReturn(10L).when(dayMapper).countPeriodsOfWeatherType(1L);
+        doThrow(RuntimeException.class).when(dayMapper).findMaximumRainIntensityDay();
+        ForecastService forecastService = new ForecastServiceImpl(weatherMapper, dayMapper);
+
+        assertThrows(RuntimeException.class, () -> forecastService.getRainPeriods());
+        verify(weatherMapper).findById(1L);
+        verify(dayMapper).countPeriodsOfWeatherType(1L);
+        verify(dayMapper).findMaximumRainIntensityDay();
+    }
+
 }
