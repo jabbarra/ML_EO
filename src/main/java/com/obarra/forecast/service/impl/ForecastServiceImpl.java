@@ -58,7 +58,6 @@ public class ForecastServiceImpl implements ForecastService {
 
         final ForecastRainDTO rainReportDTO = new ForecastRainDTO();
         rainReportDTO.setWeather(reportDTO.getWeather());
-
         rainReportDTO.setQuantityPeriods(reportDTO.getQuantityPeriods());
 
         rainReportDTO.setMaximumIntensityDay(dayMapper.findMaximumRainIntensityDay());

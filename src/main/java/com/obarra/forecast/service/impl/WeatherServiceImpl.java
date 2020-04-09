@@ -34,7 +34,7 @@ public class WeatherServiceImpl implements WeatherService {
      */
     @Override
     public List<Weather> findAll() {
-        return weatherMapper.findWeather();
+        return weatherMapper.findWeathers();
     }
 
     /**

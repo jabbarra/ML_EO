@@ -7,42 +7,64 @@ import com.obarra.forecast.service.WeatherService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 class WeatherServiceImplTest {
-
     private WeatherMapper weatherMapper;
+    private Weather weather;
+    private WeatherDTO weatherDTOExpected;
 
     @BeforeEach
     void setUp() {
         weatherMapper = mock(WeatherMapper.class);
+        weather = new Weather();
+        weather.setId(1L);
+        weather.setName("Rain");
+        weatherDTOExpected = new WeatherDTO();
+        weatherDTOExpected.setDay(256L);
+        weatherDTOExpected.setWeather(weather);
     }
-    @Test
-    void findAll() {
 
+    @Test
+    void findAllWhenItIsOK() {
+        doReturn(Arrays.asList(weather)).when(weatherMapper).findWeathers();
+        WeatherService weatherService = new WeatherServiceImpl(weatherMapper);
+
+        List<Weather> result = weatherService.findAll();
+
+        assertAll(() -> assertNotNull(result),
+                () -> assertIterableEquals(Arrays.asList(weather), result));
+        verify(weatherMapper).findWeathers();
+    }
+
+    @Test
+    void findAllWhenThereIsRuntimeException() {
+        doThrow(RuntimeException.class).when(weatherMapper).findWeathers();
+        WeatherService weatherService = new WeatherServiceImpl(weatherMapper);
+
+        assertThrows(RuntimeException.class,
+                () -> weatherService.findAll());
+        verify(weatherMapper).findWeathers();
     }
 
     @Test
     void findByDayWhenItIsOK() {
-        Weather weather = new Weather();
-        weather.setId(1L);
-        weather.setName("Rain");
         doReturn(weather).when(weatherMapper).findByDay(256L);
         WeatherService weatherService = new WeatherServiceImpl(weatherMapper);
 
         WeatherDTO result = weatherService.findByDay(256L);
 
-        WeatherDTO expected = new WeatherDTO();
-        expected.setDay(256L);
-        expected.setWeather(weather);
-
         assertAll(() -> assertNotNull(result),
                 () -> assertEquals(WeatherDTO.class, result.getClass()),
-                () -> assertEquals(expected, result));
+                () -> assertEquals(weatherDTOExpected, result));
         verify(weatherMapper).findByDay(256L);
     }
 
@@ -70,5 +92,13 @@ class WeatherServiceImplTest {
                 () -> assertEquals(WeatherDTO.class, result.getClass()),
                 () -> assertEquals(new WeatherDTO(), result));
         verify(weatherMapper).findByDay(null);
+    }
+
+    @Test
+    void findByDayWhenThereIsRuntimeException() {
+        doThrow(RuntimeException.class).when(weatherMapper).findByDay(anyLong());
+        WeatherService weatherService = new WeatherServiceImpl(weatherMapper);
+        assertThrows(RuntimeException.class,
+                () -> weatherService.findByDay(1L));
     }
 }

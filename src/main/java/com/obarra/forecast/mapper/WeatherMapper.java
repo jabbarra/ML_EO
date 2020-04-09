@@ -15,7 +15,7 @@ public interface WeatherMapper {
      * @return List of Weather.
      */
     @Select("select weather_type_id id, name from weather_type order by name ASC")
-    List<Weather> findWeather();
+    List<Weather> findWeathers();
 
     @Select("select t.weather_type_id id, "
             + "t.name "

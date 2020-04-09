@@ -21,6 +21,14 @@ public class ForecastDTO {
         return Objects.hash(weather, quantityPeriods);
     }
 
+    @Override
+    public String toString() {
+        return "ForecastDTO{" +
+                "weather=" + weather +
+                ", quantityPeriods=" + quantityPeriods +
+                '}';
+    }
+
     public Weather getWeather() {
         return weather;
     }
