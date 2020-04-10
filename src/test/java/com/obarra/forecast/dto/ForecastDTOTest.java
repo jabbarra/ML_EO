@@ -8,6 +8,45 @@ import static org.junit.jupiter.api.Assertions.*;
 class ForecastDTOTest {
 
     @Test
+    void testEqual() {
+        ForecastDTO forecastDTO = new ForecastDTO();
+        forecastDTO.setQuantityPeriods(Long.MAX_VALUE);
+        Weather weather = new Weather();
+        weather.setId(Long.MAX_VALUE);
+        weather.setName("Something");
+        forecastDTO.setWeather(weather);
+
+        ForecastDTO forecastDTOOther = new ForecastDTO();
+        forecastDTOOther.setQuantityPeriods(Long.MAX_VALUE);
+        weather = new Weather();
+        weather.setId(Long.MAX_VALUE);
+        weather.setName("Something");
+        forecastDTOOther.setWeather(weather);
+
+        ForecastDTO forecastDTOOtherOther = new ForecastDTO();
+        forecastDTOOtherOther.setQuantityPeriods(Long.MAX_VALUE);
+        weather = new Weather();
+        weather.setId(Long.MAX_VALUE);
+        weather.setName("Something");
+        forecastDTOOtherOther.setWeather(weather);
+
+        ForecastDTO forecastDTODifferent = new ForecastDTO();
+        forecastDTODifferent.setQuantityPeriods(Long.MIN_VALUE);
+        weather = new Weather();
+        weather.setId(Long.MAX_VALUE);
+        weather.setName("Something");
+        forecastDTODifferent.setWeather(weather);
+
+        assertFalse(forecastDTO.equals(null));
+        assertFalse(forecastDTO.equals(Long.MIN_VALUE));
+        assertFalse(forecastDTO.equals(forecastDTODifferent));
+        assertTrue(forecastDTO.equals(forecastDTO));
+        assertTrue(forecastDTO.equals(forecastDTOOther));
+        assertTrue(forecastDTOOther.equals(forecastDTOOtherOther));
+        assertTrue(forecastDTO.equals(forecastDTOOtherOther));
+    }
+
+    @Test
     void testHashCode() {
         ForecastDTO forecastDTO = new ForecastDTO();
         forecastDTO.setQuantityPeriods(Long.MAX_VALUE);
