@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ForecastDTOTest {
 
     @Test
-    void testEqual() {
+    void equalWhenAreEqual() {
         ForecastDTO forecastDTO = new ForecastDTO();
         forecastDTO.setQuantityPeriods(Long.MAX_VALUE);
         Weather weather = new Weather();
@@ -30,20 +30,41 @@ class ForecastDTOTest {
         weather.setName("Something");
         forecastDTOOtherOther.setWeather(weather);
 
+        assertTrue(forecastDTO.equals(forecastDTO));
+
+        assertTrue(forecastDTO.equals(forecastDTOOther));
+
+        assertTrue(forecastDTOOther.equals(forecastDTOOtherOther));
+        assertTrue(forecastDTO.equals(forecastDTOOtherOther));
+    }
+
+    @Test
+    void equalWhenAreNotEqual() {
+        ForecastDTO forecastDTO = new ForecastDTO();
+        forecastDTO.setQuantityPeriods(Long.MAX_VALUE);
+        Weather weather = new Weather();
+        weather.setId(Long.MAX_VALUE);
+        weather.setName("Something");
+        forecastDTO.setWeather(weather);
+
+        assertFalse(forecastDTO.equals(null));
+        assertFalse(forecastDTO.equals(Long.MIN_VALUE));
+
         ForecastDTO forecastDTODifferent = new ForecastDTO();
         forecastDTODifferent.setQuantityPeriods(Long.MIN_VALUE);
         weather = new Weather();
         weather.setId(Long.MAX_VALUE);
         weather.setName("Something");
         forecastDTODifferent.setWeather(weather);
-
-        assertFalse(forecastDTO.equals(null));
-        assertFalse(forecastDTO.equals(Long.MIN_VALUE));
         assertFalse(forecastDTO.equals(forecastDTODifferent));
-        assertTrue(forecastDTO.equals(forecastDTO));
-        assertTrue(forecastDTO.equals(forecastDTOOther));
-        assertTrue(forecastDTOOther.equals(forecastDTOOtherOther));
-        assertTrue(forecastDTO.equals(forecastDTOOtherOther));
+
+
+        forecastDTODifferent.setQuantityPeriods(Long.MAX_VALUE);
+        weather = new Weather();
+        weather.setId(Long.MIN_VALUE);
+        weather.setName("Something");
+        forecastDTODifferent.setWeather(weather);
+        assertFalse(forecastDTO.equals(forecastDTODifferent));
     }
 
     @Test
