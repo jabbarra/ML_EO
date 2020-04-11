@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.nio.file.Files;
@@ -23,6 +25,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @SpringBootTest
+@TestPropertySource(locations = "classpath:application.properties")
+@ActiveProfiles("integrationtest")
 @AutoConfigureMockMvc
 public class ApplicationTests {
 
@@ -30,27 +34,12 @@ public class ApplicationTests {
     private MockMvc mockMvc;
 
     @Test
-    public void contextLoads() throws Exception {
-        mockMvc.perform(get("/weather?day=566"))
+    public void forecastIntegrationTest() throws Exception {
+        mockMvc.perform(get("/weather")
+                .param("day","566"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(jsonPath("$.day").value(5665L));
-
-        mockMvc.perform(get("/forecast/rain"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(jsonPath("$.weather.id").value(1L))
-                .andExpect(jsonPath("$.maximumIntensityDay").value(3348L));
-
-        mockMvc.perform(get("/forecast/{name}", "optimum"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(jsonPath("$.weather.id").value(3L));
-
-        mockMvc.perform(get("/forecast/{name}", "drought"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(jsonPath("$.weather.id").value(2L));
+                .andExpect(jsonPath("$.day").value(566L));
 
 
         Path resourceDirectory = Paths.get("src","test","resources", "weathers.json");
@@ -76,5 +65,24 @@ public class ApplicationTests {
                                 .getTypeFactory()
                                 .constructCollectionType(List.class, Weather.class));
         Assertions.assertIterableEquals(object, response);
+    }
+
+    @Test
+    public void weatherIntegrationTest() throws Exception {
+        mockMvc.perform(get("/forecast/rain"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(jsonPath("$.weather.id").value(1L))
+                .andExpect(jsonPath("$.maximumIntensityDay").value(3348L));
+
+        mockMvc.perform(get("/forecast/{name}", "optimum"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(jsonPath("$.weather.id").value(3L));
+
+        mockMvc.perform(get("/forecast/{name}", "drought"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(jsonPath("$.weather.id").value(2L));
     }
 }
