@@ -12,8 +12,8 @@ Status](https://travis-ci.org/jabbarra/forecast-service.svg)](https://travis-ci.
 
 
 ## Table of contents
-- [Getting started](#Installation with default profile)
-- [Routes](#routes)
+- [Getting started](#getting-started)
+- [News](#news)
   * [Plural routes](#Technologies used)
 - [Extras](#extras)
   * [Static file server](#static-file-server)
@@ -25,7 +25,15 @@ Status](https://travis-ci.org/jabbarra/forecast-service.svg)](https://travis-ci.
   * [Video](#video)
   * [Articles](#articles)
   * [Third-party tools](#third-party-tools)
+- [Contributing](#Contributing)
 - [License](#license)
+
+## Getting started
+fsdfs
+sd
+sf
+s
+fdsfds
 
 News
 ----
@@ -84,3 +92,6 @@ Contributing
 6. Push to the branch (`git push origin my-new-feature`)
 7. Create new Pull Request
 
+##License
+
+none
