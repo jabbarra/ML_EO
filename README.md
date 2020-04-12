@@ -14,8 +14,6 @@ Status](https://travis-ci.org/jabbarra/forecast-service.svg)](https://travis-ci.
 ## Table of contents
 - [News](#news)
 - [Getting started](#getting-started)
-  * [Plural routes](#Technologies used)
-- [Extras](#extras)
   * [Requiring Variables](#requiring-variables)
   * [Installation](#installation)
   * [Usage](#usage)
