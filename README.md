@@ -1,13 +1,17 @@
 FORECAST Service
-==========
-![Forecast_Image](https://raw.githubusercontent.com/jabbarra/forecast-service/develop/icon-forecast.jpg) 
 
-This is a Microservice inspired by [Open
-Weather](https://openweathermap.org/).
+![Forecast_Image](https://raw.githubusercontent.com/jabbarra/forecast-service/develop/icon-forecast.jpg) 
+==========
+
+**This is a Microservice inspired by [Open
+Weather](https://openweathermap.org/).**
 
 [![Build
 Status](https://travis-ci.org/jabbarra/forecast-service.svg)](https://travis-ci.org/github/jabbarra/forecast-service)
 
+News
+----
+04 Apr 1991 - Started forecast-service 0.0.1-SNAPSHOT
 
 Installation with default profile
 --------------------------
