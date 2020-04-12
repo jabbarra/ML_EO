@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @MybatisTest
 @TestPropertySource(locations = "classpath:application.properties")
 @ActiveProfiles("integrationtest")
-class WeatherMapperTest {
+class WeatherMapperIntegrationTest {
 
     @Autowired
     private WeatherMapper weatherMapper;

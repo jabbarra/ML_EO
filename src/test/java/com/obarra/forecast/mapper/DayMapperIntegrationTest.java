@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @MybatisTest
 @TestPropertySource(locations = "classpath:application.properties")
 @ActiveProfiles("integrationtest")
-class DayMapperTest {
+class DayMapperIntegrationTest {
 
     @Autowired
     private DayMapper dayMapper;
