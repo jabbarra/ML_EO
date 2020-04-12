@@ -1,7 +1,6 @@
 FORECAST Service
 ==========
-
-Loads ...
+![Forecast_Image](https://raw.githubusercontent.com/jabbarra/forecast-service/develop/icon-forecast.jpg) 
 
 This is a Microservice inspired by [Open
 Weather](https://openweathermap.org/).
@@ -34,6 +33,23 @@ Usage Notes
 -----------
 
 Default data base is **H2**. It can be changed for PostgreSQL.
+
+### Technologies used
+- [JDK 1.8](https://www.oracle.com/index.html)
+- [Spring Boot](https://projects.spring.io/spring-boot/)
+- [MyBatis](https://blog.mybatis.org/)
+- [H2](https://www.h2database.com/html/main.html)
+- [Lombok](https://projectlombok.org/)
+- [jUnit 5](http://junit.org/junit5/)
+- [Mockito](http://site.mockito.org/)
+- [Maven](https://maven.apache.org/)
+- [Checkstyle](https://checkstyle.sourceforge.io/)
+- [PMD](https://pmd.github.io/)
+- [SpotBugs](https://spotbugs.github.io/)
+- [Jacoco](https://www.jacoco.org/jacoco/trunk/index.html)
+- [Sonarqube](https://www.sonarqube.org/)
+- [Travis](https://travis-ci.com/)
+- [Heroku](https://www.sonarqube.org/)
 
 Contributing
 ------------
