@@ -17,14 +17,12 @@ Status](https://travis-ci.org/jabbarra/forecast-service.svg)](https://travis-ci.
   * [Requiring Variables](#requiring-variables)
   * [Installation](#installation)
   * [Usage](#usage)
+      + [API](#api)
   * [Usage Notes](#usage-notes)
     + [Technologies used](#technologies-used)
-    + [API](#api)
   * [Deployment](#deployment)
 - [Links](#links)
-  * [Video](#video)
   * [Articles](#articles)
-  * [Third-party tools](#third-party-tools)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -47,7 +45,9 @@ git clone https://github.com/jabbarra/forecast-service.git
 ```
 
 ## Usage
+loads...
 
+### API
 loads...
 
 ## Usage Notes
@@ -69,6 +69,10 @@ Default data base is **H2**. It can be changed for PostgreSQL.
 - [Sonarqube](https://www.sonarqube.org/)
 - [Travis](https://travis-ci.com/)
 - [Heroku](https://www.sonarqube.org/)
+
+# Links
+## Articles
+* [Spring boot Maven Plugin](https://docs.spring.io/spring-boot/docs/current/maven-plugin/run-mojo.h)  
 
 # Contributing
 1. Fork it
