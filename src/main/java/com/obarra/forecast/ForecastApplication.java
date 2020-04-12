@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ForecastApplication {
     /**
-     * Entry point of Spring boot.
+     * Main Entry point of Spring boot.
      * @param args variables of environment.
      */
     public static void main(final String[] args) {
