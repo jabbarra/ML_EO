@@ -12,56 +12,47 @@ Status](https://travis-ci.org/jabbarra/forecast-service.svg)](https://travis-ci.
 
 
 ## Table of contents
-- [Getting started](#getting-started)
 - [News](#news)
+- [Getting started](#getting-started)
   * [Plural routes](#Technologies used)
 - [Extras](#extras)
-  * [Static file server](#static-file-server)
-  * [Module](#module)
-    + [Mounting JSON Server on another endpoint example](#mounting-json-server-on-another-endpoint-example)
+  * [Requiring Variables](#requiring-variables)
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Usage Notes](#usage-notes)
+    + [Technologies used](#technologies-used)
     + [API](#api)
   * [Deployment](#deployment)
 - [Links](#links)
   * [Video](#video)
   * [Articles](#articles)
   * [Third-party tools](#third-party-tools)
-- [Contributing](#Contributing)
+- [Contributing](#contributing)
 - [License](#license)
 
-## Getting started
-fsdfs
-sd
-sf
-s
-fdsfds
-
-News
-----
+# News
 04 Apr 1991 - Started forecast-service 0.0.1-SNAPSHOT
 
-Installation with default profile
---------------------------
-
-```shell
-git clone https://github.com/jabbarra/forecast-service.git
-./mvnw spring-boot:run
-```
-
-Usage
------
-loads...
-
-Requiring Variables to be Set
------------------------------
+# Getting started
+## Requiring Variables
 
 ```
 JAVA_HOME: C:\Program Files\Java\jdk1.8.0_221
 PATH: %JAVA_HOME%\bin
 ```
 
-Usage Notes
------------
+## Installation
 
+```shell
+git clone https://github.com/jabbarra/forecast-service.git
+./mvnw spring-boot:run
+```
+
+## Usage
+
+loads...
+
+## Usage Notes
 Default data base is **H2**. It can be changed for PostgreSQL.
 
 ### Technologies used
@@ -81,9 +72,7 @@ Default data base is **H2**. It can be changed for PostgreSQL.
 - [Travis](https://travis-ci.com/)
 - [Heroku](https://www.sonarqube.org/)
 
-Contributing
-------------
-
+# Contributing
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Make your changes
@@ -92,6 +81,5 @@ Contributing
 6. Push to the branch (`git push origin my-new-feature`)
 7. Create new Pull Request
 
-##License
-
+# License
 none
